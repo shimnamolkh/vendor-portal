@@ -90,6 +90,7 @@ def approve_submission(request, submission_id):
         submission.status = 'approved'
         submission.verified_by = request.user
         submission.verification_notes = notes
+        submission.updated_by = request.user
         submission.save()
         
         messages.success(request, f'Submission {submission.id} approved successfully!')
@@ -116,6 +117,7 @@ def reject_submission(request, submission_id):
         submission.status = 'rejected'
         submission.verified_by = request.user
         submission.verification_notes = notes
+        submission.updated_by = request.user
         submission.save()
         
         messages.success(request, f'Submission {submission.id} rejected.')
