@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Login - Vendor Portal{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/components/LoginPage.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="login-page">
+    <div class="login-container fade-in">
+        <div class="login-header">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                        <rect width="48" height="48" rx="12" fill="url(#gradient1)" />
+                        <path d="M24 12L32 20L24 28L16 20L24 12Z" fill="white" opacity="0.9" />
+                        <path d="M24 20L32 28L24 36L16 28L24 20Z" fill="white" opacity="0.6" />
+                        <defs>
+                            <linearGradient id="gradient1" x1="0" y1="0" x2="48" y2="48">
+                                <stop offset="0%" stopColor="#667eea" />
+                                <stop offset="100%" stopColor="#764ba2" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <h1 class="logo-text">Vendor Portal</h1>
+            </div>
+            <p class="login-subtitle">Sign in to your account</p>
+        </div>
+
+        <form class="login-form" method="post">
+            {% csrf_token %}
+
+            {% if form.errors %}
+            <div class="error-message"
+                style="color: #ef4444; background: #fee2e2; padding: 10px; border-radius: 8px; margin-bottom: 16px; font-size: 14px;">
+                Invalid username or password.
+            </div>
+            {% endif %}
+
+            <div class="form-group">
+                <label for="id_username" class="label">Username</label>
+                <input type="text" name="username" id="id_username" class="input-field"
+                    placeholder="Enter your username" required autofocus />
+            </div>
+
+            <div class="form-group">
+                <label for="id_password" class="label">Password</label>
+                <input type="password" name="password" id="id_password" class="input-field"
+                    placeholder="Enter your password" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary login-btn">
+                Sign In
+            </button>
+        </form>
+
+        <div class="login-footer">
+            <p class="footer-text">
+                Secure authentication powered by Django
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

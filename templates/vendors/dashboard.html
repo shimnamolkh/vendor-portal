@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Vendor Dashboard{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/components/VendorDashboard.css' %}">
+<link rel="stylesheet" href="{% static 'css/components/SupplierInwardEntry.css' %}">
+<link rel="stylesheet" href="{% static 'css/components/DirectPurchaseEntry.css' %}">
+<link rel="stylesheet" href="{% static 'css/components/SubmissionHistory.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-left">
+                    <div class="logo-small">
+                        <svg width="32" height="32" viewBox="0 0 48 48" fill="none">
+                            <rect width="48" height="48" rx="12" fill="url(#gradient2)" />
+                            <path d="M24 12L32 20L24 28L16 20L24 12Z" fill="white" opacity="0.9" />
+                            <path d="M24 20L32 28L24 36L16 28L24 20Z" fill="white" opacity="0.6" />
+                            <defs>
+                                <linearGradient id="gradient2" x1="0" y1="0" x2="48" y2="48">
+                                    <stop offset="0%" stop-color="#667eea" />
+                                    <stop offset="100%" stop-color="#764ba2" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h1 class="dashboard-title">Vendor Portal</h1>
+                </div>
+
+                <div class="header-right">
+                    <div class="vendor-info">
+                        <div class="vendor-label">Vendor Session Entity</div>
+                        <div class="vendor-name">{{ user.vendor_name|default:user.username }}</div>
+                    </div>
+                    <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-secondary logout-btn">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path
+                                    d="M3 1h8v2H3v10h8v2H3a2 2 0 01-2-2V3a2 2 0 012-2zm9.5 6.5L15 10l-2.5 2.5v-2H7V8h5.5V5.5z" />
+                            </svg>
+                            Logout
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        <div class="container">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}"
+                style="margin-bottom: 20px; padding: 15px; border-radius: 8px; background: {% if message.tags == 'success' %}#d1fae5{% else %}#fee2e2{% endif %}; color: {% if message.tags == 'success' %}#065f46{% else %}#991b1b{% endif %};">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+
+            <div class="tabs-container">
+                <div class="tabs-header">
+                    <a href="?tab=inward" class="tab-button {% if active_tab == 'inward' %}active{% endif %}">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path
+                                d="M4 4h12a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm0 2v8h12V6H4zm2 2h8v1H6V8zm0 2h6v1H6v-1z" />
+                        </svg>
+                        <span>Supplier Inward Entries</span>
+                        <span class="tab-badge">Mandatory Docs</span>
+                    </a>
+
+                    <a href="?tab=direct" class="tab-button {% if active_tab == 'direct' %}active{% endif %}">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 11H9v-2h2v2zm0-4H9V5h2v4z" />
+                        </svg>
+                        <span>Direct Purchase Entries</span>
+                        <span class="tab-badge">Mandatory Docs</span>
+                    </a>
+
+                    <a href="?tab=history" class="tab-button {% if active_tab == 'history' %}active{% endif %}">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 9h-2V6h2v5zm-1 2a1 1 0 100 2 1 1 0 000-2z" />
+                            <path d="M3 10a7 7 0 0114 0h-2a5 5 0 10-5 5v2a7 7 0 01-7-7z" />
+                        </svg>
+                        <span>Submission History</span>
+                        <span class="tab-badge history">View Past Entries</span>
+                    </a>
+                </div>
+
+                <div class="tabs-content">
+                    {% if active_tab == 'inward' %}
+                    {% include 'vendors/supplier_inward_entry.html' %}
+                    {% elif active_tab == 'direct' %}
+                    {% include 'vendors/direct_purchase_entry.html' %}
+                    {% elif active_tab == 'history' %}
+                    {% include 'vendors/submission_history.html' %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="{% static 'js/file_upload.js' %}"></script>
+<script>
+    // Simple tab switching without page reload (optional enhancement)
+    document.querySelectorAll('.tab-button').forEach(button => {
+        button.addEventListener('click', function (e) {
+            // Let the default link behavior work (page reload with ?tab= parameter)
+            // This ensures the server knows which tab is active
+        });
+    });
+</script>
+{% endblock %}

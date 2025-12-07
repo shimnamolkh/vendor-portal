@@ -1,0 +1,61 @@
+<div class="direct-purchase-form">
+    <div class="form-header">
+        <h2 class="form-title">Direct Purchase Entry</h2>
+        <p class="form-description">
+            Invoice is mandatory for submission and serves as the primary reference document.
+        </p>
+    </div>
+
+    <form method="post" action="{% url 'vendors:direct_purchase' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="documents-grid">
+            <div class="doc-upload-card primary">
+                <div class="doc-header">
+                    <div class="doc-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 2l5 5h-5V4zM6 20V4h6v6h6v10H6z" />
+                        </svg>
+                    </div>
+                    <div class="doc-info">
+                        <h3 class="doc-title">
+                            Invoice
+                            <span class="primary-badge">Primary Reference</span>
+                        </h3>
+                        <p class="doc-subtitle">Required Document</p>
+                    </div>
+                </div>
+
+                <label class="upload-area" for="id_invoice_direct">
+                    <input type="file" id="id_invoice_direct" name="invoice" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
+                        required />
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                        <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4"
+                            opacity="0.3" />
+                        <path d="M24 16v16m-8-8h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                    <span class="upload-text">Click to upload or drag and drop</span>
+                    <span class="upload-hint">PDF, JPG, PNG, DOC, DOCX (Max 10MB)</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <div class="info-box">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M10 0a10 10 0 100 20 10 10 0 000-20zm1 15H9v-2h2v2zm0-4H9V5h2v6z" />
+                </svg>
+                <span>At least one document is required for submission</span>
+            </div>
+
+            <button type="submit" class="btn btn-primary submit-btn">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                    <path
+                        d="M10 0a10 10 0 100 20 10 10 0 000-20zm-1 14.5L5 10l1.5-1.5L9 11V6h2v5l2.5-2.5L15 10l-4 4.5z" />
+                </svg>
+                Submit Entry
+            </button>
+        </div>
+    </form>
+</div>

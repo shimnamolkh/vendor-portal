@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Reject Submission{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 600px; margin-top: 40px;">
+    <div class="card" style="padding: 32px;">
+        <h2 style="font-size: 24px; font-weight: 700; color: #991b1b; margin-bottom: 16px;">Reject Submission</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 24px;">
+            You are about to reject submission
+            <strong>#{{ submission_id_display }}</strong>
+            from
+            <strong>{{ vendor_display_name }}</strong>.
+            Please provide a reason for rejection so the vendor can correct the issue.
+        </p>
+
+        <form method="post">
+            {% csrf_token %}
+            <div style="margin-bottom: 24px;">
+                <label for="notes" style="display: block; font-weight: 600; margin-bottom: 8px;">Rejection Reason <span
+                        style="color: red;">*</span></label>
+                <textarea name="notes" id="notes" rows="4" required
+                    style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 14px;"
+                    placeholder="Enter detailed reason for rejection..."></textarea>
+            </div>
+
+            <div style="display: flex; gap: 12px; justify-content: flex-end;">
+                <a href="{% url 'finance:dashboard' %}" class="btn btn-secondary">Cancel</a>
+                <button type="submit" class="btn btn-primary" style="background-color: #ef4444; border-color: #ef4444;">
+                    Confirm Rejection
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

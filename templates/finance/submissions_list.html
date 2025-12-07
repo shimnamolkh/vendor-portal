@@ -1,0 +1,223 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Submissions List{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/components/FinanceDashboard.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-left">
+                    <div class="logo-small">
+                        <svg width="32" height="32" viewBox="0 0 48 48" fill="none">
+                            <rect width="48" height="48" rx="12" fill="url(#gradient3)" />
+                            <path d="M24 12L32 20L24 28L16 20L24 12Z" fill="white" opacity="0.9" />
+                            <path d="M24 20L32 28L24 36L16 28L24 20Z" fill="white" opacity="0.6" />
+                            <defs>
+                                <linearGradient id="gradient3" x1="0" y1="0" x2="48" y2="48">
+                                    <stop offset="0%" stop-color="#667eea" />
+                                    <stop offset="100%" stop-color="#764ba2" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h1 class="dashboard-title">Submissions List</h1>
+                </div>
+
+                <div class="header-right">
+                    <a href="{% url 'finance:dashboard' %}" class="btn btn-secondary" style="margin-right: 12px;">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 0L0 8h3v8h10V8h3L8 0zm0 2.5L13.5 8H11v6H5V8H2.5L8 2.5z" />
+                        </svg>
+                        Dashboard
+                    </a>
+                    <a href="{% url 'finance:extraction_queue' %}" class="btn btn-primary" style="margin-right: 12px;">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 0a8 8 0 100 16A8 8 0 008 0zm1 11H7V7h2v4zm0-5H7V4h2v2z" />
+                        </svg>
+                        Extraction Queue
+                    </a>
+                    <form action="{% url 'logout' %}" method="post" style="display: inline;">{% csrf_token %}<button
+                            type="submit" class="btn btn-secondary logout-btn"><svg width="16" height="16"
+                                viewBox="0 0 16 16" fill="currentColor">
+                                <path
+                                    d="M3 1h8v2H3v10h8v2H3a2 2 0 01-2-2V3a2 2 0 012-2zm9.5 6.5L15 10l-2.5 2.5v-2H7V8h5.5V5.5z" />
+                            </svg>Logout</button></form>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        <div class="container" style="padding-top: 40px;">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}"
+                style="margin-bottom: 20px; padding: 15px; border-radius: 8px; background: {% if message.tags == 'success' %}#d1fae5{% else %}#fee2e2{% endif %}; color: {% if message.tags == 'success' %}#065f46{% else %}#991b1b{% endif %};">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+
+            <!-- Page Header -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2 style="font-size: 24px; font-weight: 700;">
+                    {% if filter_type and filter_status %}
+                    {% if filter_type == 'inward' %}Supplier Inward{% else %}Direct Purchase{% endif %} -
+                    {% if filter_status == 'pending' %}
+                    Pending
+                    {% elif filter_status == 'approved' %}
+                    Approved
+                    {% else %}
+                    Rejected
+                    {% endif %}
+                    Submissions
+                    {% elif filter_type %}
+                    {% if filter_type == 'inward' %}Supplier Inward{% else %}Direct Purchase{% endif %} - All
+                    Submissions
+                    {% elif filter_status %}
+                    All
+                    {% if filter_status == 'pending' %}
+                    Pending
+                    {% elif filter_status == 'approved' %}
+                    Approved
+                    {% else %}
+                    Rejected
+                    {% endif %}
+                    Submissions
+                    {% else %}
+                    All Submissions
+                    {% endif %}
+                </h2>
+                {% if filter_type or filter_status %}
+                <a href="{% url 'finance:submissions_list' %}" class="btn btn-secondary"
+                    style="padding: 8px 16px; font-size: 13px;">
+                    Clear Filters
+                </a>
+                {% endif %}
+            </div>
+
+            <!-- Submissions List -->
+            {% if submissions %}
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+                {% for submission in submissions %}
+                <div class="card">
+                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                        <div style="flex: 1;">
+                            <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 12px;">
+                                <span style="font-family: monospace; font-size: 13px; color: var(--text-muted);">
+                                    {{ submission.id|truncatechars:13 }}
+                                </span>
+                                <span
+                                    class="submission-type-badge {% if submission.submission_type == 'inward' %}inward{% else %}direct{% endif %}"
+                                    style="padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; text-transform: uppercase;">
+                                    {% if submission.submission_type == 'inward' %}Supplier Inward{% else %}Direct
+                                    Purchase{% endif %}
+                                </span>
+                                <span class="status-badge status-{{ submission.status }}"
+                                    style="padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 600;">
+                                    {% if submission.status == 'pending' %}⏳ Pending
+                                    {% elif submission.status == 'approved' %}✅ Approved
+                                    {% elif submission.status == 'rejected' %}❌ Rejected
+                                    {% endif %}
+                                </span>
+                            </div>
+
+                            <div style="margin-bottom: 8px;">
+                                <strong>Vendor:</strong> {{ submission.vendor }}
+                            </div>
+                            <div style="margin-bottom: 8px;">
+                                <strong>Submitted:</strong> {{ submission.created_at|date:"M d, Y - H:i" }}
+                            </div>
+                            <div style="margin-bottom: 12px;">
+                                <strong>Documents:</strong> {{ submission.documents.count }}
+                                {% for doc in submission.documents.all %}
+                                <a href="{{ doc.file.url }}" target="_blank"
+                                    style="margin-left: 8px; color: #667eea; text-decoration: none; font-size: 13px;">
+                                    {{ doc.get_document_type_display }}
+                                </a>
+                                {% endfor %}
+                            </div>
+                            {% if submission.remarks %}
+                            <div
+                                style="padding: 12px; background: #f8faff; border-radius: 8px; font-size: 13px; color: var(--text-secondary); margin-bottom: 8px;">
+                                <strong>Remarks:</strong> {{ submission.remarks }}
+                            </div>
+                            {% endif %}
+                            {% if submission.verification_notes %}
+                            <div
+                                style="padding: 12px; background: #fef3c7; border-radius: 8px; font-size: 13px; color: #92400e;">
+                                <strong>Verification Notes:</strong> {{ submission.verification_notes }}
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <div style="display: flex; gap: 8px; margin-left: 20px;">
+                            {% if submission.status == 'pending' %}
+                            <form method="post" action="{% url 'finance:approve' submission.id %}"
+                                style="display: inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-primary"
+                                    style="padding: 8px 16px; font-size: 13px;">
+                                    ✓ Approve
+                                </button>
+                            </form>
+                            <a href="{% url 'finance:reject' submission.id %}" class="btn btn-secondary"
+                                style="padding: 8px 16px; font-size: 13px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">
+                                ✗ Reject
+                            </a>
+                            {% endif %}
+                            {% if submission.status == 'approved' %}
+                            <a href="{% url 'finance:start_extraction' submission.id %}" class="btn btn-primary"
+                                style="padding: 8px 16px; font-size: 13px; text-decoration: none;">
+                                🔍 Extract
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="card" style="text-align: center; padding: 60px 20px;">
+                <p style="color: var(--text-muted); font-size: 16px;">
+                    No submissions found
+                </p>
+            </div>
+            {% endif %}
+        </div>
+    </main>
+</div>
+
+<style>
+    .submission-type-badge.inward {
+        background: #dbeafe;
+        color: #1e40af;
+    }
+
+    .submission-type-badge.direct {
+        background: #fce7f3;
+        color: #9f1239;
+    }
+
+    .status-badge.status-pending {
+        background: #fef3c7;
+        color: #92400e;
+    }
+
+    .status-badge.status-approved {
+        background: #d1fae5;
+        color: #065f46;
+    }
+
+    .status-badge.status-rejected {
+        background: #fee2e2;
+        color: #991b1b;
+    }
+</style>
+{% endblock %}

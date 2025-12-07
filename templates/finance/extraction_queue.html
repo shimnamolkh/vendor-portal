@@ -1,0 +1,323 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Extraction Queue{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/components/FinanceDashboard.css' %}">
+<style>
+    /* Custom styles for Extraction Queue to match FinanceDashboard theme */
+    .dashboard-header {
+        background: #fff;
+        border-bottom: 1px solid #e2e8f0;
+        padding: 16px 0;
+        margin-bottom: 0;
+    }
+
+    .queue-section-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #1e293b;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .queue-section-title span {
+        background: #f1f5f9;
+        padding: 4px 12px;
+        border-radius: 999px;
+        font-size: 12px;
+        color: #64748b;
+        font-weight: 600;
+    }
+
+    .task-card {
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .task-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    .metric-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+        margin-bottom: 32px;
+    }
+
+    .metric-card {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .metric-value {
+        font-size: 24px;
+        font-weight: 700;
+        color: #0f172a;
+    }
+
+    .metric-label {
+        font-size: 13px;
+        color: #64748b;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="dashboard" style="background-color: #f8fafc; min-height: 100vh;">
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="header-content" style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="header-left" style="display: flex; align-items: center; gap: 16px;">
+                    <div class="logo-small">
+                        <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
+                            <rect width="48" height="48" rx="12" fill="url(#gradientqueue)" />
+                            <path d="M24 16V32M16 24H32" stroke="white" stroke-width="4" stroke-linecap="round" />
+                            <defs>
+                                <linearGradient id="gradientqueue" x1="0" y1="0" x2="48" y2="48">
+                                    <stop offset="0%" stop-color="#3b82f6" />
+                                    <stop offset="100%" stop-color="#8b5cf6" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="dashboard-title" style="font-size: 24px; color: #0f172a; margin: 0;">Extraction Queue
+                        </h1>
+                        <p style="margin: 0; color: #64748b; font-size: 14px;">Monitor and manage automated invoice
+                            processing</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <a href="{% url 'finance:dashboard' %}" class="btn btn-secondary"
+                        style="display: flex; align-items: center; gap: 8px; background: white; border: 1px solid #e2e8f0; color: #475569;">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 0L0 8h3v8h10V8h3L8 0zm0 2.5L13.5 8H11v6H5V8H2.5L8 2.5z" />
+                        </svg>
+                        Back to Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        <div class="container" style="padding-top: 32px; max-width: 1200px;">
+
+            <!-- Quick Stats -->
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Ready for Extraction</div>
+                    <div class="metric-value" style="color: #3b82f6;">{{ approved_submissions|length }}</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Processing Now</div>
+                    <div class="metric-value" style="color: #eab308;">{{ tasks|length }}</div>
+                    <!-- Placeholder logic -->
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Completed Today</div>
+                    <div class="metric-value" style="color: #22c55e;">0</div> <!-- Placeholder logic -->
+                </div>
+            </div>
+
+            <!-- Approved Submissions Section -->
+            <div class="queue-section" style="margin-bottom: 48px;">
+                <div class="queue-section-title">
+                    🚀 Ready for Extraction
+                    <span>{{ approved_submissions|length }}</span>
+                </div>
+
+                {% if approved_submissions %}
+                <div style="display: grid; gap: 16px;">
+                    {% for submission in approved_submissions %}
+                    <div class="card task-card" style="border-left: 4px solid #3b82f6;">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+                            <div style="flex: 1; min-width: 300px;">
+                                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                                    <span
+                                        style="font-family: monospace; font-size: 12px; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; color: #64748b;">
+                                        #{{ submission.id|truncatechars:9 }}
+                                    </span>
+                                    <span class="badge"
+                                        style="background: #e0f2fe; color: #0369a1; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; text-transform: uppercase;">
+                                        {{ submission.get_submission_type_display }}
+                                    </span>
+                                </div>
+                                <div style="font-weight: 600; font-size: 16px; color: #0f172a; margin-bottom: 4px;">
+                                    {{ submission.vendor }}
+                                </div>
+                                <div style="color: #64748b; font-size: 13px;">
+                                    Submitted: {{ submission.created_at|date:"M d, Y - H:i" }}
+                                </div>
+                            </div>
+                            <a href="{% url 'finance:start_extraction' submission.id %}" class="btn btn-primary"
+                                style="display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                    <path d="M8 0a8 8 0 100 16A8 8 0 008 0zm1 11H7V7h2v4zm0-5H7V4h2v2z" />
+                                </svg>
+                                Start Extraction
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="card"
+                    style="text-align: center; padding: 48px 20px; background: white; border: 1px dashed #cbd5e1;">
+                    <div style="font-size: 48px; margin-bottom: 16px;">✨</div>
+                    <h3 style="font-size: 16px; font-weight: 600; color: #0f172a;">All Caught Up!</h3>
+                    <p style="color: #64748b; font-size: 14px;">No approved submissions waiting for extraction.</p>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Active Tasks Section -->
+            <div class="queue-section">
+                <div class="queue-section-title">
+                    ⚡ Extraction Tasks
+                    <span>{{ tasks|length }}</span>
+                </div>
+
+                {% if tasks %}
+                <div style="display: grid; gap: 16px;">
+                    {% for task in tasks %}
+                    <div class="card task-card"
+                        style="border-left: 4px solid {% if task.status == 'completed' %}#22c55e{% elif task.status == 'failed' %}#ef4444{% else %}#eab308{% endif %};">
+                        <div style="display: flex; justify-content: space-between; align-items: start;">
+                            <div style="flex: 1;">
+                                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                                    <span style="font-size: 13px; font-weight: 600; color: #0f172a;">
+                                        Task #{{ task.id }}
+                                    </span>
+                                    <div class="status-badge status-{{ task.status }}" style="padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; 
+                                         display: flex; align-items: center; gap: 6px;">
+                                        {% if task.status == 'pending' %}
+                                        <span
+                                            style="display: inline-block; width: 6px; height: 6px; background: #d97706; border-radius: 50%;"></span>
+                                        PENDING
+                                        {% elif task.status == 'processing' %}
+                                        <span
+                                            style="display: inline-block; width: 6px; height: 6px; background: #2563eb; border-radius: 50%;"></span>
+                                        PROCESSING
+                                        {% elif task.status == 'completed' %}
+                                        <span
+                                            style="display: inline-block; width: 6px; height: 6px; background: #16a34a; border-radius: 50%;"></span>
+                                        COMPLETED
+                                        {% elif task.status == 'failed' %}
+                                        <span
+                                            style="display: inline-block; width: 6px; height: 6px; background: #dc2626; border-radius: 50%;"></span>
+                                        FAILED
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 12px;">
+                                    <div>
+                                        <div
+                                            style="font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 600;">
+                                            Vendor</div>
+                                        <div style="color: #0f172a; font-size: 14px;">{{ task.submission.vendor }}</div>
+                                    </div>
+                                    <div>
+                                        <div
+                                            style="font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 600;">
+                                            Model</div>
+                                        <div style="color: #0f172a; font-size: 14px;">{{ task.model_used }}</div>
+                                    </div>
+                                    {% if task.processing_time %}
+                                    <div>
+                                        <div
+                                            style="font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 600;">
+                                            Duration</div>
+                                        <div style="color: #0f172a; font-size: 14px;">{{
+                                            task.processing_time|floatformat:2 }}s</div>
+                                    </div>
+                                    {% endif %}
+                                    <div>
+                                        <div
+                                            style="font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 600;">
+                                            Started</div>
+                                        <div style="color: #0f172a; font-size: 14px;">{{ task.created_at|date:"M d, H:i"
+                                            }}</div>
+                                    </div>
+                                </div>
+
+                                {% if task.error_log %}
+                                <div
+                                    style="background: #fef2f2; border: 1px solid #fecaca; border-radius: 6px; padding: 10px; margin-top: 8px;">
+                                    <div style="display: flex; gap: 8px; color: #b91c1c; font-size: 13px;">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"
+                                            style="flex-shrink: 0;">
+                                            <path fill-rule="evenodd"
+                                                d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                            <path
+                                                d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z" />
+                                        </svg>
+                                        {{ task.error_log }}
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+
+                            <div style="margin-left: 16px; align-self: center;">
+                                {% if task.status == 'completed' %}
+                                <a href="{% url 'finance:view_extraction' task.id %}" class="btn btn-secondary"
+                                    style="font-size: 13px; border: 1px solid #cbd5e1; background: white;">
+                                    View Data →
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="card" style="text-align: center; padding: 48px 20px;">
+                    <p style="color: var(--text-muted); font-size: 14px;">No extraction history found.</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+</div>
+
+<style>
+    .status-pending {
+        background: #fff7ed;
+        color: #9a3412;
+        border: 1px solid #ffedd5;
+    }
+
+    .status-processing {
+        background: #eff6ff;
+        color: #1e40af;
+        border: 1px solid #dbeafe;
+    }
+
+    .status-completed {
+        background: #f0fdf4;
+        color: #166534;
+        border: 1px solid #dcfce7;
+    }
+
+    .status-failed {
+        background: #fef2f2;
+        color: #991b1b;
+        border: 1px solid #fee2e2;
+    }
+</style>
+{% endblock %}
