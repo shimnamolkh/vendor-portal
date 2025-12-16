@@ -1,6 +1,6 @@
-# Vendor Portal - LLM-Driven Entry Management System
+# Vendor Portal - AI-Powered Invoice Management System
 
-A modern, premium web application for vendor document submission and management, built with React and Vite.
+A modern, enterprise-grade web application for vendor document submission and intelligent invoice extraction, built with Django and enhanced with AI capabilities.
 
 ## 🚀 Features
 
@@ -8,6 +8,7 @@ A modern, premium web application for vendor document submission and management,
 - Secure vendor login system
 - Persistent display of vendor's legal name (Vendor Session Entity) across all forms
 - Session-based tracking of all vendor activities
+- Role-based access control (Vendors, Finance Team)
 
 ### Dual-Workflow Interface
 
@@ -28,7 +29,7 @@ A modern, premium web application for vendor document submission and management,
 
 #### 3. **Submission History**
 - View all past entries (both Supplier Inward and Direct Purchase)
-- Filter by entry type
+- Filter by entry type and status
 - Status tracking (APPROVED, PENDING, REJECTED)
 - Detailed entry information including:
   - Entry ID and type
@@ -37,14 +38,46 @@ A modern, premium web application for vendor document submission and management,
   - Remarks
   - Current status
 
+### 4. **🤖 AI-Powered Invoice Extraction** ✨ NEW!
+- **Intelligent Data Extraction** using Ollama or n8n workflows
+- **Advanced PO Detection** with 33 known prefixes and database lookup
+- **VAT/TRN Extraction** with automatic validation
+- **OCR Fallback** for scanned documents and images
+- **Oracle Axpert Integration** for vendor and PO data validation
+- **Beautiful Extraction Dashboard** with visual cards and tables
+- **Export Capabilities** (JSON, Excel/CSV)
+
+#### Extraction Features:
+- 📦 **Smart PO Number Detection**
+  - Supports 33 PO prefixes (AVPPO, INAPO, ATCPO, etc.)
+  - Automatic prefix lookup via Oracle database
+  - OCR fallback for difficult documents
+  
+- 🔍 **VAT/TRN Extraction**
+  - Automatic detection of OM + 10-digit format
+  - Multiple VAT/TRN support
+  - Used for PO prefix validation
+
+- 🗄️ **Axpert Database Integration**
+  - Vendor information validation
+  - PO details verification
+  - Credit terms and currency information
+
+- 📊 **Enhanced Visualization**
+  - Color-coded metric cards
+  - Vendor and PO data tables
+  - VAT/TRN badges
+  - Export to Excel/CSV
+
 ## 🎨 Design Features
 
-- **Premium Dark Theme** with vibrant gradients
+- **Premium Modern Theme** with vibrant gradients
 - **Glassmorphism** effects for modern UI
 - **Smooth Animations** and micro-interactions
 - **Responsive Design** for all screen sizes
 - **Custom Scrollbars** with gradient styling
 - **Loading States** and success animations
+- **Visual Data Cards** for extraction results
 
 ## 📋 Technical Stack
 

@@ -1,0 +1,9 @@
+# Quick fix for n8n JSON parsing
+# Add this line after line 480 in finance/services/ollama_service.py
+
+# After: if isinstance(output_str, str):
+# Add this line:
+output_str = output_str.replace('\\_', '_')
+
+# This will fix the escaped underscore issue in n8n responses
+# Example: "Invoice\_No" becomes "Invoice_No"

@@ -78,7 +78,7 @@ def submissions_list(request):
 
 @login_required
 def approve_submission(request, submission_id):
-    """Approve a submission"""
+    """Approve a submission and automatically start extraction"""
     if request.user.user_type != 'finance':
         return JsonResponse({'error': 'Access denied'}, status=403)
     
@@ -93,10 +93,78 @@ def approve_submission(request, submission_id):
         submission.updated_by = request.user
         submission.save()
         
-        messages.success(request, f'Submission {submission.id} approved successfully!')
-        return redirect('finance:dashboard')
+        # Automatically create extraction task and start processing
+        from .models import ExtractionTask
+        import threading
+        from django.db import connection
+
+        def run_extraction_background(task_id):
+            # This function runs in a thread
+            # Create a new connection for this thread
+            from .models import ExtractionTask
+            # We need to manually manage connection in thread
+            
+            try:
+                task = ExtractionTask.objects.get(id=task_id)
+                # Re-import to avoid scope issues
+                from .services.ollama_service import process_invoice
+                
+                result = process_invoice(task.submission)
+                
+                if result['success']:
+                    task.status = 'completed'
+                    task.extracted_data = result['data']
+                    task.processing_time = result.get('processing_time', 0)
+                    task.model_used = result.get('model', task.model_used)
+                else:
+                    task.status = 'failed'
+                    task.error_log = result.get('error', 'Unknown error')
+                
+                task.save()
+            except Exception as e:
+                print(f"Extraction thread error: {e}")
+                # Try to log failure to task if possible
+                try:
+                    task = ExtractionTask.objects.get(id=task_id)
+                    task.status = 'failed'
+                    task.error_log = f"System Error: {str(e)}"
+                    task.save()
+                except:
+                    pass
+            finally:
+                connection.close()
+
+        existing_task = ExtractionTask.objects.filter(submission=submission).first()
+        
+        if not existing_task:
+            # Create extraction task with processing status
+            task = ExtractionTask.objects.create(
+                submission=submission,
+                status='processing'
+            )
+            # Start background thread
+            thread = threading.Thread(target=run_extraction_background, args=(task.id,))
+            thread.daemon = True
+            thread.start()
+            
+            messages.success(request, f'Submission approved! Extraction started automatically.')
+        else:
+            # If task exists (maybe from previous run), restart it
+            existing_task.status = 'processing'
+            existing_task.error_log = ''
+            existing_task.save()
+            
+            thread = threading.Thread(target=run_extraction_background, args=(existing_task.id,))
+            thread.daemon = True
+            thread.start()
+            
+            messages.success(request, f'Submission approved! Extraction restarted.')
+        
+        # Redirect back to submissions list to allow approving next item
+        return redirect('finance:submissions_list')
     
     return render(request, 'finance/approve_submission.html', {'submission': submission})
+
 
 
 @login_required
@@ -134,28 +202,25 @@ def reject_submission(request, submission_id):
 
 
 @login_required
-def start_extraction(request, submission_id):
-    """Start invoice extraction for a submission"""
+def start_extraction(request, task_id):
+    """Process a pending extraction task"""
     if request.user.user_type != 'finance':
         return JsonResponse({'error': 'Access denied'}, status=403)
     
-    submission = get_object_or_404(Submission, id=submission_id)
+    from .models import ExtractionTask
+    task = get_object_or_404(ExtractionTask, id=task_id)
     
-    # Check if extraction task already exists
-    existing_task = ExtractionTask.objects.filter(submission=submission).first()
-    if existing_task:
-        messages.info(request, 'Extraction task already exists for this submission.')
+    if task.status not in ['pending', 'failed', 'processing']:
+        messages.info(request, 'This extraction task has already been processed.')
         return redirect('finance:extraction_queue')
     
-    # Create extraction task
-    task = ExtractionTask.objects.create(
-        submission=submission,
-        status='pending'
-    )
+    # Update status to processing and clear previous errors
+    task.status = 'processing'
+    task.error_log = ''  # Clear previous errors (must be empty string, not None)
+    task.save()
     
-    # Start processing in background (for now, we'll do it synchronously)
-    # In production, you'd use Celery or similar
-    result = process_invoice(submission)
+    # Process the invoice
+    result = process_invoice(task.submission)
     
     if result['success']:
         task.status = 'completed'
@@ -166,11 +231,59 @@ def start_extraction(request, submission_id):
     else:
         task.status = 'failed'
         task.error_log = result.get('error', 'Unknown error')
-        messages.error(request, f'Extraction failed: {task.error_log}')
+        # Show a friendly message to the user, keep technical details in the task log
+        messages.error(request, 'Extraction failed. Please review the error log on the task card.')
     
     task.save()
     
     return redirect('finance:extraction_queue')
+
+
+@login_required
+def compare_with_axpert(request, task_id):
+    """Show extracted data compared with Axpert database data"""
+    if request.user.user_type != 'finance':
+        return JsonResponse({'error': 'Access denied'}, status=403)
+    
+    from .models import ExtractionTask
+    task = get_object_or_404(ExtractionTask, id=task_id)
+    
+    if task.status != 'completed':
+        messages.error(request, 'Extraction must be completed before comparing with Axpert.')
+        return redirect('finance:extraction_queue')
+    
+    # Format data for display
+    formatted_data = json.dumps(task.extracted_data, indent=2)
+    
+    # Pre-process Axpert data for easier template rendering
+    axpert_display = {}
+    if 'axpert_data' in task.extracted_data:
+        ax_data = task.extracted_data['axpert_data']
+        
+        # Process Vendor Data: Convert columns/rows to dictionary
+        if 'vendor' in ax_data and ax_data['vendor'].get('rows') and ax_data['vendor'].get('columns'):
+            rows = ax_data['vendor']['rows']
+            cols = ax_data['vendor']['columns']
+            if rows:
+                # Take the first row and zip with columns
+                axpert_display['vendor'] = dict(zip(cols, rows[0]))
+        
+        # Keep PO data structure for table display
+        if 'po' in ax_data:
+            axpert_display['po'] = ax_data['po']
+
+    context = {
+        'task': task,
+        'submission': task.submission,
+        'extracted_data': task.extracted_data,
+        'formatted_data': formatted_data,
+        'axpert_display': axpert_display,
+        'po_number': task.extracted_data.get('PO_Number', ''),
+        'processing_time': task.processing_time,
+        'has_axpert_data': 'axpert_data' in task.extracted_data,
+    }
+    
+    return render(request, 'finance/compare_with_axpert.html', context)
 
 
 @login_required
@@ -179,6 +292,9 @@ def extraction_queue(request):
     if request.user.user_type != 'finance':
         messages.error(request, 'Access denied. Finance team only.')
         return redirect('dashboard_redirect')
+    
+    from django.utils import timezone
+    from datetime import datetime
     
     # Get all extraction tasks
     tasks = ExtractionTask.objects.select_related(
@@ -192,9 +308,21 @@ def extraction_queue(request):
         id__in=tasks.values_list('submission_id', flat=True)
     ).select_related('vendor').prefetch_related('documents')
     
+    # Calculate metrics
+    today = timezone.now().date()
+    pending_count = tasks.filter(status='pending').count()
+    processing_count = tasks.filter(status='processing').count()
+    completed_today_count = tasks.filter(
+        status='completed',
+        updated_at__date=today
+    ).count()
+    
     context = {
         'tasks': tasks,
         'approved_submissions': approved_submissions,
+        'pending_count': pending_count,
+        'processing_count': processing_count,
+        'completed_today_count': completed_today_count,
     }
     
     return render(request, 'finance/extraction_queue.html', context)

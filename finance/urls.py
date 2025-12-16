@@ -9,6 +9,7 @@ urlpatterns = [
     path('approve/<uuid:submission_id>/', views.approve_submission, name='approve'),
     path('reject/<uuid:submission_id>/', views.reject_submission, name='reject'),
     path('extraction/queue/', views.extraction_queue, name='extraction_queue'),
-    path('extraction/start/<uuid:submission_id>/', views.start_extraction, name='start_extraction'),
+    path('extraction/start/<int:task_id>/', views.start_extraction, name='start_extraction'),
     path('extraction/view/<int:task_id>/', views.view_extraction, name='view_extraction'),
+    path('extraction/compare/<int:task_id>/', views.compare_with_axpert, name='compare_with_axpert'),
 ]

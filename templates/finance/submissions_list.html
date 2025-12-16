@@ -173,9 +173,9 @@
                             </a>
                             {% endif %}
                             {% if submission.status == 'approved' %}
-                            <a href="{% url 'finance:start_extraction' submission.id %}" class="btn btn-primary"
-                                style="padding: 8px 16px; font-size: 13px; text-decoration: none;">
-                                🔍 Extract
+                            <a href="{% url 'finance:extraction_queue' %}" class="btn btn-success"
+                                style="padding: 8px 16px; font-size: 13px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                                ✓ Approved - View Queue
                             </a>
                             {% endif %}
                         </div>

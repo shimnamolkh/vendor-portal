@@ -1,0 +1,290 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Invoice Comparison{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* User Requested Styles */
+    .comparison-container {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        display: flex;
+        gap: 20px;
+        height: calc(100vh - 100px);
+    }
+
+    .pdf-pane {
+        flex: 1;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .data-pane {
+        flex: 1;
+        overflow-y: auto;
+        padding-right: 10px;
+    }
+
+    .section {
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        margin-bottom: 20px;
+        padding: 15px;
+        background: white;
+    }
+
+    .section h2 {
+        font-size: 16px;
+        margin-top: 0;
+        margin-bottom: 15px;
+        background: #f3f3f3;
+        padding: 8px 12px;
+        border-radius: 4px;
+        color: #333;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        gap: 8px 12px;
+        align-items: center;
+    }
+
+    .label {
+        font-weight: bold;
+        font-size: 13px;
+        color: #555;
+    }
+
+    .readonly {
+        padding: 6px 10px;
+        border: 1px solid #ddd;
+        background: #f9f9f9;
+        border-radius: 4px;
+        font-size: 13px;
+        color: #333;
+        min-height: 20px;
+    }
+
+    .table-container {
+        margin-top: 15px;
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12px;
+    }
+
+    table th,
+    table td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+    }
+
+    table th {
+        background: #f5f5f5;
+        font-weight: 600;
+        color: #333;
+    }
+
+    /* Highlight specific fields */
+    .readonly.highlight {
+        background-color: #fffbeb;
+        border-color: #fcd34d;
+        color: #b45309;
+        font-weight: 600;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-header"
+    style="background: white; padding: 15px 20px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
+    <div>
+        <h1 style="margin: 0; font-size: 20px; color: #1e293b;">Invoice Comparison</h1>
+        <p style="margin: 2px 0 0; font-size: 13px; color: #64748b;">Compare extracted data with Axpert records</p>
+    </div>
+    <div style="display: flex; gap: 10px;">
+        <a href="{% url 'finance:extraction_queue' %}" class="btn btn-secondary"
+            style="font-size: 13px; padding: 8px 16px;">
+            ← Back to Queue
+        </a>
+        <button onclick="sendToAxpert()" class="btn btn-primary" id="sendToAxpertBtn"
+            style="font-size: 13px; padding: 8px 16px; background: #22c55e; border-color: #22c55e;">
+            ✓ Send to Axpert
+        </button>
+    </div>
+</div>
+
+<div class="comparison-container">
+    <!-- Left Side: PDF Viewer -->
+    <div class="pdf-pane">
+        <h2
+            style="font-size: 14px; margin: 0; padding: 10px 15px; background: white; border-bottom: 1px solid #e2e8f0; font-weight: 600; color: #475569;">
+            📄 Original Invoice
+        </h2>
+        <div style="flex: 1; background: #525659; overflow: hidden; position: relative;">
+            {% if submission.documents.all %}
+            {% with invoice_doc=submission.documents.first %}
+            <!-- Use Google Docs Viewer as fallback or direct embed if handled by browser -->
+            <object data="{{ invoice_doc.file.url }}" type="application/pdf" width="100%" height="100%">
+                <iframe src="{{ invoice_doc.file.url }}" width="100%" height="100%" style="border: none;">
+                    <p>Your browser does not support PDFs. <a href="{{ invoice_doc.file.url }}">Download the PDF</a>.
+                    </p>
+                </iframe>
+            </object>
+            {% endwith %}
+            {% else %}
+            <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: white;">
+                No PDF Document Found
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Right Side: Data -->
+    <div class="data-pane">
+
+        <!-- RAW DATA DEBUG VIEW -->
+        <div class="section">
+            <details>
+                <summary style="cursor: pointer; font-weight: 600; color: #64748b; font-size: 13px;">🔍 View Raw
+                    Extracted JSON</summary>
+                <pre
+                    style="background: #1e1e1e; color: #d4d4d4; padding: 12px; border-radius: 6px; overflow-x: auto; font-size: 11px; margin-top: 10px; max-height: 200px;">{{ formatted_data }}</pre>
+            </details>
+        </div>
+
+        <!-- EXTRACTED DATA SECTION -->
+        <div class="section">
+            <h2>🤖 Extracted Invoice Data</h2>
+            <div class="form-grid">
+                <div class="label">Invoice No</div>
+                <div class="readonly">{{ extracted_data.Invoice_No|default:"" }}</div>
+
+                <div class="label">Invoice Date</div>
+                <div class="readonly">{{ extracted_data.Invoice_Date|default:"" }}</div>
+
+                <div class="label">PO Number</div>
+                <div class="readonly highlight">{{ extracted_data.PO_Number|default:"" }}</div>
+
+                <div class="label">Vendor Name</div>
+                <div class="readonly">{{ extracted_data.Vendor_Name|default:"" }}</div>
+
+                <div class="label">Customer Name</div>
+                <div class="readonly">{{ extracted_data.Customer_Name|default:"" }}</div>
+
+                <div class="label">Subtotal</div>
+                <div class="readonly">{{ extracted_data.Subtotal|default:"" }}</div>
+
+                <div class="label">Total Amount</div>
+                <div class="readonly highlight">{{ extracted_data.Total|default:"" }}</div>
+            </div>
+        </div>
+
+        <!-- EXTRACTED ITEMS TABLE -->
+        {% if extracted_data.Items %}
+        <div class="section">
+            <h2>📦 Invoice Items</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 50px;">#</th>
+                            <th>Description</th>
+                            <th style="width: 80px;">Qty</th>
+                            <th style="width: 80px;">Unit</th>
+                            <th style="width: 100px;">Price</th>
+                            <th style="width: 100px;">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in extracted_data.Items %}
+                        <tr>
+                            <td>{{ item.Item_No }}</td>
+                            <td>{{ item.Item_Description }}</td>
+                            <td>{{ item.Quantity }}</td>
+                            <td>{{ item.Unit }}</td>
+                            <td>{{ item.Unit_Price }}</td>
+                            <td>{{ item.Amount }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- AXPERT DATA SECTION -->
+        {% if extracted_data.axpert_data %}
+        <div class="section" style="border-color: #3b82f6;">
+            <h2 style="background: #e0f2fe; color: #0369a1;">🗄️ Axpert System Data</h2>
+
+            {% if axpert_display.vendor %}
+            <h3 style="font-size: 14px; margin: 10px 0; color: #64748b;">Vendor Details</h3>
+            <div class="form-grid">
+                {% for key, value in axpert_display.vendor.items %}
+                <div class="label">{{ key }}</div>
+                <div class="readonly">{{ value }}</div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if axpert_display.po %}
+            <h3 style="font-size: 14px; margin: 15px 0 10px 0; color: #64748b;">Purchase Order Details</h3>
+            <div class="table-container">
+                <table id="axpert-table">
+                    <thead>
+                        <tr>
+                            {% for col in axpert_display.po.columns %}
+                            <th>{{ col }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in axpert_display.po.rows %}
+                        <tr>
+                            {% for cell in row %}
+                            <td>{{ cell }}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+
+<script>
+    function sendToAxpert() {
+        const btn = document.getElementById('sendToAxpertBtn');
+        if (confirm('Send this invoice data to Axpert system?')) {
+            btn.disabled = true;
+            btn.textContent = '⏳ Sending...';
+            // Mock API call
+            setTimeout(() => {
+                alert('✅ Data sent to Axpert successfully!');
+                btn.textContent = '✓ Sent to Axpert';
+                btn.style.background = '#94a3b8';
+                btn.style.borderColor = '#94a3b8';
+            }, 1500);
+        }
+    }
+</script>
+{% endblock %}

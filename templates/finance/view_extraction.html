@@ -48,6 +48,143 @@
         {% if formatted_data %}
         <div>
             <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 16px;">Extracted Data</h3>
+
+            <!-- Enhanced Data Summary -->
+            {% if task.extracted_data %}
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin-bottom: 24px;">
+                <!-- PO Number Card -->
+                {% if task.extracted_data.PO_Number %}
+                <div style="background: #f0fdf4; border: 1px solid #86efac; border-radius: 8px; padding: 16px;">
+                    <div style="font-size: 12px; color: #166534; font-weight: 600; margin-bottom: 4px;">📦 PO NUMBER
+                    </div>
+                    <div style="font-size: 18px; font-weight: 700; color: #15803d;">{{ task.extracted_data.PO_Number }}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Invoice Number Card -->
+                {% if task.extracted_data.Invoice_No %}
+                <div style="background: #eff6ff; border: 1px solid #93c5fd; border-radius: 8px; padding: 16px;">
+                    <div style="font-size: 12px; color: #1e40af; font-weight: 600; margin-bottom: 4px;">📄 INVOICE NO
+                    </div>
+                    <div style="font-size: 18px; font-weight: 700; color: #1e3a8a;">{{ task.extracted_data.Invoice_No }}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Total Amount Card -->
+                {% if task.extracted_data.Total %}
+                <div style="background: #fef3c7; border: 1px solid #fcd34d; border-radius: 8px; padding: 16px;">
+                    <div style="font-size: 12px; color: #92400e; font-weight: 600; margin-bottom: 4px;">💰 TOTAL AMOUNT
+                    </div>
+                    <div style="font-size: 18px; font-weight: 700; color: #b45309;">{{ task.extracted_data.Total }}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Vendor Name Card -->
+                {% if task.extracted_data.Vendor_Name %}
+                <div style="background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 16px;">
+                    <div style="font-size: 12px; color: #6b21a8; font-weight: 600; margin-bottom: 4px;">🏢 VENDOR</div>
+                    <div style="font-size: 18px; font-weight: 700; color: #7c3aed;">{{ task.extracted_data.Vendor_Name
+                        }}</div>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- VAT/TRN Numbers -->
+            {% if task.extracted_data.extracted_vat_numbers %}
+            <div
+                style="background: #fef2f2; border-left: 4px solid #f87171; padding: 16px; border-radius: 8px; margin-bottom: 24px;">
+                <h4 style="font-size: 14px; font-weight: 600; color: #991b1b; margin-bottom: 8px;">🔍 Extracted VAT/TRN
+                    Numbers</h4>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    {% for vat in task.extracted_data.extracted_vat_numbers %}
+                    <span
+                        style="background: #fee2e2; color: #991b1b; padding: 6px 12px; border-radius: 6px; font-family: monospace; font-size: 13px; font-weight: 600;">
+                        {{ vat }}
+                    </span>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Axpert Data -->
+            {% if task.extracted_data.axpert_data %}
+            <div
+                style="background: #fff7ed; border: 2px solid #fb923c; border-radius: 12px; padding: 20px; margin-bottom: 24px;">
+                <h4
+                    style="font-size: 16px; font-weight: 700; color: #9a3412; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+                    <span>🗄️</span> Axpert Database Validation
+                </h4>
+
+                <!-- Vendor Data -->
+                {% if task.extracted_data.axpert_data.vendor %}
+                <div style="margin-bottom: 20px;">
+                    <h5 style="font-size: 14px; font-weight: 600; color: #7c2d12; margin-bottom: 12px;">Vendor
+                        Information</h5>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+                            <thead>
+                                <tr style="background: #fed7aa;">
+                                    {% for col in task.extracted_data.axpert_data.vendor.columns %}
+                                    <th
+                                        style="padding: 10px; text-align: left; border: 1px solid #fdba74; color: #7c2d12; font-weight: 600;">
+                                        {{ col }}</th>
+                                    {% endfor %}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for row in task.extracted_data.axpert_data.vendor.rows %}
+                                <tr style="background: #ffedd5;">
+                                    {% for cell in row %}
+                                    <td style="padding: 10px; border: 1px solid #fdba74; color: #431407;">{{ cell }}
+                                    </td>
+                                    {% endfor %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- PO Data -->
+                {% if task.extracted_data.axpert_data.po %}
+                <div>
+                    <h5 style="font-size: 14px; font-weight: 600; color: #7c2d12; margin-bottom: 12px;">Purchase Order
+                        Information</h5>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+                            <thead>
+                                <tr style="background: #fed7aa;">
+                                    {% for col in task.extracted_data.axpert_data.po.columns %}
+                                    <th
+                                        style="padding: 10px; text-align: left; border: 1px solid #fdba74; color: #7c2d12; font-weight: 600;">
+                                        {{ col }}</th>
+                                    {% endfor %}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for row in task.extracted_data.axpert_data.po.rows %}
+                                <tr style="background: #ffedd5;">
+                                    {% for cell in row %}
+                                    <td style="padding: 10px; border: 1px solid #fdba74; color: #431407;">{{ cell }}
+                                    </td>
+                                    {% endfor %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+            {% endif %}
+
+            <!-- Full JSON Data -->
             <div style="background: #1e293b; color: #e2e8f0; padding: 20px; border-radius: 8px; overflow-x: auto;">
                 <pre
                     style="margin: 0; font-family: 'Courier New', monospace; font-size: 13px; line-height: 1.6;">{{ formatted_data }}</pre>
@@ -60,6 +197,11 @@
                 <button onclick="downloadJSON()" class="btn btn-secondary">
                     💾 Download JSON
                 </button>
+                {% if task.extracted_data.axpert_data %}
+                <button onclick="downloadAxpertExcel()" class="btn btn-secondary">
+                    📊 Download Axpert Data (Excel)
+                </button>
+                {% endif %}
             </div>
         </div>
         {% else %}
@@ -92,6 +234,44 @@
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
     }
+
+    {% if task.extracted_data.axpert_data %}
+    function downloadAxpertExcel() {
+        const data = JSON.parse('{{ formatted_data|escapejs }}');
+        const axpertData = data.axpert_data;
+
+        let csv = '';
+
+        // Vendor Data
+        if (axpertData.vendor) {
+            csv += 'VENDOR INFORMATION\n';
+            csv += axpertData.vendor.columns.join(',') + '\n';
+            axpertData.vendor.rows.forEach(row => {
+                csv += row.map(cell => `"${cell}"`).join(',') + '\n';
+            });
+            csv += '\n';
+        }
+
+        // PO Data
+        if (axpertData.po) {
+            csv += 'PURCHASE ORDER INFORMATION\n';
+            csv += axpertData.po.columns.join(',') + '\n';
+            axpertData.po.rows.forEach(row => {
+                csv += row.map(cell => `"${cell}"`).join(',') + '\n';
+            });
+        }
+
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'axpert_data_task_{{ task.id }}.csv';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+    {% endif %}
 </script>
 
 <style>

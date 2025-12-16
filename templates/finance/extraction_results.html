@@ -1,0 +1,332 @@
+{% extends 'base.html' %}
+
+{% block title %}Extraction Results{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top: 40px; max-width: 1400px;">
+    <div style="margin-bottom: 20px;">
+        <a href="{% url 'finance:submissions_list' %}" class="btn btn-secondary">← Back to Submissions</a>
+    </div>
+
+    <div class="card">
+        <h1 style="font-size: 28px; font-weight: 700; margin-bottom: 24px; color: #0f172a;">
+            📄 Invoice Extraction Results
+        </h1>
+
+        <!-- Submission Info -->
+        <div style="background: #f8fafc; border-radius: 12px; padding: 20px; margin-bottom: 30px;">
+            <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: #475569;">Submission Information
+            </h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
+                <div>
+                    <div style="font-size: 12px; color: #64748b; margin-bottom: 4px;">Submission ID</div>
+                    <div style="font-size: 14px; font-weight: 600; color: #1e293b;">{{ submission.id|truncatechars:20 }}
+                    </div>
+                </div>
+                <div>
+                    <div style="font-size: 12px; color: #64748b; margin-bottom: 4px;">Vendor</div>
+                    <div style="font-size: 14px; font-weight: 600; color: #1e293b;">
+                        {{ submission.vendor.vendor_name|default:submission.vendor.username }}
+                    </div>
+                </div>
+                <div>
+                    <div style="font-size: 12px; color: #64748b; margin-bottom: 4px;">Type</div>
+                    <div style="font-size: 14px; font-weight: 600; color: #1e293b;">
+                        {{ submission.get_submission_type_display }}
+                    </div>
+                </div>
+                <div>
+                    <div style="font-size: 12px; color: #64748b; margin-bottom: 4px;">Processing Time</div>
+                    <div style="font-size: 14px; font-weight: 600; color: #1e293b;">
+                        {{ processing_time|floatformat:2 }} seconds
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Extracted Fields -->
+        <h2 style="font-size: 20px; font-weight: 700; margin-bottom: 20px; color: #0f172a;">📊 Extracted Invoice Data
+        </h2>
+
+        <div
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 30px;">
+            <!-- Invoice Number -->
+            {% if extracted_data.Invoice_No %}
+            <div style="background: #eff6ff; border: 2px solid #3b82f6; border-radius: 12px; padding: 20px;">
+                <div style="font-size: 12px; color: #1e40af; font-weight: 600; margin-bottom: 8px;">📄 INVOICE NUMBER
+                </div>
+                <div style="font-size: 22px; font-weight: 700; color: #1e3a8a;">{{ extracted_data.Invoice_No }}</div>
+            </div>
+            {% endif %}
+
+            <!-- Invoice Date -->
+            {% if extracted_data.Invoice_Date %}
+            <div style="background: #f0fdf4; border: 2px solid #22c55e; border-radius: 12px; padding: 20px;">
+                <div style="font-size: 12px; color: #166534; font-weight: 600; margin-bottom: 8px;">📅 INVOICE DATE
+                </div>
+                <div style="font-size: 22px; font-weight: 700; color: #15803d;">{{ extracted_data.Invoice_Date }}</div>
+            </div>
+            {% endif %}
+
+            <!-- PO Number -->
+            {% if extracted_data.PO_Number %}
+            <div style="background: #fef3c7; border: 2px solid #f59e0b; border-radius: 12px; padding: 20px;">
+                <div style="font-size: 12px; color: #92400e; font-weight: 600; margin-bottom: 8px;">📦 PO NUMBER</div>
+                <div style="font-size: 22px; font-weight: 700; color: #b45309;">{{ extracted_data.PO_Number }}</div>
+            </div>
+            {% endif %}
+
+            <!-- Total Amount -->
+            {% if extracted_data.Total %}
+            <div style="background: #fce7f3; border: 2px solid #ec4899; border-radius: 12px; padding: 20px;">
+                <div style="font-size: 12px; color: #9f1239; font-weight: 600; margin-bottom: 8px;">💰 TOTAL AMOUNT
+                </div>
+                <div style="font-size: 22px; font-weight: 700; color: #be123c;">{{ extracted_data.Total }}</div>
+            </div>
+            {% endif %}
+
+            <!-- Vendor Name -->
+            {% if extracted_data.Vendor_Name %}
+            <div style="background: #f5f3ff; border: 2px solid #a78bfa; border-radius: 12px; padding: 20px;">
+                <div style="font-size: 12px; color: #6b21a8; font-weight: 600; margin-bottom: 8px;">🏢 VENDOR</div>
+                <div style="font-size: 18px; font-weight: 700; color: #7c3aed;">{{ extracted_data.Vendor_Name }}</div>
+            </div>
+            {% endif %}
+
+            <!-- Customer Name -->
+            {% if extracted_data.Customer_Name %}
+            <div style="background: #fff7ed; border: 2px solid #fb923c; border-radius: 12px; padding: 20px;">
+                <div style="font-size: 12px; color: #9a3412; font-weight: 600; margin-bottom: 8px;">👤 CUSTOMER</div>
+                <div style="font-size: 18px; font-weight: 700; color: #c2410c;">{{ extracted_data.Customer_Name }}</div>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- VAT/TRN Numbers -->
+        {% if extracted_data.extracted_vat_numbers %}
+        <div
+            style="background: #fef2f2; border-left: 4px solid #ef4444; padding: 20px; border-radius: 8px; margin-bottom: 30px;">
+            <h4 style="font-size: 16px; font-weight: 600; color: #991b1b; margin-bottom: 12px;">🔍 Extracted VAT/TRN
+                Numbers</h4>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                {% for vat in extracted_data.extracted_vat_numbers %}
+                <span
+                    style="background: #fee2e2; color: #991b1b; padding: 8px 16px; border-radius: 8px; font-family: monospace; font-size: 14px; font-weight: 600;">
+                    {{ vat }}
+                </span>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Axpert Database Data -->
+        {% if has_axpert_data and extracted_data.axpert_data %}
+        <div
+            style="background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 3px solid #fb923c; border-radius: 16px; padding: 30px; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(251, 146, 60, 0.1);">
+            <h2
+                style="font-size: 22px; font-weight: 700; color: #9a3412; margin-bottom: 24px; display: flex; align-items: center; gap: 12px;">
+                <span style="font-size: 28px;">🗄️</span>
+                <span>Oracle Axpert Database Information</span>
+            </h2>
+
+            <!-- Vendor Information from Axpert -->
+            {% if extracted_data.axpert_data.vendor %}
+            <div style="margin-bottom: 30px;">
+                <h3
+                    style="font-size: 18px; font-weight: 600; color: #7c2d12; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #fdba74;">
+                    👥 Vendor Information
+                </h3>
+                <div style="overflow-x: auto; background: white; border-radius: 12px; padding: 16px;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+                        <thead>
+                            <tr style="background: #fed7aa;">
+                                {% for col in extracted_data.axpert_data.vendor.columns %}
+                                <th
+                                    style="padding: 12px; text-align: left; border: 1px solid #fdba74; color: #7c2d12; font-weight: 600;">
+                                    {{ col }}
+                                </th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in extracted_data.axpert_data.vendor.rows %}
+                            <tr style="background: #ffedd5;">
+                                {% for cell in row %}
+                                <td style="padding: 12px; border: 1px solid #fdba74; color: #431407;">{{ cell }}</td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- PO Information from Axpert -->
+            {% if extracted_data.axpert_data.po %}
+            <div>
+                <h3
+                    style="font-size: 18px; font-weight: 600; color: #7c2d12; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #fdba74;">
+                    📋 Purchase Order Information
+                </h3>
+                <div style="overflow-x: auto; background: white; border-radius: 12px; padding: 16px;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+                        <thead>
+                            <tr style="background: #fed7aa;">
+                                {% for col in extracted_data.axpert_data.po.columns %}
+                                <th
+                                    style="padding: 12px; text-align: left; border: 1px solid #fdba74; color: #7c2d12; font-weight: 600;">
+                                    {{ col }}
+                                </th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in extracted_data.axpert_data.po.rows %}
+                            <tr style="background: #ffedd5;">
+                                {% for cell in row %}
+                                <td style="padding: 12px; border: 1px solid #fdba74; color: #431407;">{{ cell }}</td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <!-- Items Table -->
+        {% if extracted_data.Items %}
+        <div style="margin-bottom: 30px;">
+            <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 16px; color: #0f172a;">📦 Invoice Items</h3>
+            <div style="overflow-x: auto; background: white; border-radius: 12px; border: 1px solid #e2e8f0;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+                    <thead>
+                        <tr style="background: #f1f5f9;">
+                            <th
+                                style="padding: 12px; text-align: left; border-bottom: 2px solid #cbd5e1; color: #475569; font-weight: 600;">
+                                #</th>
+                            <th
+                                style="padding: 12px; text-align: left; border-bottom: 2px solid #cbd5e1; color: #475569; font-weight: 600;">
+                                Description</th>
+                            <th
+                                style="padding: 12px; text-align: right; border-bottom: 2px solid #cbd5e1; color: #475569; font-weight: 600;">
+                                Quantity</th>
+                            <th
+                                style="padding: 12px; text-align: left; border-bottom: 2px solid #cbd5e1; color: #475569; font-weight: 600;">
+                                Unit</th>
+                            <th
+                                style="padding: 12px; text-align: right; border-bottom: 2px solid #cbd5e1; color: #475569; font-weight: 600;">
+                                Unit Price</th>
+                            <th
+                                style="padding: 12px; text-align: right; border-bottom: 2px solid #cbd5e1; color: #475569; font-weight: 600;">
+                                Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in extracted_data.Items %}
+                        <tr style="border-bottom: 1px solid #e2e8f0;">
+                            <td style="padding: 12px; color: #64748b;">{{ item.Item_No }}</td>
+                            <td style="padding: 12px; color: #1e293b;">{{ item.Item_Description }}</td>
+                            <td style="padding: 12px; text-align: right; color: #1e293b;">{{ item.Quantity }}</td>
+                            <td style="padding: 12px; color: #64748b;">{{ item.Unit }}</td>
+                            <td style="padding: 12px; text-align: right; color: #1e293b;">{{ item.Unit_Price }}</td>
+                            <td style="padding: 12px; text-align: right; font-weight: 600; color: #1e293b;">{{
+                                item.Amount }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Full JSON Data -->
+        <div style="margin-top: 40px;">
+            <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 16px; color: #0f172a;">📋 Complete Extracted
+                Data (JSON)</h3>
+            <div style="background: #1e293b; color: #e2e8f0; padding: 24px; border-radius: 12px; overflow-x: auto;">
+                <pre
+                    style="margin: 0; font-family: 'Courier New', monospace; font-size: 13px; line-height: 1.6;">{{ formatted_data }}</pre>
+            </div>
+
+            <div style="margin-top: 20px; display: flex; gap: 12px; flex-wrap: wrap;">
+                <button onclick="copyToClipboard()" class="btn btn-primary">
+                    📋 Copy JSON
+                </button>
+                <button onclick="downloadJSON()" class="btn btn-secondary">
+                    💾 Download JSON
+                </button>
+                <a href="{% url 'finance:submissions_list' %}" class="btn btn-secondary">
+                    ← Back to Submissions
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const extractedData = {{ formatted_data| safe }};
+
+    function copyToClipboard() {
+        const text = JSON.stringify(JSON.parse('{{ formatted_data|escapejs }}'), null, 2);
+        navigator.clipboard.writeText(text).then(() => {
+            alert('JSON copied to clipboard!');
+        });
+    }
+
+    function downloadJSON() {
+        const data = JSON.parse('{{ formatted_data|escapejs }}');
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'invoice_{{ submission.id }}.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+</script>
+
+<style>
+    .btn {
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-block;
+        cursor: pointer;
+        border: none;
+        transition: all 0.2s;
+    }
+
+    .btn-primary {
+        background: #3b82f6;
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background: #2563eb;
+    }
+
+    .btn-secondary {
+        background: #64748b;
+        color: white;
+    }
+
+    .btn-secondary:hover {
+        background: #475569;
+    }
+
+    .card {
+        background: white;
+        border-radius: 16px;
+        padding: 32px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+</style>
+{% endblock %}

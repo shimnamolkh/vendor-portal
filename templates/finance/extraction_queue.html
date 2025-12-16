@@ -119,69 +119,16 @@
             <div class="metric-grid">
                 <div class="metric-card">
                     <div class="metric-label">Ready for Extraction</div>
-                    <div class="metric-value" style="color: #3b82f6;">{{ approved_submissions|length }}</div>
+                    <div class="metric-value" style="color: #3b82f6;">{{ pending_count }}</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-label">Processing Now</div>
-                    <div class="metric-value" style="color: #eab308;">{{ tasks|length }}</div>
-                    <!-- Placeholder logic -->
+                    <div class="metric-value" style="color: #eab308;">{{ processing_count }}</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-label">Completed Today</div>
-                    <div class="metric-value" style="color: #22c55e;">0</div> <!-- Placeholder logic -->
+                    <div class="metric-value" style="color: #22c55e;">{{ completed_today_count }}</div>
                 </div>
-            </div>
-
-            <!-- Approved Submissions Section -->
-            <div class="queue-section" style="margin-bottom: 48px;">
-                <div class="queue-section-title">
-                    🚀 Ready for Extraction
-                    <span>{{ approved_submissions|length }}</span>
-                </div>
-
-                {% if approved_submissions %}
-                <div style="display: grid; gap: 16px;">
-                    {% for submission in approved_submissions %}
-                    <div class="card task-card" style="border-left: 4px solid #3b82f6;">
-                        <div
-                            style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
-                            <div style="flex: 1; min-width: 300px;">
-                                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
-                                    <span
-                                        style="font-family: monospace; font-size: 12px; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; color: #64748b;">
-                                        #{{ submission.id|truncatechars:9 }}
-                                    </span>
-                                    <span class="badge"
-                                        style="background: #e0f2fe; color: #0369a1; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; text-transform: uppercase;">
-                                        {{ submission.get_submission_type_display }}
-                                    </span>
-                                </div>
-                                <div style="font-weight: 600; font-size: 16px; color: #0f172a; margin-bottom: 4px;">
-                                    {{ submission.vendor }}
-                                </div>
-                                <div style="color: #64748b; font-size: 13px;">
-                                    Submitted: {{ submission.created_at|date:"M d, Y - H:i" }}
-                                </div>
-                            </div>
-                            <a href="{% url 'finance:start_extraction' submission.id %}" class="btn btn-primary"
-                                style="display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                    <path d="M8 0a8 8 0 100 16A8 8 0 008 0zm1 11H7V7h2v4zm0-5H7V4h2v2z" />
-                                </svg>
-                                Start Extraction
-                            </a>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-                {% else %}
-                <div class="card"
-                    style="text-align: center; padding: 48px 20px; background: white; border: 1px dashed #cbd5e1;">
-                    <div style="font-size: 48px; margin-bottom: 16px;">✨</div>
-                    <h3 style="font-size: 16px; font-weight: 600; color: #0f172a;">All Caught Up!</h3>
-                    <p style="color: #64748b; font-size: 14px;">No approved submissions waiting for extraction.</p>
-                </div>
-                {% endif %}
             </div>
 
             <!-- Active Tasks Section -->
@@ -194,104 +141,143 @@
                 {% if tasks %}
                 <div style="display: grid; gap: 16px;">
                     {% for task in tasks %}
-                    <div class="card task-card"
-                        style="border-left: 4px solid {% if task.status == 'completed' %}#22c55e{% elif task.status == 'failed' %}#ef4444{% else %}#eab308{% endif %};">
-                        <div style="display: flex; justify-content: space-between; align-items: start;">
-                            <div style="flex: 1;">
-                                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
-                                    <span style="font-size: 13px; font-weight: 600; color: #0f172a;">
-                                        Task #{{ task.id }}
-                                    </span>
-                                    <div class="status-badge status-{{ task.status }}" style="padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; 
-                                         display: flex; align-items: center; gap: 6px;">
-                                        {% if task.status == 'pending' %}
-                                        <span
-                                            style="display: inline-block; width: 6px; height: 6px; background: #d97706; border-radius: 50%;"></span>
-                                        PENDING
-                                        {% elif task.status == 'processing' %}
-                                        <span
-                                            style="display: inline-block; width: 6px; height: 6px; background: #2563eb; border-radius: 50%;"></span>
-                                        PROCESSING
+                    {% if task.status == 'completed' %}
+                    <div class="card task-card" style="border-left: 4px solid #22c55e;">
+                        {% elif task.status == 'failed' %}
+                        <div class="card task-card" style="border-left: 4px solid #ef4444;">
+                            {% else %}
+                            <div class="card task-card" style="border-left: 4px solid #eab308;">
+                                {% endif %}
+                                <div style="display: flex; justify-content: space-between; align-items: start;">
+                                    <div style="flex: 1;">
+                                        <div
+                                            style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                                            <span style="font-size: 13px; font-weight: 600; color: #0f172a;">
+                                                Task #{{ task.id }}
+                                            </span>
+                                            <div class="status-badge status-{{ task.status }}"
+                                                style="padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 6px;">
+                                                {% if task.status == 'pending' %}
+                                                <span
+                                                    style="display: inline-block; width: 6px; height: 6px; background: #d97706; border-radius: 50%;"></span>
+                                                PENDING
+                                                {% elif task.status == 'processing' %}
+                                                <span
+                                                    style="display: inline-block; width: 6px; height: 6px; background: #2563eb; border-radius: 50%;"></span>
+                                                PROCESSING
+                                                {% elif task.status == 'completed' %}
+                                                <span
+                                                    style="display: inline-block; width: 6px; height: 6px; background: #16a34a; border-radius: 50%;"></span>
+                                                COMPLETED
+                                                {% elif task.status == 'failed' %}
+                                                <span
+                                                    style="display: inline-block; width: 6px; height: 6px; background: #dc2626; border-radius: 50%;"></span>
+                                                FAILED
+                                                {% endif %}
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 12px;">
+                                            <div>
+                                                <div
+                                                    style="font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 600;">
+                                                    Vendor</div>
+                                                <div style="color: #0f172a; font-size: 14px;">
+                                                    {{ task.submission.vendor }}
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div
+                                                    style="font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 600;">
+                                                    Model</div>
+                                                <div style="color: #0f172a; font-size: 14px;">
+                                                    {{ task.model_used }}
+                                                </div>
+                                            </div>
+                                            {% if task.processing_time %}
+                                            <div>
+                                                <div
+                                                    style="font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 600;">
+                                                    Duration</div>
+                                                <div style="color: #0f172a; font-size: 14px;">
+                                                    {{ task.processing_time|floatformat:2 }}s
+                                                </div>
+                                            </div>
+                                            {% endif %}
+                                            <div>
+                                                <div
+                                                    style="font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 600;">
+                                                    Started</div>
+                                                <div style="color: #0f172a; font-size: 14px;">
+                                                    {{ task.created_at|date:"M d, H:i" }}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {% if task.error_log %}
+                                        <div
+                                            style="background: #fef2f2; border: 1px solid #fecaca; border-radius: 6px; padding: 10px; margin-top: 8px;">
+                                            <div style="display: flex; gap: 8px; color: #b91c1c; font-size: 13px;">
+                                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"
+                                                    style="flex-shrink: 0;">
+                                                    <path fill-rule="evenodd"
+                                                        d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                    <path
+                                                        d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z" />
+                                                </svg>
+                                                {{ task.error_log }}
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+
+                                    <div
+                                        style="margin-left: 16px; align-self: center; display: flex; gap: 8px; flex-direction: column; min-width: 160px;">
+                                        {% if task.status == 'pending' or task.status == 'processing' %}
+                                        <a href="{% url 'finance:start_extraction' task.id %}" class="btn btn-primary"
+                                            style="font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%;">
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                                <path d="M8 0a8 8 0 100 16A8 8 0 008 0zm1 11H7V7h2v4zm0-5H7V4h2v2z" />
+                                            </svg>
+                                            {% if task.status == 'processing' %}Force Restart{% else %}Start
+                                            Extraction{% endif %}
+                                        </a>
                                         {% elif task.status == 'completed' %}
-                                        <span
-                                            style="display: inline-block; width: 6px; height: 6px; background: #16a34a; border-radius: 50%;"></span>
-                                        COMPLETED
+                                        <a href="{% url 'finance:compare_with_axpert' task.id %}"
+                                            class="btn btn-primary"
+                                            style="font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 8px; background: #3b82f6; border-color: #3b82f6; width: 100%;">
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                                <path
+                                                    d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z" />
+                                                <path d="M7 10V6h2v4H7zm0-5V3h2v2H7z" />
+                                            </svg>
+                                            Compare
+                                        </a>
                                         {% elif task.status == 'failed' %}
-                                        <span
-                                            style="display: inline-block; width: 6px; height: 6px; background: #dc2626; border-radius: 50%;"></span>
-                                        FAILED
+                                        <a href="{% url 'finance:start_extraction' task.id %}" class="btn btn-primary"
+                                            style="font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 8px; background: #dc2626; border-color: #dc2626; width: 100%; box-shadow: 0 2px 4px rgba(220, 38, 38, 0.2);">
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                                <path fill-rule="evenodd"
+                                                    d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z" />
+                                                <path
+                                                    d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
+                                            </svg>
+                                            Retry
+                                        </a>
                                         {% endif %}
                                     </div>
                                 </div>
-
-                                <div
-                                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 12px;">
-                                    <div>
-                                        <div
-                                            style="font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 600;">
-                                            Vendor</div>
-                                        <div style="color: #0f172a; font-size: 14px;">{{ task.submission.vendor }}</div>
-                                    </div>
-                                    <div>
-                                        <div
-                                            style="font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 600;">
-                                            Model</div>
-                                        <div style="color: #0f172a; font-size: 14px;">{{ task.model_used }}</div>
-                                    </div>
-                                    {% if task.processing_time %}
-                                    <div>
-                                        <div
-                                            style="font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 600;">
-                                            Duration</div>
-                                        <div style="color: #0f172a; font-size: 14px;">{{
-                                            task.processing_time|floatformat:2 }}s</div>
-                                    </div>
-                                    {% endif %}
-                                    <div>
-                                        <div
-                                            style="font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 600;">
-                                            Started</div>
-                                        <div style="color: #0f172a; font-size: 14px;">{{ task.created_at|date:"M d, H:i"
-                                            }}</div>
-                                    </div>
-                                </div>
-
-                                {% if task.error_log %}
-                                <div
-                                    style="background: #fef2f2; border: 1px solid #fecaca; border-radius: 6px; padding: 10px; margin-top: 8px;">
-                                    <div style="display: flex; gap: 8px; color: #b91c1c; font-size: 13px;">
-                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"
-                                            style="flex-shrink: 0;">
-                                            <path fill-rule="evenodd"
-                                                d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                            <path
-                                                d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z" />
-                                        </svg>
-                                        {{ task.error_log }}
-                                    </div>
-                                </div>
-                                {% endif %}
                             </div>
-
-                            <div style="margin-left: 16px; align-self: center;">
-                                {% if task.status == 'completed' %}
-                                <a href="{% url 'finance:view_extraction' task.id %}" class="btn btn-secondary"
-                                    style="font-size: 13px; border: 1px solid #cbd5e1; background: white;">
-                                    View Data →
-                                </a>
-                                {% endif %}
-                            </div>
+                            {% endfor %}
                         </div>
+                        {% else %}
+                        <div class="card" style="text-align: center; padding: 48px 20px;">
+                            <p style="color: var(--text-muted); font-size: 14px;">No extraction history found.</p>
+                        </div>
+                        {% endif %}
                     </div>
-                    {% endfor %}
                 </div>
-                {% else %}
-                <div class="card" style="text-align: center; padding: 48px 20px;">
-                    <p style="color: var(--text-muted); font-size: 14px;">No extraction history found.</p>
-                </div>
-                {% endif %}
-            </div>
-        </div>
     </main>
 </div>
 

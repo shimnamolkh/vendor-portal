@@ -138,13 +138,33 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'dashboard_redirect'
 LOGOUT_REDIRECT_URL = 'login'
 
-# Ollama Configuration
-OLLAMA_BASE_URL = 'http://127.0.0.1:11435'
-OLLAMA_MODEL = 'llama3.1:latest'
+# ============================================================================
+# EXTRACTION SERVICE CONFIGURATION
+# ============================================================================
 
-# n8n Webhook Configuration (optional - if you want to use n8n instead of direct Ollama)
-# Set this to your n8n webhook URL, e.g., 'http://localhost:5678/webhook/invoice_extract'
-N8N_WEBHOOK_URL = None  # Set to your n8n webhook URL if you want to use it
+# N8N Webhook Configuration (PRIMARY - recommended for production)
+# Set this to your n8n webhook URL
+# When set, the system will use n8n instead of Ollama
+N8N_WEBHOOK_URL = 'http://localhost:5678/webhook/invoice_extract'
+# N8N_WEBHOOK_URL = None  # Force direct Ollama usage to avoid n8n timeouts
+
+# Ollama Configuration (FALLBACK - only used if N8N_WEBHOOK_URL is None)
+# Running on custom port 11435
+OLLAMA_BASE_URL = 'http://127.0.0.1:11435'
+OLLAMA_MODEL = 'llama3.2:1b'  # Llama 3.2 (1B) - Fast and memory efficient
+
+# ============================================================================
+# Optional: OCR Support (for scanned documents)
+# Uncomment and set path to Tesseract executable if you want OCR support
+# TESSERACT_PATH = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+# TESSERACT_PATH = r'\\172.16.1.53\C$\Program Files\Tesseract-OCR\tesseract.exe'
+TESSERACT_PATH = None
+
+# Optional: Oracle Database Integration (for Axpert PO/Vendor validation)
+# Uncomment and set credentials if you want Oracle integration
+ORACLE_USER = 'ADK2011'
+ORACLE_PASSWORD = 'log'  # Use environment variable in production!
+ORACLE_DSN = '172.16.1.85:1521/orcl'
 
 # ------------------------------------------------------------------------------
 # Production Security & Session Configuration
@@ -162,3 +182,61 @@ CSRF_COOKIE_HTTPONLY = True        # Prevent JS access
 # Automatically enable Secure cookies in production (when DEBUG is False)
 SESSION_COOKIE_SECURE = not DEBUG
 CSRF_COOKIE_SECURE = not DEBUG
+
+# ============================================================================
+# LOGGING CONFIGURATION
+# ============================================================================
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': BASE_DIR / 'debug.log',
+            'formatter': 'verbose',
+        },
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file', 'console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'finance': {  # App-specific logging
+            'handlers': ['file', 'console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+
+# ============================================================================
+# TESSERACT CONFIGURATION
+# ============================================================================
+# Point this to your local Tesseract executable
+TESSERACT_PATH = r"C:\Users\ITS38\AppData\Local\Programs\Tesseract-OCR\tesseract.exe"
+
+# ============================================================================
+# ORACLE DB CONFIGURATION
+# ============================================================================
+ORACLE_USER = "ADK2011"
+ORACLE_PASSWORD = "log"
+ORACLE_DSN = "172.16.1.85:1521/orcl"
+
+# ============================================================================
+# INTEGRATION CONFIGURATION
+# ============================================================================
+N8N_WEBHOOK_URL = "http://localhost:5678/webhook/invoice_extract"
+OLLAMA_BASE_URL = "http://127.0.0.1:11435"
+OLLAMA_MODEL = "llama3.2:1b"
+
