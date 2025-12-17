@@ -55,6 +55,15 @@
             <button type="submit" class="btn btn-primary login-btn">
                 Sign In
             </button>
+
+            <div style="text-align: center; margin: 15px 0;">
+                <span style="color: #94a3b8; font-size: 13px;">or</span>
+            </div>
+
+            <a href="{% url 'vendors:login_otp' %}" class="btn"
+                style="width: 100%; text-align: center; border: 1px solid #e2e8f0; color: #475569; font-weight: 600; text-decoration: none; padding: 12px; border-radius: 8px; display: block; box-sizing: border-box;">
+                ✨ Log in with OTP / Sign Up
+            </a>
         </form>
 
         <div class="login-footer">

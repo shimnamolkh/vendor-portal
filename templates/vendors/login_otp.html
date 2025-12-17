@@ -1,0 +1,275 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Login - Vendor Portal{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/components/LoginPage.css' %}">
+<style>
+    /* Specific overrides for OTP view */
+    .success-badge {
+        background: #dcfce7;
+        color: #166534;
+        padding: 5px 12px;
+        border-radius: 99px;
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        display: inline-block;
+    }
+
+    .step-section {
+        display: block;
+        /* Managed by JS */
+        animation: fadeIn 0.4s ease-out;
+    }
+
+    #otpSection {
+        display: none;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .resend-timer {
+        font-size: 13px;
+        color: #64748b;
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    .resend-btn {
+        background: none;
+        border: none;
+        color: #6366f1;
+        font-weight: 600;
+        cursor: pointer;
+        padding: 0;
+    }
+
+    .resend-btn:disabled {
+        color: #94a3b8;
+        cursor: not-allowed;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="login-page">
+    <div class="login-container fade-in">
+        <div class="login-header">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                        <rect width="48" height="48" rx="12" fill="url(#gradient1)" />
+                        <path d="M24 12L32 20L24 28L16 20L24 12Z" fill="white" opacity="0.9" />
+                        <path d="M24 20L32 28L24 36L16 28L24 20Z" fill="white" opacity="0.6" />
+                        <defs>
+                            <linearGradient id="gradient1" x1="0" y1="0" x2="48" y2="48">
+                                <stop offset="0%" stopColor="#667eea" />
+                                <stop offset="100%" stopColor="#764ba2" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <h1 class="logo-text">Vendor Portal</h1>
+            </div>
+            <p class="login-subtitle">Sign in to your account</p>
+        </div>
+
+        <!-- ERROR TOAST -->
+        <div id="errorToast" class="error-message" style="display: none;"></div>
+
+        <!-- STEP 1: EMAIL -->
+        <div id="emailSection" class="step-section">
+            <div class="form-group">
+                <label for="email" class="label">Email Address</label>
+                <input type="email" id="email" class="input-field" placeholder="name@company.com" required autofocus />
+            </div>
+            <button onclick="requestOTP()" id="requestBtn" class="btn btn-primary login-btn">
+                Send OTP Code
+            </button>
+        </div>
+
+        <!-- STEP 2: OTP -->
+        <div id="otpSection" class="step-section">
+            <div style="text-align: center;">
+                <span class="success-badge">✨ OTP Sent!</span>
+                <p style="font-size: 14px; color: #64748b; margin-bottom: 20px;">
+                    We sent a 6-digit code to <br><strong id="displayEmail" style="color:#1e293b"></strong>
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label for="otp" class="label" style="text-align: center;">Enter OTP Code</label>
+                <input type="text" id="otp" class="input-field otp-input" placeholder="• • • • • •" maxlength="6"
+                    autocomplete="off" />
+            </div>
+
+            <button onclick="verifyOTP()" id="verifyBtn" class="btn btn-primary login-btn">
+                Verify & Login
+            </button>
+
+            <div class="resend-timer">
+                Didn't receive code?
+                <button onclick="requestOTP()" id="resendBtn" class="resend-btn" disabled>Resend in 30s</button>
+            </div>
+
+            <button onclick="resetFlow()" class="link-btn" style="width: 100%; text-align: center; margin-top: 10px;">
+                Change Email Address
+            </button>
+        </div>
+
+        <div class="login-footer">
+            <p class="footer-text">
+                Secure authentication powered by Django
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Hidden CSRF Token for JavaScript -->
+{% csrf_token %}
+
+<script>
+    function getCsrfToken() {
+        return document.querySelector('[name=csrfmiddlewaretoken]').value;
+    }
+
+    // UI Helpers
+    function showError(msg) {
+        const el = document.getElementById('errorToast');
+        el.textContent = msg;
+        el.style.display = 'flex';
+        setTimeout(() => el.style.display = 'none', 3000);
+    }
+
+    let resendTimer = null;
+    function startResendTimer() {
+        let timeLeft = 30;
+        const btn = document.getElementById('resendBtn');
+        btn.disabled = true;
+
+        clearInterval(resendTimer);
+        resendTimer = setInterval(() => {
+            if (timeLeft <= 0) {
+                clearInterval(resendTimer);
+                btn.textContent = "Resend Code";
+                btn.disabled = false;
+            } else {
+                btn.textContent = `Resend in ${timeLeft}s`;
+                timeLeft--;
+            }
+        }, 1000);
+    }
+
+    // ACTIONS
+    function requestOTP() {
+        const email = document.getElementById('email').value;
+        const btn = document.getElementById('requestBtn');
+        const resendBtn = document.getElementById('resendBtn');
+
+        if (!email || !email.includes('@')) {
+            showError('Please enter a valid email address.');
+            return;
+        }
+
+        // UI State
+        if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
+        if (resendBtn) { resendBtn.disabled = true; resendBtn.textContent = 'Sending...'; }
+
+        fetch("{% url 'vendors:request_otp' %}", {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'X-CSRFToken': getCsrfToken() },
+            body: `email=${encodeURIComponent(email)}`
+        })
+            .then(res => {
+                if (!res.ok) {
+                    return res.text().then(text => { throw new Error(text || 'Server Error') });
+                }
+                return res.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    // Switch View
+                    document.getElementById('emailSection').style.display = 'none';
+                    document.getElementById('otpSection').style.display = 'block';
+                    document.getElementById('displayEmail').textContent = email;
+                    document.getElementById('otp').value = '';
+                    document.getElementById('otp').focus();
+                    startResendTimer();
+                } else {
+                    showError(data.error);
+                    if (btn) { btn.disabled = false; btn.textContent = 'Send OTP Code'; }
+                    if (resendBtn) { resendBtn.disabled = false; resendBtn.textContent = 'Resend Code'; }
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                let msg = 'Network error. Please try again.';
+                if (err.message && err.message.includes('<!DOCTYPE html>')) {
+                    msg = 'Server Error (500). Detailed logs in console.';
+                } else if (err.message) {
+                    msg = err.message;
+                }
+                showError(msg.substring(0, 50)); // Truncate long error messages
+
+                if (btn) { btn.disabled = false; btn.textContent = 'Send OTP Code'; }
+                if (resendBtn) { resendBtn.disabled = false; resendBtn.textContent = 'Resend Code'; }
+            });
+    }
+
+    function verifyOTP() {
+        const email = document.getElementById('email').value;
+        const otp = document.getElementById('otp').value;
+        const btn = document.getElementById('verifyBtn');
+
+        if (otp.length < 6) {
+            showError('Please enter the full 6-digit code.');
+            return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Verifying...';
+
+        fetch("{% url 'vendors:verify_otp' %}", {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'X-CSRFToken': getCsrfToken() },
+            body: `email=${encodeURIComponent(email)}&otp=${encodeURIComponent(otp)}`
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    btn.textContent = 'Success!';
+                    window.location.href = data.redirect_url;
+                } else {
+                    showError(data.error);
+                    btn.disabled = false;
+                    btn.textContent = 'Verify & Login';
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                showError('Verification failed. Please try again.');
+                btn.disabled = false;
+                btn.textContent = 'Verify & Login';
+            });
+    }
+
+    function resetFlow() {
+        document.getElementById('emailSection').style.display = 'block';
+        document.getElementById('otpSection').style.display = 'none';
+        document.getElementById('requestBtn').disabled = false;
+        document.getElementById('requestBtn').textContent = 'Send OTP Code';
+    }
+</script>
+{% endblock %}

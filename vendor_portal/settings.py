@@ -238,5 +238,28 @@ ORACLE_DSN = "172.16.1.85:1521/orcl"
 # ============================================================================
 N8N_WEBHOOK_URL = "http://localhost:5678/webhook/invoice_extract"
 OLLAMA_BASE_URL = "http://127.0.0.1:11435"
-OLLAMA_MODEL = "llama3.2:1b"
+
+# ============================================================================
+# EMAIL CONFIGURATION (For OTP)
+# ============================================================================
+# ============================================================================
+# EMAIL CONFIGURATION (For OTP)
+# ============================================================================
+
+# 1. DEVELOPMENT: Print to console (Comment this out for real emails)
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# 2. PROD/REAL EMAIL: Use SMTP (Uncomment and fill details below)
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# GMAIL Configuration
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+# CREDENTIALS
+EMAIL_HOST_USER = 'aladrakit@gmail.com'
+EMAIL_HOST_PASSWORD = 'ouii lezi tddw srxv'
+
+DEFAULT_FROM_EMAIL = 'Vendor Portal <aladrakit@gmail.com>'
 

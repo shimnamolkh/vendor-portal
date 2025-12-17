@@ -348,3 +348,29 @@ def view_extraction(request, task_id):
     }
     
     return render(request, 'finance/view_extraction.html', context)
+
+
+@login_required
+def push_to_axpert(request, task_id):
+    """Push extracted data to Axpert system"""
+    if request.user.user_type != 'finance':
+        return JsonResponse({'error': 'Access denied'}, status=403)
+    
+    if request.method != 'POST':
+        return JsonResponse({'error': 'Method not allowed'}, status=405)
+    
+    from .models import ExtractionTask
+    task = get_object_or_404(ExtractionTask, id=task_id)
+    
+    if not task.extracted_data:
+         return JsonResponse({'error': 'No extracted data found'}, status=400)
+
+    # Import the service function
+    from .services.ollama_service import push_to_axpert_db
+    
+    success, message = push_to_axpert_db(task.extracted_data)
+    
+    if success:
+        return JsonResponse({'success': True, 'message': message})
+    else:
+        return JsonResponse({'success': False, 'error': message}, status=500)

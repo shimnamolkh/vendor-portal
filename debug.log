@@ -851,3 +851,198 @@ INFO 2025-12-16 16:26:59,251 basehttp "POST /login/ HTTP/1.1" 302 0
 INFO 2025-12-16 16:26:59,264 basehttp "GET /dashboard/ HTTP/1.1" 302 0
 INFO 2025-12-16 16:26:59,279 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10044
 INFO 2025-12-16 16:27:01,465 basehttp "GET /finance/submissions/?type=inward&status=approved HTTP/1.1" 200 11550
+INFO 2025-12-16 17:42:20,797 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 17046
+INFO 2025-12-16 17:42:22,230 basehttp "GET /finance/extraction/compare/32/ HTTP/1.1" 200 12887
+INFO 2025-12-16 17:42:22,286 basehttp "GET /media/submissions/2025/12/16/Scan_0006_gtdn6ch.pdf HTTP/1.1" 200 326964
+INFO 2025-12-16 17:42:22,287 basehttp - Broken pipe from ('127.0.0.1', 49298)
+INFO 2025-12-16 17:42:22,292 basehttp "GET /media/submissions/2025/12/16/Scan_0006_gtdn6ch.pdf HTTP/1.1" 200 326964
+INFO 2025-12-16 17:42:22,293 basehttp - Broken pipe from ('127.0.0.1', 49301)
+INFO 2025-12-16 18:03:39,315 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-16 18:03:40,119 autoreload Watching for file changes with StatReloader
+INFO 2025-12-16 18:04:01,308 autoreload D:\Desktop\vENDORPORTAL\finance\views.py changed, reloading.
+INFO 2025-12-16 18:04:02,029 autoreload Watching for file changes with StatReloader
+INFO 2025-12-16 18:04:13,986 autoreload D:\Desktop\vENDORPORTAL\finance\urls.py changed, reloading.
+INFO 2025-12-16 18:04:14,632 autoreload Watching for file changes with StatReloader
+INFO 2025-12-17 08:35:06,611 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 17046
+INFO 2025-12-17 08:35:37,764 autoreload Watching for file changes with StatReloader
+INFO 2025-12-17 08:35:45,032 basehttp "GET /finance/extraction/compare/32/ HTTP/1.1" 200 14258
+INFO 2025-12-17 08:35:45,160 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-17 08:35:45,160 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-17 08:35:45,178 basehttp - Broken pipe from ('127.0.0.1', 51453)
+INFO 2025-12-17 08:35:45,182 basehttp - Broken pipe from ('127.0.0.1', 51454)
+WARNING 2025-12-17 08:35:45,475 log Not Found: /favicon.ico
+WARNING 2025-12-17 08:35:45,475 basehttp "GET /favicon.ico HTTP/1.1" 404 3710
+INFO 2025-12-17 08:35:47,744 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 17046
+INFO 2025-12-17 08:35:48,499 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10044
+INFO 2025-12-17 08:38:58,261 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 17046
+INFO 2025-12-17 08:39:43,674 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10044
+INFO 2025-12-17 08:41:24,402 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 17046
+INFO 2025-12-17 08:41:29,049 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10044
+INFO 2025-12-17 09:02:48,859 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-17 09:02:48,873 basehttp "GET /login/ HTTP/1.1" 200 2645
+INFO 2025-12-17 09:02:48,935 basehttp "GET /static/css/components/LoginPage.css HTTP/1.1" 304 0
+INFO 2025-12-17 09:02:58,938 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-17 09:02:58,976 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-17 09:02:59,017 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10044
+INFO 2025-12-17 09:03:01,140 basehttp "GET /finance/submissions/?type=inward&status=approved HTTP/1.1" 200 11550
+INFO 2025-12-17 09:03:04,539 basehttp "GET /finance/submissions/ HTTP/1.1" 200 11234
+INFO 2025-12-17 09:04:42,044 autoreload D:\Desktop\vENDORPORTAL\core\models.py changed, reloading.
+INFO 2025-12-17 09:04:42,751 autoreload Watching for file changes with StatReloader
+INFO 2025-12-17 09:05:58,049 autoreload D:\Desktop\vENDORPORTAL\vendor_portal\settings.py changed, reloading.
+INFO 2025-12-17 09:05:58,757 autoreload Watching for file changes with StatReloader
+INFO 2025-12-17 09:06:38,665 autoreload D:\Desktop\vENDORPORTAL\vendors\views.py changed, reloading.
+INFO 2025-12-17 09:06:39,357 autoreload Watching for file changes with StatReloader
+INFO 2025-12-17 09:06:48,044 autoreload D:\Desktop\vENDORPORTAL\vendors\views.py changed, reloading.
+INFO 2025-12-17 09:06:48,715 autoreload Watching for file changes with StatReloader
+INFO 2025-12-17 09:07:06,855 autoreload D:\Desktop\vENDORPORTAL\vendors\urls.py changed, reloading.
+INFO 2025-12-17 09:07:07,544 autoreload Watching for file changes with StatReloader
+INFO 2025-12-17 09:09:18,066 basehttp "GET /finance/submissions/ HTTP/1.1" 200 11234
+INFO 2025-12-17 09:09:18,211 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-17 09:09:18,211 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-17 09:09:18,217 basehttp "GET /static/css/components/FinanceDashboard.css HTTP/1.1" 200 14272
+WARNING 2025-12-17 09:09:18,523 log Not Found: /favicon.ico
+WARNING 2025-12-17 09:09:18,524 basehttp "GET /favicon.ico HTTP/1.1" 404 3710
+INFO 2025-12-17 09:09:20,844 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-17 09:09:20,852 basehttp "GET /login/ HTTP/1.1" 200 2645
+INFO 2025-12-17 09:09:25,713 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-17 09:09:25,724 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-17 09:09:25,752 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11475
+INFO 2025-12-17 09:09:25,798 basehttp "GET /static/css/components/SupplierInwardEntry.css HTTP/1.1" 304 0
+INFO 2025-12-17 09:09:25,803 basehttp "GET /static/css/components/VendorDashboard.css HTTP/1.1" 304 0
+INFO 2025-12-17 09:09:25,803 basehttp "GET /static/css/components/DirectPurchaseEntry.css HTTP/1.1" 304 0
+INFO 2025-12-17 09:09:25,803 basehttp "GET /static/js/file_upload.js HTTP/1.1" 304 0
+INFO 2025-12-17 09:09:25,808 basehttp "GET /static/css/components/SubmissionHistory.css HTTP/1.1" 304 0
+INFO 2025-12-17 09:09:27,647 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-17 09:09:27,652 basehttp "GET /login/ HTTP/1.1" 200 2645
+INFO 2025-12-17 09:09:37,846 basehttp "POST /login/ HTTP/1.1" 200 2897
+INFO 2025-12-17 09:09:55,104 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-17 09:09:55,114 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-17 09:09:55,131 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10044
+INFO 2025-12-17 09:10:07,881 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10044
+INFO 2025-12-17 09:10:07,920 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-17 09:10:07,925 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-17 09:10:07,926 basehttp "GET /static/css/components/FinanceDashboard.css HTTP/1.1" 200 14272
+WARNING 2025-12-17 09:10:08,223 log Not Found: /favicon.ico
+WARNING 2025-12-17 09:10:08,223 basehttp "GET /favicon.ico HTTP/1.1" 404 3710
+INFO 2025-12-17 09:16:50,575 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 17046
+INFO 2025-12-17 09:16:55,821 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10044
+INFO 2025-12-17 09:16:57,350 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-17 09:16:57,354 basehttp "GET /login/ HTTP/1.1" 200 2645
+INFO 2025-12-17 09:21:17,179 basehttp "GET /login/ HTTP/1.1" 200 2645
+INFO 2025-12-17 09:21:17,214 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-17 09:21:17,218 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-17 09:21:17,221 basehttp "GET /static/css/components/LoginPage.css HTTP/1.1" 200 3192
+WARNING 2025-12-17 09:21:17,505 log Not Found: /favicon.ico
+WARNING 2025-12-17 09:21:17,507 basehttp "GET /favicon.ico HTTP/1.1" 404 3710
+INFO 2025-12-17 09:21:21,602 basehttp "POST /login/ HTTP/1.1" 200 2897
+INFO 2025-12-17 09:21:27,271 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-17 09:21:27,284 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-17 09:21:27,300 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10044
+INFO 2025-12-17 09:21:29,964 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-17 09:21:29,972 basehttp "GET /login/ HTTP/1.1" 200 2645
+INFO 2025-12-17 09:22:19,200 autoreload Watching for file changes with StatReloader
+INFO 2025-12-17 09:22:28,321 basehttp "GET /login/ HTTP/1.1" 200 2645
+INFO 2025-12-17 09:25:28,601 basehttp "GET /login/ HTTP/1.1" 200 2645
+INFO 2025-12-17 09:41:30,469 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-17 09:41:31,398 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-17 09:41:31,403 basehttp - Broken pipe from ('127.0.0.1', 53345)
+INFO 2025-12-17 09:41:31,404 basehttp - Broken pipe from ('127.0.0.1', 53347)
+INFO 2025-12-17 09:41:31,404 basehttp - Broken pipe from ('127.0.0.1', 53346)
+INFO 2025-12-17 09:41:31,508 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-17 09:41:31,509 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-17 09:41:31,509 basehttp "GET /static/css/components/LoginPage.css HTTP/1.1" 200 3192
+INFO 2025-12-17 09:41:31,720 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-17 09:41:31,744 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-17 09:41:31,744 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-17 09:41:31,744 basehttp "GET /static/css/components/LoginPage.css HTTP/1.1" 200 3192
+WARNING 2025-12-17 09:41:32,033 log Not Found: /favicon.ico
+WARNING 2025-12-17 09:41:32,034 basehttp "GET /favicon.ico HTTP/1.1" 404 3710
+INFO 2025-12-17 09:41:40,464 basehttp - Broken pipe from ('127.0.0.1', 53352)
+INFO 2025-12-17 09:41:40,464 basehttp "GET /vendors/login/ HTTP/1.1" 200 9640
+WARNING 2025-12-17 09:41:46,331 log Forbidden (CSRF token from the 'X-Csrftoken' HTTP header has incorrect length.): /vendors/request-otp/
+WARNING 2025-12-17 09:41:46,333 basehttp "POST /vendors/request-otp/ HTTP/1.1" 403 2549
+WARNING 2025-12-17 09:41:50,890 log Forbidden (CSRF token from the 'X-Csrftoken' HTTP header has incorrect length.): /vendors/request-otp/
+WARNING 2025-12-17 09:41:50,891 basehttp "POST /vendors/request-otp/ HTTP/1.1" 403 2549
+WARNING 2025-12-17 09:41:57,211 log Forbidden (CSRF token from the 'X-Csrftoken' HTTP header has incorrect length.): /vendors/request-otp/
+WARNING 2025-12-17 09:41:57,211 basehttp "POST /vendors/request-otp/ HTTP/1.1" 403 2549
+INFO 2025-12-17 09:44:03,728 autoreload Watching for file changes with StatReloader
+INFO 2025-12-17 09:44:07,463 basehttp "GET /vendors/login/ HTTP/1.1" 200 10261
+INFO 2025-12-17 09:44:07,564 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-17 09:44:07,567 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-17 09:44:07,568 basehttp "GET /static/css/components/LoginPage.css HTTP/1.1" 200 3192
+WARNING 2025-12-17 09:44:07,854 log Not Found: /favicon.ico
+WARNING 2025-12-17 09:44:07,854 basehttp "GET /favicon.ico HTTP/1.1" 404 3710
+WARNING 2025-12-17 09:44:11,776 log Forbidden (CSRF token from the 'X-Csrftoken' HTTP header has incorrect length.): /vendors/request-otp/
+WARNING 2025-12-17 09:44:11,776 basehttp "POST /vendors/request-otp/ HTTP/1.1" 403 2549
+INFO 2025-12-17 09:46:12,888 basehttp "GET /vendors/login/ HTTP/1.1" 200 9951
+INFO 2025-12-17 09:46:12,920 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-17 09:46:12,923 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-17 09:46:12,924 basehttp "GET /static/css/components/LoginPage.css HTTP/1.1" 200 3192
+WARNING 2025-12-17 09:46:13,230 log Not Found: /favicon.ico
+WARNING 2025-12-17 09:46:13,231 basehttp "GET /favicon.ico HTTP/1.1" 404 3710
+INFO 2025-12-17 09:46:19,052 basehttp "POST /vendors/request-otp/ HTTP/1.1" 200 55
+INFO 2025-12-17 09:47:41,019 basehttp "POST /vendors/request-otp/ HTTP/1.1" 200 55
+INFO 2025-12-17 09:51:56,243 basehttp "POST /vendors/request-otp/ HTTP/1.1" 200 55
+INFO 2025-12-17 09:53:23,475 autoreload D:\Desktop\vENDORPORTAL\vendors\views.py changed, reloading.
+INFO 2025-12-17 09:53:24,187 autoreload Watching for file changes with StatReloader
+INFO 2025-12-17 09:55:25,393 autoreload D:\Desktop\vENDORPORTAL\vendor_portal\settings.py changed, reloading.
+INFO 2025-12-17 09:55:26,137 autoreload Watching for file changes with StatReloader
+INFO 2025-12-17 10:31:26,071 autoreload D:\Desktop\vENDORPORTAL\vendor_portal\settings.py changed, reloading.
+INFO 2025-12-17 10:31:27,250 autoreload Watching for file changes with StatReloader
+INFO 2025-12-17 10:57:41,440 autoreload D:\Desktop\vENDORPORTAL\vendor_portal\settings.py changed, reloading.
+INFO 2025-12-17 10:57:42,061 autoreload Watching for file changes with StatReloader
+INFO 2025-12-17 10:59:07,655 basehttp "GET /vendors/login/ HTTP/1.1" 200 9951
+INFO 2025-12-17 10:59:07,793 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-17 10:59:07,794 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-17 10:59:07,798 basehttp "GET /static/css/components/LoginPage.css HTTP/1.1" 200 3192
+WARNING 2025-12-17 10:59:08,064 log Not Found: /favicon.ico
+WARNING 2025-12-17 10:59:08,064 basehttp "GET /favicon.ico HTTP/1.1" 404 3710
+INFO 2025-12-17 10:59:13,502 basehttp "POST /vendors/request-otp/ HTTP/1.1" 200 55
+INFO 2025-12-17 10:59:33,893 basehttp "POST /vendors/verify-otp/ HTTP/1.1" 200 106
+INFO 2025-12-17 10:59:33,930 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11464
+INFO 2025-12-17 10:59:33,975 basehttp - Broken pipe from ('127.0.0.1', 55966)
+INFO 2025-12-17 10:59:33,978 basehttp - Broken pipe from ('127.0.0.1', 55964)
+INFO 2025-12-17 10:59:33,980 basehttp - Broken pipe from ('127.0.0.1', 55965)
+INFO 2025-12-17 10:59:33,980 basehttp - Broken pipe from ('127.0.0.1', 55977)
+INFO 2025-12-17 10:59:40,076 basehttp "GET /vendors/dashboard/?tab=history HTTP/1.1" 200 9770
+INFO 2025-12-17 10:59:48,224 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-17 10:59:48,234 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-17 10:59:54,920 basehttp "POST /login/ HTTP/1.1" 200 3383
+INFO 2025-12-17 11:00:05,482 basehttp "POST /login/ HTTP/1.1" 200 3383
+INFO 2025-12-17 11:00:08,153 basehttp "GET /vendors/login/ HTTP/1.1" 200 9951
+INFO 2025-12-17 11:00:15,564 basehttp "POST /vendors/request-otp/ HTTP/1.1" 200 55
+INFO 2025-12-17 11:00:51,621 basehttp "POST /vendors/verify-otp/ HTTP/1.1" 200 107
+INFO 2025-12-17 11:00:51,649 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11464
+INFO 2025-12-17 11:05:05,727 autoreload D:\Desktop\vENDORPORTAL\vendors\views.py changed, reloading.
+INFO 2025-12-17 11:05:06,356 autoreload Watching for file changes with StatReloader
+INFO 2025-12-17 11:05:21,263 autoreload D:\Desktop\vENDORPORTAL\vendors\urls.py changed, reloading.
+INFO 2025-12-17 11:05:21,868 autoreload Watching for file changes with StatReloader
+INFO 2025-12-17 11:10:08,491 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11464
+INFO 2025-12-17 11:10:08,711 basehttp "GET /static/css/components/VendorDashboard.css HTTP/1.1" 200 3643
+INFO 2025-12-17 11:10:08,711 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-17 11:10:08,711 basehttp "GET /static/css/components/DirectPurchaseEntry.css HTTP/1.1" 200 6036
+INFO 2025-12-17 11:10:08,711 basehttp "GET /static/css/components/SupplierInwardEntry.css HTTP/1.1" 200 5733
+INFO 2025-12-17 11:10:08,711 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-17 11:10:08,711 basehttp "GET /static/css/components/SubmissionHistory.css HTTP/1.1" 200 8781
+INFO 2025-12-17 11:10:08,727 basehttp "GET /static/js/file_upload.js HTTP/1.1" 200 4518
+WARNING 2025-12-17 11:10:09,095 log Not Found: /favicon.ico
+WARNING 2025-12-17 11:10:09,095 basehttp "GET /favicon.ico HTTP/1.1" 404 3710
+INFO 2025-12-17 11:10:09,874 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-17 11:10:09,880 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-17 11:10:15,733 basehttp "POST /login/ HTTP/1.1" 200 3383
+INFO 2025-12-17 11:10:18,426 basehttp "GET /vendors/login/ HTTP/1.1" 200 9951
+INFO 2025-12-17 11:10:23,590 basehttp "POST /vendors/request-otp/ HTTP/1.1" 200 55
+INFO 2025-12-17 11:10:37,253 basehttp "POST /vendors/verify-otp/ HTTP/1.1" 200 117
+INFO 2025-12-17 11:10:37,280 basehttp "GET /vendors/set-password/ HTTP/1.1" 200 1693
+INFO 2025-12-17 11:10:51,674 basehttp "POST /vendors/set-password/ HTTP/1.1" 302 0
+INFO 2025-12-17 11:10:51,684 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11728
+INFO 2025-12-17 11:11:04,323 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11464
+INFO 2025-12-17 11:11:19,321 basehttp "POST /vendors/supplier-inward/ HTTP/1.1" 302 0
+INFO 2025-12-17 11:11:19,334 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11747
+INFO 2025-12-17 11:11:21,849 basehttp "GET /vendors/dashboard/?tab=history HTTP/1.1" 200 12499
+INFO 2025-12-17 11:11:23,551 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-17 11:11:23,558 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-17 11:11:27,341 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-17 11:11:27,355 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-17 11:11:27,369 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11475
+INFO 2025-12-17 11:11:29,463 basehttp "GET /vendors/dashboard/?tab=history HTTP/1.1" 200 15701

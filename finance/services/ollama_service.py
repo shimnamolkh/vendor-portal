@@ -969,3 +969,33 @@ def process_invoice(submission):
         'vat_numbers': vat_numbers,
         'has_axpert_data': axpert_data is not None
     }
+
+
+def push_to_axpert_db(extracted_data):
+    """
+    Push verified extracted data to Axpert (Oracle DB or API).
+    """
+    logger.info("🚀 Starting push to Axpert...")
+    
+    # ---------------------------------------------------------
+    # TODO: Implement actual Axpert INSERT/UPDATE logic here.
+    # THIS IS A PLACEHOLDER. 
+    # You need to provide the SQL INSERT statement or API endpoint.
+    # ---------------------------------------------------------
+    
+    try:
+        # Check if we have essential data
+        invoice_no = extracted_data.get('Invoice_No')
+        if not invoice_no:
+            return False, "Invoice Number is missing."
+
+        # Simulate delay
+        time.sleep(1) 
+        
+        # Log success (Mock)
+        logger.info(f"[SUCCESS] Data pushed for Invoice {invoice_no}")
+        return True, "Data successfully pushed to Axpert."
+        
+    except Exception as e:
+        logger.error(f"[ERROR] Failed to push to Axpert: {e}")
+        return False, str(e)

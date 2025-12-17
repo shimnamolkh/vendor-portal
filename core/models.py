@@ -59,3 +59,19 @@ class ActivityLog(models.Model):
 
     def __str__(self):
         return f"{self.user} - {self.action} at {self.timestamp}"
+
+
+class OTPVerification(models.Model):
+    """
+    Model to store One-Time Passwords for email verification/login.
+    """
+    email = models.EmailField(help_text="Email address associated with the OTP")
+    otp = models.CharField(max_length=6, help_text="6-digit OTP code")
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_verified = models.BooleanField(default=False)
+    
+    # Optional: Link to a user if they already exist
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='otp_verifications')
+
+    def __str__(self):
+        return f"OTP for {self.email} - {self.otp}"
