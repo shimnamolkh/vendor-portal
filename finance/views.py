@@ -66,6 +66,19 @@ def submissions_list(request):
     
     # Order by most recent first
     submissions = submissions.order_by('-created_at')
+
+    # Attach latest extraction task to each submission for the template
+    # This avoids N+1 queries and allows direct access to task status/id
+    from .models import ExtractionTask
+    # Prefetch tasks
+    submission_ids = [s.id for s in submissions]
+    tasks_map = {}
+    tasks = ExtractionTask.objects.filter(submission_id__in=submission_ids).order_by('created_at')
+    for task in tasks:
+        tasks_map[task.submission_id] = task
+    
+    for submission in submissions:
+        submission.latest_task = tasks_map.get(submission.id)
     
     context = {
         'submissions': submissions,

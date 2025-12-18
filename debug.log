@@ -1046,3 +1046,152 @@ INFO 2025-12-17 11:11:27,341 basehttp "POST /login/ HTTP/1.1" 302 0
 INFO 2025-12-17 11:11:27,355 basehttp "GET /dashboard/ HTTP/1.1" 302 0
 INFO 2025-12-17 11:11:27,369 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11475
 INFO 2025-12-17 11:11:29,463 basehttp "GET /vendors/dashboard/?tab=history HTTP/1.1" 200 15701
+INFO 2025-12-17 11:29:47,815 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-17 11:29:47,824 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-17 11:29:52,849 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-17 11:29:52,860 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-17 11:29:52,891 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10044
+INFO 2025-12-17 11:29:52,928 basehttp - Broken pipe from ('127.0.0.1', 64360)
+INFO 2025-12-17 11:29:56,627 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 17046
+INFO 2025-12-17 11:30:33,713 basehttp "GET /finance/extraction/compare/32/ HTTP/1.1" 200 14258
+INFO 2025-12-17 11:30:33,799 basehttp - Broken pipe from ('127.0.0.1', 64362)
+INFO 2025-12-17 11:30:33,825 basehttp - Broken pipe from ('127.0.0.1', 64371)
+INFO 2025-12-17 11:37:56,625 autoreload D:\Desktop\vENDORPORTAL\vendor_portal\settings.py changed, reloading.
+INFO 2025-12-17 11:37:57,260 autoreload Watching for file changes with StatReloader
+INFO 2025-12-17 11:39:14,493 basehttp "GET /finance/extraction/compare/32/ HTTP/1.1" 200 13975
+INFO 2025-12-17 11:39:14,650 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-17 11:39:14,650 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-17 11:39:14,663 basehttp "GET /media/submissions/2025/12/16/Scan_0006_gtdn6ch.pdf HTTP/1.1" 200 326964
+INFO 2025-12-17 11:39:14,694 basehttp "GET /media/submissions/2025/12/16/Scan_0006_gtdn6ch.pdf HTTP/1.1" 200 326964
+WARNING 2025-12-17 11:39:15,008 log Not Found: /favicon.ico
+WARNING 2025-12-17 11:39:15,009 basehttp "GET /favicon.ico HTTP/1.1" 404 3710
+INFO 2025-12-17 12:34:34,559 basehttp "GET /finance/extraction/compare/32/ HTTP/1.1" 200 11122
+INFO 2025-12-17 12:34:34,618 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-17 12:34:34,620 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-17 12:34:34,655 basehttp "GET /media/submissions/2025/12/16/Scan_0006_gtdn6ch.pdf HTTP/1.1" 200 326964
+INFO 2025-12-17 12:34:34,677 basehttp "GET /media/submissions/2025/12/16/Scan_0006_gtdn6ch.pdf HTTP/1.1" 200 326964
+WARNING 2025-12-17 12:34:34,926 log Not Found: /favicon.ico
+WARNING 2025-12-17 12:34:34,926 basehttp "GET /favicon.ico HTTP/1.1" 404 3710
+INFO 2025-12-17 12:34:39,497 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 17046
+INFO 2025-12-17 12:34:40,333 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10044
+INFO 2025-12-17 12:34:41,169 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-17 12:34:41,176 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-17 12:46:31,169 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-17 12:46:31,184 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-17 12:46:31,198 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10048
+WARNING 2025-12-17 12:46:31,306 log Not Found: /favicon.ico
+INFO 2025-12-17 12:46:31,307 basehttp - Broken pipe from ('127.0.0.1', 57228)
+INFO 2025-12-17 12:46:32,992 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 17046
+INFO 2025-12-17 12:46:39,212 basehttp "GET /finance/extraction/compare/32/ HTTP/1.1" 200 14021
+INFO 2025-12-17 12:46:39,258 basehttp "GET /media/submissions/2025/12/16/Scan_0006_gtdn6ch.pdf HTTP/1.1" 200 326964
+INFO 2025-12-17 12:46:39,274 basehttp "GET /media/submissions/2025/12/16/Scan_0006_gtdn6ch.pdf HTTP/1.1" 200 326964
+INFO 2025-12-17 12:47:02,198 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 17046
+INFO 2025-12-17 12:47:04,116 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10048
+INFO 2025-12-17 12:47:09,516 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-17 12:47:09,523 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-17 12:47:12,391 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-17 12:47:12,405 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-17 12:47:12,419 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10044
+INFO 2025-12-17 12:47:14,157 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 17046
+INFO 2025-12-17 12:47:21,631 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-17 12:47:21,634 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-17 12:50:23,192 autoreload D:\Desktop\vENDORPORTAL\finance\views.py changed, reloading.
+INFO 2025-12-17 12:50:23,913 autoreload Watching for file changes with StatReloader
+INFO 2025-12-17 12:50:44,666 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-17 12:50:44,806 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-17 12:50:44,811 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-17 12:50:44,812 basehttp "GET /static/css/components/LoginPage.css HTTP/1.1" 200 3192
+WARNING 2025-12-17 12:50:45,109 log Not Found: /favicon.ico
+WARNING 2025-12-17 12:50:45,109 basehttp "GET /favicon.ico HTTP/1.1" 404 3710
+INFO 2025-12-17 12:50:48,117 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-17 12:50:48,131 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-17 12:50:48,151 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 9666
+INFO 2025-12-17 12:50:50,437 basehttp "GET /finance/submissions/?type=inward&status=pending HTTP/1.1" 200 8687
+INFO 2025-12-17 12:50:56,609 basehttp "GET /finance/submissions/?type=inward&status=approved HTTP/1.1" 200 11880
+INFO 2025-12-17 12:50:58,016 basehttp "GET /finance/extraction/compare/32/ HTTP/1.1" 200 11122
+INFO 2025-12-17 12:50:58,061 basehttp "GET /media/submissions/2025/12/16/Scan_0006_gtdn6ch.pdf HTTP/1.1" 200 326964
+INFO 2025-12-17 12:50:58,070 basehttp "GET /media/submissions/2025/12/16/Scan_0006_gtdn6ch.pdf HTTP/1.1" 200 326964
+INFO 2025-12-17 12:51:11,016 basehttp "GET /finance/submissions/?type=inward&status=pending HTTP/1.1" 200 8687
+INFO 2025-12-17 12:51:12,671 basehttp "POST /finance/approve/0d75d158-24e8-43c3-85b7-147cbae67f13/ HTTP/1.1" 302 0
+INFO 2025-12-17 12:51:12,689 basehttp "GET /finance/submissions/ HTTP/1.1" 200 15227
+INFO 2025-12-17 12:51:12,701 ollama_service [FILE] Processing invoice: D:\Desktop\vENDORPORTAL\media\submissions\2025\12\17\Scan_0009-1.pdf
+INFO 2025-12-17 12:51:12,701 ollama_service [PROCESS] Using n8n workflow for extraction...
+INFO 2025-12-17 12:51:31,886 basehttp "GET /finance/submissions/ HTTP/1.1" 200 14935
+INFO 2025-12-17 12:51:36,729 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 21702
+INFO 2025-12-17 12:55:12,252 basehttp "GET /finance/submissions/ HTTP/1.1" 200 14557
+INFO 2025-12-17 12:55:12,695 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-17 12:55:12,696 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-17 12:55:13,316 basehttp "GET /static/css/components/FinanceDashboard.css HTTP/1.1" 200 14272
+WARNING 2025-12-17 12:55:14,154 log Not Found: /favicon.ico
+WARNING 2025-12-17 12:55:14,157 basehttp "GET /favicon.ico HTTP/1.1" 404 3710
+INFO 2025-12-17 12:55:19,560 ollama_service 
+==================================================
+[ EXTRACTED AI DATA ]
+==================================================
+{'CustomerTRN': 'OMANI RIYAL and BAISA FOUR HUNDRED FIFTY Only THIRTY',
+ 'Customer_Name': 'ADRAK TRADING & CONT. CO. LLC',
+ 'Customer_RefNo': 'OM1100020467',
+ 'Invoice_Date': '2025-08-25',
+ 'Invoice_No': 'IN10544213',
+ 'Items': [{'Amount': '29.000',
+            'Amount incl VAT': '30.450',
+            'Amt After Discount': '29.000',
+            'Discount': '0.000',
+            'Item_Description': 'EXTERNAL WHT 18L FILLER',
+            'Item_No': '04B000B18',
+            'Quantity': '5.000 DRM',
+            'Unit': '',
+            'Unit_Price': '5.800',
+            'VAT Amount': '1.450',
+            'VAT%': '5.000'}],
+ 'LPO_reference': '',
+ 'Order_Number': '0433456459',
+ 'PO_Number': '5141752996',
+ 'Subtotal': '29.000',
+ 'Total': '30.450',
+ 'VATIN': '',
+ 'VAT_Percentage': '5.000',
+ 'Vendor_Name': 'ASIAN PAINTS (MIDDLE EAST) SPC'}
+==================================================
+
+INFO 2025-12-17 12:55:19,569 ollama_service 
+==================================================
+[ DETECTED PO NUMBER ]
+==================================================
+''
+==================================================
+
+INFO 2025-12-17 12:55:19,569 ollama_service 
+==================================================
+[ EXTRACTED VAT NUMBERS ]
+==================================================
+['OM1100020467']
+==================================================
+
+INFO 2025-12-17 12:55:19,569 ollama_service [SUCCESS] Extracted VAT/TRN: ['OM1100020467']
+INFO 2025-12-17 12:55:34,149 basehttp "GET /finance/submissions/ HTTP/1.1" 200 14821
+INFO 2025-12-17 12:55:34,185 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-17 12:55:34,185 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-17 12:55:34,188 basehttp "GET /static/css/components/FinanceDashboard.css HTTP/1.1" 200 14272
+WARNING 2025-12-17 12:55:34,535 log Not Found: /favicon.ico
+WARNING 2025-12-17 12:55:34,537 basehttp "GET /favicon.ico HTTP/1.1" 404 3710
+INFO 2025-12-17 12:55:37,268 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 9666
+INFO 2025-12-17 12:55:39,281 basehttp "GET /finance/submissions/?type=inward&status=approved HTTP/1.1" 200 15137
+INFO 2025-12-17 12:55:45,477 basehttp "GET /finance/extraction/compare/33/ HTTP/1.1" 200 8367
+INFO 2025-12-17 12:55:45,525 basehttp "GET /media/submissions/2025/12/17/Scan_0009-1.pdf HTTP/1.1" 200 368039
+INFO 2025-12-17 12:55:45,549 basehttp "GET /media/submissions/2025/12/17/Scan_0009-1.pdf HTTP/1.1" 200 368039
+INFO 2025-12-17 12:56:04,428 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 22584
+INFO 2025-12-17 12:56:07,124 basehttp "GET /finance/extraction/compare/32/ HTTP/1.1" 200 11122
+INFO 2025-12-17 12:56:12,242 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 9666
+INFO 2025-12-17 12:56:13,690 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-17 12:56:13,700 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-17 12:56:17,287 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-17 12:56:17,299 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-17 12:56:17,314 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10090
+INFO 2025-12-17 12:56:18,592 basehttp "GET /finance/submissions/?type=inward&status=approved HTTP/1.1" 200 15557
+INFO 2025-12-17 12:56:19,653 basehttp "GET /finance/extraction/compare/33/ HTTP/1.1" 200 10224
+INFO 2025-12-17 12:56:19,703 basehttp "GET /media/submissions/2025/12/17/Scan_0009-1.pdf HTTP/1.1" 200 368039
+INFO 2025-12-17 12:56:19,716 basehttp "GET /media/submissions/2025/12/17/Scan_0009-1.pdf HTTP/1.1" 200 368039
+INFO 2025-12-17 14:39:32,229 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 22584
+INFO 2025-12-17 14:39:34,469 basehttp "GET /finance/extraction/compare/33/ HTTP/1.1" 200 10224
+INFO 2025-12-17 14:39:34,531 basehttp "GET /media/submissions/2025/12/17/Scan_0009-1.pdf HTTP/1.1" 304 0

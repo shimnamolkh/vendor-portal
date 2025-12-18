@@ -157,15 +157,17 @@
     <!-- Right Side: Data -->
     <div class="data-pane">
 
-        <!-- RAW DATA DEBUG VIEW -->
+        <!-- RAW DATA DEBUG VIEW (Admins Only) -->
+        {% if user.is_superuser %}
         <div class="section">
             <details>
                 <summary style="cursor: pointer; font-weight: 600; color: #64748b; font-size: 13px;">🔍 View Raw
-                    Extracted JSON</summary>
+                    Extracted JSON (Admin Debug)</summary>
                 <pre
                     style="background: #1e1e1e; color: #d4d4d4; padding: 12px; border-radius: 6px; overflow-x: auto; font-size: 11px; margin-top: 10px; max-height: 200px;">{{ formatted_data }}</pre>
             </details>
         </div>
+        {% endif %}
 
         <!-- EXTRACTED DATA SECTION -->
         <div class="section">
@@ -270,21 +272,14 @@
 
     </div>
 </div>
+</div>
+
+<!-- Hidden CSRF Token for JS -->
+{% csrf_token %}
 
 <script>
-    function getCookie(name) {
-        let cookieValue = null;
-        if (document.cookie && document.cookie !== '') {
-            const cookies = document.cookie.split(';');
-            for (let i = 0; i < cookies.length; i++) {
-                const cookie = cookies[i].trim();
-                if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
-                }
-            }
-        }
-        return cookieValue;
+    function getCsrfToken() {
+        return document.querySelector('[name=csrfmiddlewaretoken]').value;
     }
 
     function sendToAxpert() {
@@ -296,7 +291,7 @@
             fetch("{% url 'finance:push_to_axpert' task.id %}", {
                 method: 'POST',
                 headers: {
-                    'X-CSRFToken': getCookie('csrftoken'),
+                    'X-CSRFToken': getCsrfToken(),
                     'Content-Type': 'application/json'
                 }
             })

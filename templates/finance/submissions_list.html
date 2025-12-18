@@ -36,12 +36,14 @@
                         </svg>
                         Dashboard
                     </a>
+                    {% if user.is_superuser %}
                     <a href="{% url 'finance:extraction_queue' %}" class="btn btn-primary" style="margin-right: 12px;">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                             <path d="M8 0a8 8 0 100 16A8 8 0 008 0zm1 11H7V7h2v4zm0-5H7V4h2v2z" />
                         </svg>
                         Extraction Queue
                     </a>
+                    {% endif %}
                     <form action="{% url 'logout' %}" method="post" style="display: inline;">{% csrf_token %}<button
                             type="submit" class="btn btn-secondary logout-btn"><svg width="16" height="16"
                                 viewBox="0 0 16 16" fill="currentColor">
@@ -173,10 +175,21 @@
                             </a>
                             {% endif %}
                             {% if submission.status == 'approved' %}
-                            <a href="{% url 'finance:extraction_queue' %}" class="btn btn-success"
-                                style="padding: 8px 16px; font-size: 13px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
-                                ✓ Approved - View Queue
+                            {% if submission.latest_task %}
+                            {% if submission.latest_task.status == 'completed' %}
+                            <a href="{% url 'finance:compare_with_axpert' submission.latest_task.id %}" class="btn"
+                                style="padding: 8px 16px; font-size: 13px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; background: #22c55e; color: white; border: 1px solid #22c55e;">
+                                🔍 Compare & Send
                             </a>
+                            {% elif submission.latest_task.status == 'failed' %}
+                            <span style="color: #dc2626; font-size: 13px; font-weight: 500;">⚠ Extraction Failed</span>
+                            {% else %}
+                            <span style="color: #d97706; font-size: 13px; font-weight: 500;">⏳ Processing...</span>
+                            {% endif %}
+                            {% else %}
+                            <!-- Fallback if no task yet (shouldn't happen on approve) -->
+                            <span style="color: #64748b; font-size: 13px;">Queued...</span>
+                            {% endif %}
                             {% endif %}
                         </div>
                     </div>

@@ -177,12 +177,14 @@
                         <div class="vendor-label">Finance Team</div>
                         <div class="vendor-name">{{ user.username }}</div>
                     </div>
+                    {% if user.is_superuser %}
                     <a href="{% url 'finance:extraction_queue' %}" class="btn btn-primary" style="margin-right: 12px;">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                             <path d="M8 0a8 8 0 100 16A8 8 0 008 0zm1 11H7V7h2v4zm0-5H7V4h2v2z" />
                         </svg>
                         Extraction Queue
                     </a>
+                    {% endif %}
                     <form action="{% url 'logout' %}" method="post" style="display: inline;">{% csrf_token %}<button
                             type="submit" class="btn btn-secondary logout-btn"><svg width="16" height="16"
                                 viewBox="0 0 16 16" fill="currentColor">

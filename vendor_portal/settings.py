@@ -183,6 +183,9 @@ CSRF_COOKIE_HTTPONLY = True        # Prevent JS access
 SESSION_COOKIE_SECURE = not DEBUG
 CSRF_COOKIE_SECURE = not DEBUG
 
+# Allow embedding of pages/media in iframes (Required for PDF Viewer)
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 # ============================================================================
 # LOGGING CONFIGURATION
 # ============================================================================
