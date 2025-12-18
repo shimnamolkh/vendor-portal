@@ -14,15 +14,20 @@ from django.conf import settings
 import logging
 from django.conf import settings
 
+import sys
+
 logger = logging.getLogger(__name__)
 
+import concurrent.futures
 import pprint
 
 def alert(data, label="ALERT"):
     """Helper function to print data prominently to console/logs"""
     separator = "=" * 50
     formatted_data = pprint.pformat(data)
-    print(f"\n{separator}\n[ {label} ]\n{separator}\n{formatted_data}\n{separator}\n")
+    # Write to stderr to ensure it bypasses any stdout buffering/capture
+    sys.stderr.write(f"\n{separator}\n[ {label} ]\n{separator}\n{formatted_data}\n{separator}\n")
+    sys.stderr.flush()
     logger.info(f"\n{separator}\n[ {label} ]\n{separator}\n{formatted_data}\n{separator}\n")
 
 try:
@@ -66,6 +71,16 @@ PO_PREFIXES = [
     "CEOPO", "BPCPO", "ITSPO", "AACPO", "TCPPO", "SABPO", "CUIPO", "KAYAPO", "SOBPO", "MLTPO",
     "BTDPO", "BTVPO", "ARPPO"
 ]
+
+# Create mapping for 4-char prefixes to full prefixes
+# This handles OCR errors where "ATCPO" is read as "ATCP0" (O becomes 0)
+PREFIX_MAPPING = {p[:4]: p for p in PO_PREFIXES if len(p) >= 5}
+
+# Expand prefixes to include their first 4 characters to handle variations
+# Sorted by length descending to match longest prefixes first
+_base_prefixes = set(PO_PREFIXES)
+_base_prefixes.update(PREFIX_MAPPING.keys())
+SEARCH_PREFIXES = sorted(list(_base_prefixes), key=len, reverse=True)
 
 # Extraction prompt
 EXTRACTION_PROMPT = """You are given invoice data in various formats (text, PDF extraction, OCR, or raw text). Your task is to extract and output **only the valid JSON object** that strictly follows this format. Your output **must contain only the JSON object**, with **no additional text, explanations, comments, or markdown**. If a field is missing or empty, output it as an empty string `""`.
@@ -314,10 +329,22 @@ def extract_po_from_ocr(ocr_text):
     print(f"[FILE] OCR Text Preview:\n{ocr_text[:500]}")
     
     # Check known PO prefixes first
-    for prefix in PO_PREFIXES:
+    for prefix in SEARCH_PREFIXES:
         match = re.search(rf"({prefix}-?\d+)", ocr_text, re.IGNORECASE)
         if match:
-            po = match.group(1).replace("-", "").upper()
+            raw_match = match.group(1).replace("-", "").upper()
+            
+            # Check for 4-char mapping fix (ATCP -> ATCPO, handle 0 vs O)
+            if prefix in PREFIX_MAPPING:
+                full_prefix = PREFIX_MAPPING[prefix]
+                remainder = raw_match[len(prefix):]
+                # If remainder starts with 0, it's likely the 'O' from the prefix misread as '0'
+                if remainder.startswith("0"):
+                    remainder = remainder[1:]
+                po = full_prefix + remainder
+            else:
+                po = raw_match
+
             print(f"✅ Found PO via OCR with prefix: {po}")
             return po
 
@@ -350,7 +377,7 @@ def extract_po_from_ocr(ocr_text):
 # PO NUMBER EXTRACTION (MAIN LOGIC)
 # ============================================================================
 
-def extract_po_number(json_data, pdf_path=None):
+def extract_po_number(json_data, pdf_path=None, ocr_text=None):
     """
     Extract PO number with VAT/TRN detection (JSON first, then OCR)
     and apply DB prefix if PO has no prefix.
@@ -377,13 +404,15 @@ def extract_po_number(json_data, pdf_path=None):
         print(f"💡 Found VAT/TRN in JSON: {vat_numbers}")
 
     # 2️⃣ If none found or to supplement, extract VAT/TRN via OCR
-    ocr_text = ""
+    # ocr_text provided or extracted locally
+    
     # Initialize imports to None
     pytesseract = None
     convert_from_path = None
     
-    if pdf_path:
+    if pdf_path or ocr_text:
         try:
+            # Only import if we might need them or to check availability
             import pytesseract
             from pdf2image import convert_from_path
             if TESSERACT_PATH:
@@ -391,42 +420,61 @@ def extract_po_number(json_data, pdf_path=None):
         except ImportError:
              print("⚠️ OCR libraries not installed (pytesseract/pdf2image)")
 
-        if pytesseract and convert_from_path:
-            try:
-                images = convert_from_path(pdf_path, dpi=300)
-                for img in images:
-                    ocr_text += pytesseract.image_to_string(img, lang="eng") + "\n"
-            except Exception as e:
-                print(f"⚠️ OCR failed: {e}")
-
-            if ocr_text.strip():
-                print(f"📄 OCR Text Preview:\n{ocr_text[:1000]}")
-                ocr_vats = extract_vat_numbers(ocr_text)
-                for v in ocr_vats:
-                    if v not in vat_numbers:
-                        vat_numbers.append(v)
-                if ocr_vats:
-                    print(f"💡 Found VAT/TRN via OCR: {ocr_vats}")
-                else:
-                    print("⚠️ VAT/TRN not found via OCR")
+        # Logic to get OCR text if not provided
+        if not ocr_text and pdf_path:
+            if pytesseract and convert_from_path:
+                try:
+                    ocr_text = ""
+                    images = convert_from_path(pdf_path, dpi=300)
+                    for img in images:
+                        ocr_text += pytesseract.image_to_string(img, lang="eng") + "\n"
+                except Exception as e:
+                    print(f"⚠️ OCR failed: {e}")
             else:
-                print("⚠️ OCR returned empty text")
-        else:
-            print("⚠️ Skipping OCR: dependencies missing")
+                 print("⚠️ Skipping OCR: dependencies missing")
 
-    # 3️⃣ Check PO numbers in JSON fields
+        if ocr_text and ocr_text.strip():
+            print(f"📄 OCR Text Preview:\n{ocr_text[:1000]}")
+            ocr_vats = extract_vat_numbers(ocr_text)
+            for v in ocr_vats:
+                if v not in vat_numbers:
+                    vat_numbers.append(v)
+            if ocr_vats:
+                print(f"💡 Found VAT/TRN via OCR: {ocr_vats}")
+            else:
+                print("⚠️ VAT/TRN not found via OCR")
+        else:
+            if not ocr_text: # If it's still empty
+                 print("⚠️ OCR returned empty text or was skipped")
+
+    # 3️⃣ Check PO numbers in JSON fields - Collect candidates, don't return yet
+    json_candidates = []
+    
     for field in fields_to_check:
         if not field:
             continue
         print(f"🔹 Checking field for PO: {field}")
 
         # Known PO prefixes
-        for prefix in PO_PREFIXES:
+        for prefix in SEARCH_PREFIXES:
             match = re.search(rf"({prefix}-?\d+)", str(field), re.IGNORECASE)
             if match:
-                po = match.group(1).replace("-", "").upper()
-                print(f"✅ Found PO with known prefix: {po}")
-                return po
+                raw_match = match.group(1).replace("-", "").upper()
+                
+                # Check for 4-char mapping fix
+                if prefix in PREFIX_MAPPING:
+                    full_prefix = PREFIX_MAPPING[prefix]
+                    remainder = raw_match[len(prefix):]
+                    if remainder.startswith("0"):
+                        remainder = remainder[1:]
+                    po = full_prefix + remainder
+                else:
+                    po = raw_match
+                
+                print(f"✅ Found PO with known prefix in JSON: {po}")
+                alert(po, "JSON: PO WITH PREFIX")
+                json_candidates.append(('json_with_prefix', po))
+                break  # Found in this field with prefix, check next field
 
         # PO without prefix: 8-digit YYMMXXXX
         num_match = re.search(r"\b(\d{8})\b", str(field))
@@ -434,50 +482,142 @@ def extract_po_number(json_data, pdf_path=None):
             po_candidate = num_match.group(1)
             yy, mm = int(po_candidate[:2]), int(po_candidate[2:4])
             if 1 <= mm <= 12:
-                print(f"💡 Found PO without prefix: {po_candidate}")
+                print(f"💡 Found PO without prefix in JSON: {po_candidate}")
+                alert(po_candidate, "JSON: PO WITHOUT PREFIX")
 
                 # Apply DB prefixes from all detected VATs
+                prefix_applied = False
                 for vat in vat_numbers:
                     prefix = get_prefix_from_db(vat)
                     if prefix:
                         po_full = f"{prefix}{po_candidate}"
-                        print(f"✅ PO with DB prefix applied: {po_full} (VAT: {vat})")
-                        return po_full
+                        print(f"✅ JSON PO with DB prefix applied: {po_full} (VAT: {vat})")
+                        alert(po_full, "JSON: PO + DB PREFIX")
+                        json_candidates.append(('json_with_db_prefix', po_full))
+                        prefix_applied = True
+                        break
+                
+                if not prefix_applied:
+                    # No DB prefix found
+                    json_candidates.append(('json_no_prefix', po_candidate))
 
-                # No DB prefix found, return raw PO
-                return po_candidate
-
-    # 4️⃣ OCR fallback for PO
-    if pdf_path and ocr_text:
-        print("[SEARCH] PO not found in JSON. Trying OCR fallback...")
+    # 4️⃣ OCR fallback - ALWAYS try OCR to get additional candidates
+    ocr_candidates = []
+    if pdf_path or ocr_text:
+        if not ocr_text:  # If OCR wasn't done yet for VAT detection
+            try:
+                pytesseract = None
+                convert_from_path = None
+                try:
+                    import pytesseract
+                    from pdf2image import convert_from_path
+                    if TESSERACT_PATH:
+                        pytesseract.pytesseract.tesseract_cmd = TESSERACT_PATH
+                except ImportError:
+                    print("⚠️ OCR libraries not installed (pytesseract/pdf2image)")
+                
+                if pytesseract and convert_from_path:
+                    try:
+                        images = convert_from_path(pdf_path, dpi=300)
+                        for img in images:
+                            ocr_text += pytesseract.image_to_string(img, lang="eng") + "\n"
+                    except Exception as e:
+                        print(f"⚠️ OCR failed: {e}")
+            except:
+                pass
         
-        # Check known PO prefixes first in OCR
-        for prefix in PO_PREFIXES:
-            match = re.search(rf"({prefix}-?\d+)", ocr_text, re.IGNORECASE)
-            if match:
-                po = match.group(1).replace("-", "").upper()
-                print(f"[SUCCESS] Found PO via OCR with prefix: {po}")
-                return po
+        if ocr_text:
+            print("[SEARCH] Checking OCR for additional PO candidates...")
+            
+            # Check known PO prefixes in OCR
+            for prefix in SEARCH_PREFIXES:
+                match = re.search(rf"({prefix}-?\d+)", ocr_text, re.IGNORECASE)
+                if match:
+                    raw_match = match.group(1).replace("-", "").upper()
+                    
+                    # Check for 4-char mapping fix
+                    if prefix in PREFIX_MAPPING:
+                        full_prefix = PREFIX_MAPPING[prefix]
+                        remainder = raw_match[len(prefix):]
+                        if remainder.startswith("0"):
+                            remainder = remainder[1:]
+                        po = full_prefix + remainder
+                    else:
+                        po = raw_match
 
-        # Check for 8-digit PO without prefix
-        num_match = re.search(r"\b(\d{8})\b", ocr_text)
-        if num_match:
-            po_candidate = num_match.group(1)
-            yy, mm = int(po_candidate[:2]), int(po_candidate[2:4])
-            if 1 <= mm <= 12:
-                print(f"[SEARCH] Found PO via OCR without prefix: {po_candidate}")
-                # Try to get VAT/TRN from OCR text
-                vat_match = re.search(r"OM\d{10}", ocr_text)
-                vat_number = vat_match.group(0) if vat_match else None
-                if vat_number:
-                    prefix = get_prefix_from_db(vat_number)
-                    if prefix:
-                        po_full = f"{prefix}{po_candidate}"
-                        print(f"[SUCCESS] PO with DB prefix applied via OCR: {po_full}")
-                        return po_full
-                return po_candidate
+                    print(f"💡 Found PO via OCR with prefix: {po}")
+                    ocr_candidates.append(('ocr_with_prefix', po))
+            
+            # Check for 8-digit PO without prefix in OCR
+            for num_match in re.finditer(r"\b(\d{8})\b", ocr_text):
+                po_candidate = num_match.group(1)
+                try:
+                    yy, mm = int(po_candidate[:2]), int(po_candidate[2:4])
+                    if 1 <= mm <= 12:
+                        print(f"💡 Found 8-digit PO via OCR: {po_candidate}")
+                        
+                        # Try to apply prefix
+                        for vat in vat_numbers:
+                            prefix = get_prefix_from_db(vat)
+                            if prefix:
+                                po_full = f"{prefix}{po_candidate}"
+                                print(f"💡 OCR PO with DB prefix: {po_full}")
+                                ocr_candidates.append(('ocr_with_db_prefix', po_full))
+                                break
+                        else:
+                            ocr_candidates.append(('ocr_no_prefix', po_candidate))
+                except:
+                    continue
+    
+    
+    # 5️⃣ Prioritize candidates - Check both JSON and OCR
+    print("\n" + "="*60)
+    print("CANDIDATE PRIORITIZATION")
+    print("="*60)
+    print(f"JSON candidates: {len(json_candidates)}")
+    print(f"OCR candidates: {len(ocr_candidates)}")
+    
+    # Priority 1: POs with known prefixes (JSON first, then OCR)
+    for candidate_type, po in json_candidates:
+        if candidate_type == 'json_with_prefix':
+            print(f"✅ FINAL: Returning JSON PO with known prefix: {po}")
+            alert(po, "FINAL PO (JSON WITH PREFIX)")
+            return po
+    
+    for candidate_type, po in ocr_candidates:
+        if candidate_type == 'ocr_with_prefix':
+            print(f"✅ FINAL: Returning OCR PO with known prefix: {po}")
+            alert(po, "FINAL PO (OCR WITH PREFIX)")
+            return po
+    
+    # Priority 2: POs with DB-derived prefixes (OCR first for better accuracy)
+    for candidate_type, po in ocr_candidates:
+        if candidate_type == 'ocr_with_db_prefix':
+            print(f"✅ FINAL: Returning OCR PO with DB prefix: {po}")
+            alert(po, "FINAL PO (OCR + DB PREFIX)")
+            return po
+    
+    for candidate_type, po in json_candidates:
+        if candidate_type == 'json_with_db_prefix':
+            print(f"✅ FINAL: Returning JSON PO with DB prefix: {po}")
+            alert(po, "FINAL PO (JSON + DB PREFIX)")
+            return po
+    
+    # Priority 3: Raw POs without prefix (last resort)
+    for candidate_type, po in json_candidates:
+        if candidate_type == 'json_no_prefix':
+            print(f"⚠️ FINAL: Returning JSON PO without prefix: {po}")
+            alert(po, "FINAL PO (JSON NO PREFIX)")
+            return po
+    
+    for candidate_type, po in ocr_candidates:
+        if candidate_type == 'ocr_no_prefix':
+            print(f"⚠️ FINAL: Returning OCR PO without prefix: {po}")
+            alert(po, "FINAL PO (OCR NO PREFIX)")
+            return po
 
     print("[WARNING] PO not found")
+    alert("NO PO FOUND", "ERROR")
     return ""
 
 
@@ -808,6 +948,7 @@ def extract_invoice_vision(file_path):
 def process_invoice(submission):
     """
     Main function to process an invoice submission with enhanced extraction
+    Parallelizes AI extraction (Ollama/N8n) with OCR data reading.
     
     Args:
         submission: Submission model instance
@@ -815,6 +956,8 @@ def process_invoice(submission):
     Returns:
         dict: Processing result with extracted data, PO info, and Axpert data
     """
+    sys.stderr.write(f"\n[START] Starting process_invoice for submission {submission.id}\n")
+    sys.stderr.flush()
     start_time = time.time()
     
     # Get the invoice document
@@ -829,59 +972,86 @@ def process_invoice(submission):
     file_path = invoice_doc.file.path
     logger.info(f"[FILE] Processing invoice: {file_path}")
     
-    # Step 1: Extract invoice data via n8n or Ollama
-    result = None
+    # Define Parallel Tasks
     
-    if N8N_WEBHOOK_URL:
-        logger.info("[PROCESS] Using n8n workflow for extraction...")
-        result = extract_invoice_via_n8n(file_path)
-        
-        if not result['success']:
-            logger.warning(f"[WARNING] n8n extraction failed ({result.get('error')}). Falling back to local processing...")
-            result = None  # Reset to trigger local fallback
+    def task_ai_extraction():
+        """Attempts N8N or Vision extraction. Returns result or None if fallback needed."""
+        if N8N_WEBHOOK_URL:
+            logger.info("[PROCESS] Using n8n workflow for extraction...")
+            res = extract_invoice_via_n8n(file_path)
+            if res['success']: 
+                return res
+            logger.warning(f"[WARNING] n8n extraction failed. Falling back...")
 
-    if not result:
-        logger.info(f"[PROCESS] Using Ollama direct extraction with {OLLAMA_MODEL}...")
-        
         # VISION PATH: If model is Moondream/Vision AND finding is an Image
         is_image = file_path.lower().endswith(('.png', '.jpg', '.jpeg', '.bmp'))
         is_vision_model = 'moondream' in OLLAMA_MODEL or 'llava' in OLLAMA_MODEL
         
         if is_image and is_vision_model:
-            result = extract_invoice_vision(file_path)
-            # If Vision fails, fall back to OCR text?
-            if not result['success']:
-                logger.warning("[WARNING] Vision extraction failed, falling back to Text/OCR...")
-            else:
-                # Success! Skip text extraction
-                pass
+            res = extract_invoice_vision(file_path)
+            if res['success']: 
+                return res
+            logger.warning("[WARNING] Vision extraction failed...")
+            
+        return None # Signal to use Local Text-based Ollama
+
+    def task_ocr_reading():
+        """Performs heavy OCR reading for text content and PO detection."""
+        logger.info("[PARALLEL] Starting OCR data reading...")
+        # Use robust OCR (Tesseract) for best PO detection accuracy
+        # This runs in parallel with AI extraction
+        if file_path.lower().endswith('.pdf'):
+            # Try PyPDF2 first for speed? No, user wants OCR reading.
+            # But extract_text_from_pdf falls back to OCR.
+            # Let's use the most robust method for the 'backup' text source.
+            return extract_text_via_ocr(file_path)
+        else:
+            return extract_text_via_ocr(file_path)
+
+    # Execute in Parallel
+    result = None
+    ocr_text = ""
+    
+    with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
+        future_ai = executor.submit(task_ai_extraction)
+        future_ocr = executor.submit(task_ocr_reading)
         
-        if not 'result' in locals() or not result or not result.get('success'):
-            # TEXT PATH (Default or Fallback)
-            # Extract text from file
-            if file_path.lower().endswith('.pdf'):
-                invoice_text = extract_text_from_pdf(file_path)
-            else:
-                # For images, use OCR
-                invoice_text = extract_text_via_ocr(file_path)
-            
-            if not invoice_text or len(invoice_text.strip()) < 50:
-                logger.error("[ERROR] Failed to extract meaningful text from document.")
-                return {
-                    'success': False,
-                    'error': 'Failed to extract text from document (scanned/empty content). OCR may be required.'
-                }
-            
-            result = extract_invoice_via_ollama(invoice_text)
+        logger.info("[PROCESS] Waiting for parallel tasks (AI + OCR)...")
+        try:
+            result = future_ai.result()
+            ocr_text = future_ocr.result()
+        except Exception as e:
+            logger.error(f"[ERROR] Parallel execution error: {e}")
+            traceback.print_exc()
+
+    # Fallback / Local Text-Based Ollama
+    if not result:
+        logger.info(f"[PROCESS] AI Extraction returned None. Using Ollama direct extraction with {OLLAMA_MODEL}...")
+        
+        # Use the OCR text we just computed in parallel!
+        if not ocr_text or len(ocr_text.strip()) < 50:
+             logger.warning("[WARNING] OCR text is empty or poor. Trying PyPDF2 fallback if PDF...")
+             if file_path.lower().endswith('.pdf'):
+                 ocr_text = extract_text_from_pdf(file_path)
+        
+        if not ocr_text or len(ocr_text.strip()) < 50:
+            logger.error("[ERROR] Failed to extract meaningful text from document.")
+            return {
+                'success': False,
+                'error': 'Failed to extract text from document (scanned/empty content). OCR may be required.'
+            }
+        
+        result = extract_invoice_via_ollama(ocr_text)
+
+    if not result or not result['success']:
+        return result or {'success': False, 'error': 'Extraction failed'}
     
-    if not result['success']:
-        return result
-    
-    # Step 2: Enhance extracted data with PO detection
+    # Step 2: Enhance extracted data with PO detection (Using validated OCR text)
     extracted_data = result['data']
     alert(extracted_data, "EXTRACTED AI DATA")
     
-    po_number = extract_po_number(extracted_data, file_path)
+    # Pass the pre-computed OCR text to avoid re-running OCR
+    po_number = extract_po_number(extracted_data, file_path, ocr_text=ocr_text)
     alert(po_number, "DETECTED PO NUMBER")
     
     if po_number:

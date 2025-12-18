@@ -220,6 +220,10 @@ LOGGING = {
             'level': 'DEBUG',
             'propagate': True,
         },
+        '': {  # Root logger to catch everything else
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
+        },
     },
 }
 

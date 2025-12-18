@@ -1195,3 +1195,1273 @@ INFO 2025-12-17 12:56:19,716 basehttp "GET /media/submissions/2025/12/17/Scan_00
 INFO 2025-12-17 14:39:32,229 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 22584
 INFO 2025-12-17 14:39:34,469 basehttp "GET /finance/extraction/compare/33/ HTTP/1.1" 200 10224
 INFO 2025-12-17 14:39:34,531 basehttp "GET /media/submissions/2025/12/17/Scan_0009-1.pdf HTTP/1.1" 304 0
+INFO 2025-12-18 09:29:49,901 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 09:29:52,182 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 09:43:21,073 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 09:43:21,788 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 09:44:51,229 ollama_service [CONNECT] Connecting to Oracle DB for PO: ATCPO00020467
+WARNING 2025-12-18 09:44:51,332 ollama_service [WARNING] No vendor found for PO ATCPO00020467
+INFO 2025-12-18 10:14:32,170 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 10:14:32,968 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 10:38:14,562 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 10:38:15,239 autoreload Watching for file changes with StatReloader
+WARNING 2025-12-18 10:42:12,300 log Not Found: /favicon.ico
+INFO 2025-12-18 10:42:12,301 basehttp - Broken pipe from ('127.0.0.1', 53619)
+INFO 2025-12-18 10:42:17,018 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10090
+INFO 2025-12-18 10:49:19,443 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10090
+INFO 2025-12-18 10:49:19,578 basehttp "GET /static/css/components/FinanceDashboard.css HTTP/1.1" 200 14272
+INFO 2025-12-18 10:49:19,578 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-18 10:49:19,583 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+WARNING 2025-12-18 10:49:19,601 log Not Found: /favicon.ico
+WARNING 2025-12-18 10:49:19,601 basehttp "GET /favicon.ico HTTP/1.1" 404 3710
+INFO 2025-12-18 10:49:19,926 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10090
+INFO 2025-12-18 10:49:19,953 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-18 10:49:19,958 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-18 10:49:19,958 basehttp "GET /static/css/components/FinanceDashboard.css HTTP/1.1" 200 14272
+INFO 2025-12-18 10:49:20,181 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10090
+INFO 2025-12-18 10:49:20,208 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-18 10:49:20,212 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-18 10:49:20,212 basehttp "GET /static/css/components/FinanceDashboard.css HTTP/1.1" 200 14272
+INFO 2025-12-18 10:49:20,373 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10090
+INFO 2025-12-18 10:49:20,401 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-18 10:49:20,402 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-18 10:49:20,403 basehttp "GET /static/css/components/FinanceDashboard.css HTTP/1.1" 200 14272
+INFO 2025-12-18 10:49:20,573 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10090
+INFO 2025-12-18 10:49:20,598 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-18 10:49:20,599 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-18 10:49:20,602 basehttp "GET /static/css/components/FinanceDashboard.css HTTP/1.1" 200 14272
+INFO 2025-12-18 10:49:20,745 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10090
+INFO 2025-12-18 10:49:20,771 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-18 10:49:20,773 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-18 10:49:20,773 basehttp "GET /static/css/components/FinanceDashboard.css HTTP/1.1" 200 14272
+INFO 2025-12-18 10:49:20,947 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10090
+INFO 2025-12-18 10:49:20,983 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-18 10:49:20,984 basehttp "GET /static/css/components/FinanceDashboard.css HTTP/1.1" 200 14272
+INFO 2025-12-18 10:49:20,984 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-18 10:49:21,156 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10090
+INFO 2025-12-18 10:49:21,181 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-18 10:49:21,184 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-18 10:49:21,185 basehttp "GET /static/css/components/FinanceDashboard.css HTTP/1.1" 200 14272
+INFO 2025-12-18 10:49:21,359 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10090
+INFO 2025-12-18 10:49:21,384 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-18 10:49:21,395 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-18 10:49:21,395 basehttp "GET /static/css/components/FinanceDashboard.css HTTP/1.1" 200 14272
+WARNING 2025-12-18 10:49:21,647 log Not Found: /favicon.ico
+WARNING 2025-12-18 10:49:21,647 basehttp "GET /favicon.ico HTTP/1.1" 404 3710
+INFO 2025-12-18 10:49:25,056 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 10:49:25,068 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 10:49:28,497 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 10:49:28,513 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 10:49:28,543 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11475
+INFO 2025-12-18 10:49:51,809 basehttp "POST /vendors/supplier-inward/ HTTP/1.1" 302 0
+INFO 2025-12-18 10:49:51,821 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11758
+INFO 2025-12-18 10:49:53,409 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 10:49:53,417 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 10:49:56,498 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 10:49:56,510 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 10:49:56,523 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 9666
+INFO 2025-12-18 10:49:57,834 basehttp "GET /finance/submissions/?type=inward&status=pending HTTP/1.1" 200 8364
+INFO 2025-12-18 10:50:00,384 basehttp "POST /finance/approve/b1f0475a-bc8e-468d-873a-02afe95c1f80/ HTTP/1.1" 302 0
+INFO 2025-12-18 10:50:00,388 ollama_service [FILE] Processing invoice: D:\Desktop\vENDORPORTAL\media\submissions\2025\12\18\doc01654420250903105443.pdf
+INFO 2025-12-18 10:50:00,388 ollama_service [PROCESS] Using n8n workflow for extraction...
+INFO 2025-12-18 10:50:00,403 basehttp "GET /finance/submissions/ HTTP/1.1" 200 18539
+INFO 2025-12-18 10:51:58,240 basehttp "GET /finance/submissions/ HTTP/1.1" 200 18247
+INFO 2025-12-18 10:52:06,222 basehttp "GET /finance/submissions/ HTTP/1.1" 200 18247
+INFO 2025-12-18 10:52:11,997 basehttp "GET /finance/extraction/compare/33/ HTTP/1.1" 200 8367
+INFO 2025-12-18 10:52:12,123 basehttp "GET /media/submissions/2025/12/17/Scan_0009-1.pdf HTTP/1.1" 200 368039
+INFO 2025-12-18 10:52:12,150 basehttp "GET /media/submissions/2025/12/17/Scan_0009-1.pdf HTTP/1.1" 200 368039
+INFO 2025-12-18 10:52:15,292 basehttp "GET /finance/extraction/compare/32/ HTTP/1.1" 200 11122
+INFO 2025-12-18 10:52:15,389 basehttp "GET /media/submissions/2025/12/16/Scan_0006_gtdn6ch.pdf HTTP/1.1" 200 326964
+INFO 2025-12-18 10:52:15,407 basehttp "GET /media/submissions/2025/12/16/Scan_0006_gtdn6ch.pdf HTTP/1.1" 200 326964
+INFO 2025-12-18 10:52:50,084 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 302 0
+INFO 2025-12-18 10:52:58,700 ollama_service 
+==================================================
+[ EXTRACTED AI DATA ]
+==================================================
+{'CustomerTRN': '',
+ 'Customer_Name': 'AI Adrak Trading & Contracting Company Llc',
+ 'Customer_RefNo': 'ATCPO25080194',
+ 'Invoice_Date': '2025-08-14',
+ 'Invoice_No': '100074594',
+ 'Items': [{'Amount': '2,640.0000',
+            'Item_Description': 'Weberdry 116 FX-A+B -Grey (18Kg)',
+            'Item_No': '',
+            'Quantity': '550.00',
+            'Unit': 'Kit',
+            'Unit_Price': '4.8000',
+            'grand_total': '2,772.0000',
+            'vat_amount': '132.0000',
+            'vat_percentage': '5.00'}],
+ 'LPO_reference': '',
+ 'Order_Number': '',
+ 'PO_Number': '',
+ 'Subtotal': '2,640.0000',
+ 'Total': '2,772.0000',
+ 'VATIN': '',
+ 'VAT_Percentage': '5.00',
+ 'Vendor_Name': 'SODAMCO Muscat L.L.C'}
+==================================================
+
+INFO 2025-12-18 10:52:58,716 ollama_service 
+==================================================
+[ DETECTED PO NUMBER ]
+==================================================
+'ATCPO25080194'
+==================================================
+
+INFO 2025-12-18 10:52:58,717 ollama_service [SUCCESS] Enhanced PO Number: ATCPO25080194
+INFO 2025-12-18 10:52:58,717 ollama_service [SEARCH] Fetching Axpert data for PO: ATCPO25080194
+INFO 2025-12-18 10:52:58,719 ollama_service [CONNECT] Connecting to Oracle DB for PO: ATCPO25080194
+INFO 2025-12-18 10:52:59,044 ollama_service 
+==================================================
+[ AXPERT VENDOR DATA ]
+==================================================
+[{'BRANCHNAME': 'AL ADRAK TRADING AND CONTRACTING COMPANY LLC',
+  'CREDITDAYS': 90,
+  'CURRENCY': 'RIAL OMANI',
+  'TRNO': 'OM1100023860',
+  'VENDORNAME': 'M/S. SODAMCO MUSCAT  L.L.C'}]
+==================================================
+
+INFO 2025-12-18 10:52:59,051 ollama_service 
+==================================================
+[ AXPERT PO DATA ]
+==================================================
+[{'CURRENCY': 'RIAL OMANI',
+  'DOCDT': Timestamp('2025-08-09 00:00:00'),
+  'DOCID': 'ATCPO25080194',
+  'NETCOSTAMT': 2688.0,
+  'PAYTERM': 'Within 90 days of the Receipt of the Tax Invoice from the Vendor',
+  'TOTPOVALUE': 2822.4}]
+==================================================
+
+INFO 2025-12-18 10:52:59,053 ollama_service [SUCCESS] Axpert data fetched successfully
+INFO 2025-12-18 10:52:59,054 ollama_service [UPDATE] Updated Vendor Name from Axpert: M/S. SODAMCO MUSCAT  L.L.C
+INFO 2025-12-18 10:52:59,054 ollama_service [UPDATE] Updated Customer Name from Axpert: AL ADRAK TRADING AND CONTRACTING COMPANY LLC
+INFO 2025-12-18 10:53:18,014 basehttp "GET /finance/submissions/ HTTP/1.1" 200 18511
+INFO 2025-12-18 10:53:19,612 basehttp "GET /finance/extraction/compare/34/ HTTP/1.1" 200 11012
+INFO 2025-12-18 10:53:19,704 basehttp "GET /media/submissions/2025/12/18/doc01654420250903105443.pdf HTTP/1.1" 200 406986
+INFO 2025-12-18 10:53:19,766 basehttp "GET /media/submissions/2025/12/18/doc01654420250903105443.pdf HTTP/1.1" 200 406986
+INFO 2025-12-18 10:55:11,611 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 10:57:28,564 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 28140
+INFO 2025-12-18 11:07:33,455 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 9666
+WARNING 2025-12-18 11:07:33,526 log Not Found: /favicon.ico
+INFO 2025-12-18 11:07:33,526 basehttp - Broken pipe from ('127.0.0.1', 52083)
+INFO 2025-12-18 11:15:54,812 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 11:15:54,826 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 11:15:58,689 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 11:15:58,705 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 11:15:58,726 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11475
+INFO 2025-12-18 11:16:18,902 basehttp "POST /vendors/supplier-inward/ HTTP/1.1" 302 0
+INFO 2025-12-18 11:16:18,916 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11758
+INFO 2025-12-18 11:16:22,737 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 11:16:22,748 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 11:16:26,898 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 11:16:26,908 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 11:16:26,923 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 9666
+INFO 2025-12-18 11:16:28,587 basehttp "GET /finance/submissions/?type=inward&status=pending HTTP/1.1" 200 8435
+INFO 2025-12-18 11:16:30,323 basehttp "POST /finance/approve/ee20342b-c35c-4bb8-8ba8-15127828f16e/ HTTP/1.1" 302 0
+INFO 2025-12-18 11:16:30,324 ollama_service [FILE] Processing invoice: D:\Desktop\vENDORPORTAL\media\submissions\2025\12\18\Scan_0009-1.pdf
+INFO 2025-12-18 11:16:30,324 ollama_service [PROCESS] Using n8n workflow for extraction...
+INFO 2025-12-18 11:16:30,346 basehttp "GET /finance/submissions/ HTTP/1.1" 200 22300
+INFO 2025-12-18 11:19:55,087 ollama_service 
+==================================================
+[ EXTRACTED AI DATA ]
+==================================================
+{'CustomerTRN': 'OM-11-00-020-003',
+ 'Customer_Name': 'ADRAK TRADING & CONT. CO. LLC',
+ 'Customer_RefNo': 'OM1100020467',
+ 'Invoice_Date': '2025-08-21',
+ 'Invoice_No': 'IN10544213',
+ 'Items': [{'Amount': '29.000',
+            'Amount After Discount': '29.000',
+            'Amount incl VAT': '30.450',
+            'Discount': '0.000',
+            'Item_Description': 'EXTERNAL WHT 18L FILLER',
+            'Item_No': '04B000B18',
+            'Quantity': '5.000 DRM',
+            'Unit': '',
+            'Unit_Price': '5.800',
+            'VAT Amount': '1.450',
+            'VAT%': '5.000'}],
+ 'LPO_reference': '',
+ 'Order_Number': '0433456459',
+ 'PO_Number': '5141752996',
+ 'Subtotal': '29.000',
+ 'Total': '30.450',
+ 'VATIN': 'OM-11-00-020-003',
+ 'VAT_Percentage': '',
+ 'Vendor_Name': 'ASIAN PAINTS (MIDDLE EAST) SPC'}
+==================================================
+
+INFO 2025-12-18 11:19:55,106 ollama_service 
+==================================================
+[ DETECTED PO NUMBER ]
+==================================================
+''
+==================================================
+
+INFO 2025-12-18 11:19:55,109 ollama_service 
+==================================================
+[ EXTRACTED VAT NUMBERS ]
+==================================================
+['OM1100020467']
+==================================================
+
+INFO 2025-12-18 11:19:55,109 ollama_service [SUCCESS] Extracted VAT/TRN: ['OM1100020467']
+INFO 2025-12-18 11:28:51,168 basehttp "GET /finance/submissions/ HTTP/1.1" 200 22272
+INFO 2025-12-18 11:28:53,763 basehttp "GET /finance/extraction/compare/35/ HTTP/1.1" 200 8367
+INFO 2025-12-18 11:28:53,869 basehttp "GET /media/submissions/2025/12/18/Scan_0009-1.pdf HTTP/1.1" 200 368039
+INFO 2025-12-18 11:28:53,879 basehttp "GET /media/submissions/2025/12/18/Scan_0009-1.pdf HTTP/1.1" 200 368039
+INFO 2025-12-18 11:29:35,775 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 33696
+INFO 2025-12-18 11:31:48,878 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 11:31:49,596 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 11:31:50,412 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 11:31:50,760 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 11:32:11,150 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 9666
+INFO 2025-12-18 11:32:13,713 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 11:32:13,721 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 11:32:16,542 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 11:32:16,557 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 11:32:16,572 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10090
+INFO 2025-12-18 11:32:17,836 basehttp "GET /finance/submissions/?type=inward&status=approved HTTP/1.1" 200 23008
+INFO 2025-12-18 11:32:19,368 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 11:32:19,673 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 11:32:20,063 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 11:32:20,388 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 11:32:21,076 basehttp "GET /finance/extraction/compare/35/ HTTP/1.1" 200 10202
+INFO 2025-12-18 11:32:21,230 basehttp "GET /media/submissions/2025/12/18/Scan_0009-1.pdf HTTP/1.1" 200 368039
+INFO 2025-12-18 11:32:21,251 basehttp "GET /media/submissions/2025/12/18/Scan_0009-1.pdf HTTP/1.1" 200 368039
+INFO 2025-12-18 11:32:25,718 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 33696
+INFO 2025-12-18 11:32:27,513 basehttp "GET /finance/extraction/compare/35/ HTTP/1.1" 200 10202
+INFO 2025-12-18 11:32:35,925 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10090
+INFO 2025-12-18 11:32:39,850 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 33696
+INFO 2025-12-18 11:32:51,754 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10090
+INFO 2025-12-18 11:32:52,389 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 11:32:52,403 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 11:32:56,023 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 11:32:56,035 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 11:32:56,050 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11475
+INFO 2025-12-18 11:32:56,097 basehttp "GET /static/js/file_upload.js HTTP/1.1" 304 0
+INFO 2025-12-18 11:32:56,108 basehttp "GET /static/css/components/DirectPurchaseEntry.css HTTP/1.1" 304 0
+INFO 2025-12-18 11:32:56,108 basehttp "GET /static/css/components/SubmissionHistory.css HTTP/1.1" 304 0
+INFO 2025-12-18 11:32:56,108 basehttp "GET /static/css/components/SupplierInwardEntry.css HTTP/1.1" 304 0
+INFO 2025-12-18 11:32:56,108 basehttp "GET /static/css/components/VendorDashboard.css HTTP/1.1" 304 0
+INFO 2025-12-18 11:33:10,428 basehttp "POST /vendors/supplier-inward/ HTTP/1.1" 302 0
+INFO 2025-12-18 11:33:10,471 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11758
+INFO 2025-12-18 11:33:12,454 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 11:33:12,460 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 11:33:16,825 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 11:33:16,838 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 11:33:16,858 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 9666
+INFO 2025-12-18 11:33:18,898 basehttp "GET /finance/submissions/?type=inward&status=pending HTTP/1.1" 200 8443
+INFO 2025-12-18 11:33:21,557 basehttp "POST /finance/approve/3541c608-41cd-4b87-8754-9b3fbc65f3d0/ HTTP/1.1" 302 0
+INFO 2025-12-18 11:33:21,563 ollama_service [FILE] Processing invoice: D:\Desktop\vENDORPORTAL\media\submissions\2025\12\18\Scan_0009-1_IGUZjI5.pdf
+INFO 2025-12-18 11:33:21,563 ollama_service [PROCESS] Using n8n workflow for extraction...
+INFO 2025-12-18 11:33:21,588 basehttp "GET /finance/submissions/ HTTP/1.1" 200 26069
+INFO 2025-12-18 11:36:37,832 ollama_service 
+==================================================
+[ EXTRACTED AI DATA ]
+==================================================
+{'CustomerTRN': '5/57113/3',
+ 'Customer_Name': 'ADRAK TRADING & CONT. CO. LLC',
+ 'Customer_RefNo': 'OM1100020467',
+ 'Invoice_Date': '2025-08-21',
+ 'Invoice_No': 'IN10544213',
+ 'Items': [{'Amount': '29.000',
+            'Amount After Discount': '29.000',
+            'Amount incl VAT': '30.450',
+            'Discount': '0.000',
+            'Item_Description': 'EXTERNAL WHT 18L FILLER',
+            'Item_No': '04B000B18',
+            'Quantity': '5.000 DRM',
+            'Unit': '',
+            'Unit_Price': '5.800',
+            'VAT Amount': '1.450',
+            'VAT%': '5.000'}],
+ 'LPO_reference': '',
+ 'Order_Number': '0433456459',
+ 'PO_Number': '5141752996',
+ 'Subtotal': '29.000',
+ 'Total': '30.450',
+ 'VATIN': '',
+ 'VAT_Percentage': '5.000',
+ 'Vendor_Name': 'ASIAN PAINTS (MIDDLE EAST) SPC'}
+==================================================
+
+INFO 2025-12-18 11:36:37,976 ollama_service 
+==================================================
+[ ERROR ]
+==================================================
+'NO PO FOUND'
+==================================================
+
+INFO 2025-12-18 11:36:37,976 ollama_service 
+==================================================
+[ DETECTED PO NUMBER ]
+==================================================
+''
+==================================================
+
+INFO 2025-12-18 11:36:37,976 ollama_service 
+==================================================
+[ EXTRACTED VAT NUMBERS ]
+==================================================
+['OM1100020467']
+==================================================
+
+INFO 2025-12-18 11:36:37,978 ollama_service [SUCCESS] Extracted VAT/TRN: ['OM1100020467']
+INFO 2025-12-18 11:38:36,622 basehttp "GET /finance/submissions/ HTTP/1.1" 200 26041
+INFO 2025-12-18 11:38:38,389 basehttp "GET /finance/extraction/compare/36/ HTTP/1.1" 200 8391
+INFO 2025-12-18 11:38:38,522 basehttp "GET /media/submissions/2025/12/18/Scan_0009-1_IGUZjI5.pdf HTTP/1.1" 200 368039
+INFO 2025-12-18 11:38:38,608 basehttp "GET /media/submissions/2025/12/18/Scan_0009-1_IGUZjI5.pdf HTTP/1.1" 200 368039
+INFO 2025-12-18 12:08:35,972 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 12:08:35,972 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 12:10:06,220 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 12:10:06,220 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 12:10:18,906 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:10:18,906 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:10:18,920 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 12:10:18,920 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 12:10:19,066 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-18 12:10:19,066 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-18 12:10:19,068 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-18 12:10:19,068 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-18 12:10:19,070 basehttp "GET /static/css/components/LoginPage.css HTTP/1.1" 200 3192
+INFO 2025-12-18 12:10:19,070 basehttp "GET /static/css/components/LoginPage.css HTTP/1.1" 200 3192
+WARNING 2025-12-18 12:10:19,337 log Not Found: /favicon.ico
+WARNING 2025-12-18 12:10:19,337 log Not Found: /favicon.ico
+WARNING 2025-12-18 12:10:19,338 basehttp "GET /favicon.ico HTTP/1.1" 404 3710
+WARNING 2025-12-18 12:10:19,338 basehttp "GET /favicon.ico HTTP/1.1" 404 3710
+INFO 2025-12-18 12:10:23,068 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:10:23,068 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:10:23,078 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:10:23,078 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:10:23,094 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11475
+INFO 2025-12-18 12:10:23,094 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11475
+INFO 2025-12-18 12:10:39,306 basehttp "POST /vendors/supplier-inward/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:10:39,306 basehttp "POST /vendors/supplier-inward/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:10:39,319 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11758
+INFO 2025-12-18 12:10:39,319 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11758
+INFO 2025-12-18 12:10:41,044 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:10:41,044 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:10:41,053 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 12:10:41,053 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 12:10:46,028 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:10:46,028 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:10:46,040 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:10:46,040 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:10:46,060 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 9666
+INFO 2025-12-18 12:10:46,060 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 9666
+INFO 2025-12-18 12:10:47,439 basehttp "GET /finance/submissions/?type=inward&status=pending HTTP/1.1" 200 8443
+INFO 2025-12-18 12:10:47,439 basehttp "GET /finance/submissions/?type=inward&status=pending HTTP/1.1" 200 8443
+INFO 2025-12-18 12:10:49,044 basehttp "POST /finance/approve/dcd3b061-aa8a-47e9-ae30-b15fc88b763d/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:10:49,044 basehttp "POST /finance/approve/dcd3b061-aa8a-47e9-ae30-b15fc88b763d/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:10:49,059 ollama_service [FILE] Processing invoice: D:\Desktop\vENDORPORTAL\media\submissions\2025\12\18\Scan_0009-1_VW6UAnt.pdf
+INFO 2025-12-18 12:10:49,059 ollama_service [FILE] Processing invoice: D:\Desktop\vENDORPORTAL\media\submissions\2025\12\18\Scan_0009-1_VW6UAnt.pdf
+INFO 2025-12-18 12:10:49,060 ollama_service [PROCESS] Using n8n workflow for extraction...
+INFO 2025-12-18 12:10:49,061 ollama_service [PARALLEL] Starting OCR data reading...
+INFO 2025-12-18 12:10:49,060 ollama_service [PROCESS] Using n8n workflow for extraction...
+INFO 2025-12-18 12:10:49,061 ollama_service [PROCESS] Waiting for parallel tasks (AI + OCR)...
+INFO 2025-12-18 12:10:49,061 ollama_service [PARALLEL] Starting OCR data reading...
+INFO 2025-12-18 12:10:49,061 ollama_service [PROCESS] Waiting for parallel tasks (AI + OCR)...
+DEBUG 2025-12-18 12:10:49,064 connectionpool Starting new HTTP connection (1): localhost:5678
+INFO 2025-12-18 12:10:49,065 basehttp "GET /finance/submissions/ HTTP/1.1" 200 29838
+INFO 2025-12-18 12:10:49,065 basehttp "GET /finance/submissions/ HTTP/1.1" 200 29838
+WARNING 2025-12-18 12:10:53,123 ollama_service [WARNING] n8n extraction failed. Falling back...
+WARNING 2025-12-18 12:10:53,123 ollama_service [WARNING] n8n extraction failed. Falling back...
+INFO 2025-12-18 12:10:53,123 ollama_service [PROCESS] AI Extraction returned None. Using Ollama direct extraction with llama3.2:1b...
+INFO 2025-12-18 12:10:53,123 ollama_service [PROCESS] AI Extraction returned None. Using Ollama direct extraction with llama3.2:1b...
+WARNING 2025-12-18 12:10:53,123 ollama_service [WARNING] OCR text is empty or poor. Trying PyPDF2 fallback if PDF...
+WARNING 2025-12-18 12:10:53,123 ollama_service [WARNING] OCR text is empty or poor. Trying PyPDF2 fallback if PDF...
+WARNING 2025-12-18 12:10:53,253 _utils Multiple definitions in dictionary at byte 0x59d74 for key /Info
+WARNING 2025-12-18 12:10:53,253 _utils Multiple definitions in dictionary at byte 0x59d80 for key /Info
+WARNING 2025-12-18 12:10:53,253 _utils Multiple definitions in dictionary at byte 0x59d8c for key /Info
+ERROR 2025-12-18 12:10:53,255 ollama_service [ERROR] Failed to extract meaningful text from document.
+ERROR 2025-12-18 12:10:53,255 ollama_service [ERROR] Failed to extract meaningful text from document.
+INFO 2025-12-18 12:12:37,191 basehttp "GET /finance/submissions/ HTTP/1.1" 200 29550
+INFO 2025-12-18 12:12:37,191 basehttp "GET /finance/submissions/ HTTP/1.1" 200 29550
+INFO 2025-12-18 12:12:41,280 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 9666
+INFO 2025-12-18 12:12:41,280 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 9666
+INFO 2025-12-18 12:12:42,965 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:12:42,965 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:12:42,973 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 12:12:42,973 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 12:12:49,282 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:12:49,282 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:12:49,287 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:12:49,287 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:12:49,308 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10090
+INFO 2025-12-18 12:12:49,308 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10090
+INFO 2025-12-18 12:12:52,553 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 45539
+INFO 2025-12-18 12:12:52,553 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 45539
+INFO 2025-12-18 12:13:01,061 ollama_service [FILE] Processing invoice: D:\Desktop\vENDORPORTAL\media\submissions\2025\12\18\Scan_0009-1_VW6UAnt.pdf
+INFO 2025-12-18 12:13:01,061 ollama_service [FILE] Processing invoice: D:\Desktop\vENDORPORTAL\media\submissions\2025\12\18\Scan_0009-1_VW6UAnt.pdf
+INFO 2025-12-18 12:13:01,061 ollama_service [PROCESS] Using n8n workflow for extraction...
+INFO 2025-12-18 12:13:01,061 ollama_service [PARALLEL] Starting OCR data reading...
+INFO 2025-12-18 12:13:01,061 ollama_service [PROCESS] Waiting for parallel tasks (AI + OCR)...
+INFO 2025-12-18 12:13:01,061 ollama_service [PROCESS] Using n8n workflow for extraction...
+INFO 2025-12-18 12:13:01,061 ollama_service [PARALLEL] Starting OCR data reading...
+INFO 2025-12-18 12:13:01,061 ollama_service [PROCESS] Waiting for parallel tasks (AI + OCR)...
+DEBUG 2025-12-18 12:13:01,066 connectionpool Starting new HTTP connection (1): localhost:5678
+WARNING 2025-12-18 12:13:05,112 ollama_service [WARNING] n8n extraction failed. Falling back...
+WARNING 2025-12-18 12:13:05,112 ollama_service [WARNING] n8n extraction failed. Falling back...
+INFO 2025-12-18 12:13:05,112 ollama_service [PROCESS] AI Extraction returned None. Using Ollama direct extraction with llama3.2:1b...
+INFO 2025-12-18 12:13:05,112 ollama_service [PROCESS] AI Extraction returned None. Using Ollama direct extraction with llama3.2:1b...
+WARNING 2025-12-18 12:13:05,112 ollama_service [WARNING] OCR text is empty or poor. Trying PyPDF2 fallback if PDF...
+WARNING 2025-12-18 12:13:05,112 ollama_service [WARNING] OCR text is empty or poor. Trying PyPDF2 fallback if PDF...
+WARNING 2025-12-18 12:13:05,112 _utils Multiple definitions in dictionary at byte 0x59d74 for key /Info
+WARNING 2025-12-18 12:13:05,112 _utils Multiple definitions in dictionary at byte 0x59d80 for key /Info
+WARNING 2025-12-18 12:13:05,112 _utils Multiple definitions in dictionary at byte 0x59d8c for key /Info
+ERROR 2025-12-18 12:13:05,112 ollama_service [ERROR] Failed to extract meaningful text from document.
+ERROR 2025-12-18 12:13:05,112 ollama_service [ERROR] Failed to extract meaningful text from document.
+INFO 2025-12-18 12:13:05,123 basehttp "GET /finance/extraction/start/37/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:13:05,123 basehttp "GET /finance/extraction/start/37/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:13:05,140 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 45539
+INFO 2025-12-18 12:13:05,140 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 45539
+INFO 2025-12-18 12:13:13,584 ollama_service [FILE] Processing invoice: D:\Desktop\vENDORPORTAL\media\submissions\2025\12\18\Scan_0009-1_VW6UAnt.pdf
+INFO 2025-12-18 12:13:13,584 ollama_service [FILE] Processing invoice: D:\Desktop\vENDORPORTAL\media\submissions\2025\12\18\Scan_0009-1_VW6UAnt.pdf
+INFO 2025-12-18 12:13:13,584 ollama_service [PROCESS] Using n8n workflow for extraction...
+INFO 2025-12-18 12:13:13,584 ollama_service [PARALLEL] Starting OCR data reading...
+INFO 2025-12-18 12:13:13,584 ollama_service [PROCESS] Waiting for parallel tasks (AI + OCR)...
+INFO 2025-12-18 12:13:13,584 ollama_service [PROCESS] Using n8n workflow for extraction...
+INFO 2025-12-18 12:13:13,584 ollama_service [PARALLEL] Starting OCR data reading...
+INFO 2025-12-18 12:13:13,584 ollama_service [PROCESS] Waiting for parallel tasks (AI + OCR)...
+DEBUG 2025-12-18 12:13:13,587 connectionpool Starting new HTTP connection (1): localhost:5678
+INFO 2025-12-18 12:13:14,697 ollama_service [FILE] Processing invoice: D:\Desktop\vENDORPORTAL\media\submissions\2025\12\18\Scan_0009-1_VW6UAnt.pdf
+INFO 2025-12-18 12:13:14,697 ollama_service [FILE] Processing invoice: D:\Desktop\vENDORPORTAL\media\submissions\2025\12\18\Scan_0009-1_VW6UAnt.pdf
+INFO 2025-12-18 12:13:14,697 ollama_service [PROCESS] Using n8n workflow for extraction...
+INFO 2025-12-18 12:13:14,697 ollama_service [PROCESS] Using n8n workflow for extraction...
+INFO 2025-12-18 12:13:14,697 ollama_service [PARALLEL] Starting OCR data reading...
+INFO 2025-12-18 12:13:14,697 ollama_service [PROCESS] Waiting for parallel tasks (AI + OCR)...
+INFO 2025-12-18 12:13:14,697 ollama_service [PARALLEL] Starting OCR data reading...
+INFO 2025-12-18 12:13:14,697 ollama_service [PROCESS] Waiting for parallel tasks (AI + OCR)...
+DEBUG 2025-12-18 12:13:14,701 connectionpool Starting new HTTP connection (1): localhost:5678
+INFO 2025-12-18 12:13:15,147 ollama_service [FILE] Processing invoice: D:\Desktop\vENDORPORTAL\media\submissions\2025\12\18\Scan_0009-1_VW6UAnt.pdf
+INFO 2025-12-18 12:13:15,147 ollama_service [FILE] Processing invoice: D:\Desktop\vENDORPORTAL\media\submissions\2025\12\18\Scan_0009-1_VW6UAnt.pdf
+INFO 2025-12-18 12:13:15,147 ollama_service [PROCESS] Using n8n workflow for extraction...
+INFO 2025-12-18 12:13:15,149 ollama_service [PARALLEL] Starting OCR data reading...
+INFO 2025-12-18 12:13:15,149 ollama_service [PROCESS] Waiting for parallel tasks (AI + OCR)...
+INFO 2025-12-18 12:13:15,147 ollama_service [PROCESS] Using n8n workflow for extraction...
+INFO 2025-12-18 12:13:15,149 ollama_service [PARALLEL] Starting OCR data reading...
+INFO 2025-12-18 12:13:15,149 ollama_service [PROCESS] Waiting for parallel tasks (AI + OCR)...
+DEBUG 2025-12-18 12:13:15,151 connectionpool Starting new HTTP connection (1): localhost:5678
+INFO 2025-12-18 12:13:15,330 ollama_service [FILE] Processing invoice: D:\Desktop\vENDORPORTAL\media\submissions\2025\12\18\Scan_0009-1_VW6UAnt.pdf
+INFO 2025-12-18 12:13:15,330 ollama_service [FILE] Processing invoice: D:\Desktop\vENDORPORTAL\media\submissions\2025\12\18\Scan_0009-1_VW6UAnt.pdf
+INFO 2025-12-18 12:13:15,330 ollama_service [PROCESS] Using n8n workflow for extraction...
+INFO 2025-12-18 12:13:15,330 ollama_service [PARALLEL] Starting OCR data reading...
+INFO 2025-12-18 12:13:15,330 ollama_service [PROCESS] Waiting for parallel tasks (AI + OCR)...
+INFO 2025-12-18 12:13:15,330 ollama_service [PROCESS] Using n8n workflow for extraction...
+INFO 2025-12-18 12:13:15,330 ollama_service [PARALLEL] Starting OCR data reading...
+INFO 2025-12-18 12:13:15,330 ollama_service [PROCESS] Waiting for parallel tasks (AI + OCR)...
+DEBUG 2025-12-18 12:13:15,332 connectionpool Starting new HTTP connection (1): localhost:5678
+WARNING 2025-12-18 12:13:17,645 ollama_service [WARNING] n8n extraction failed. Falling back...
+WARNING 2025-12-18 12:13:17,645 ollama_service [WARNING] n8n extraction failed. Falling back...
+INFO 2025-12-18 12:13:17,645 ollama_service [PROCESS] AI Extraction returned None. Using Ollama direct extraction with llama3.2:1b...
+INFO 2025-12-18 12:13:17,645 ollama_service [PROCESS] AI Extraction returned None. Using Ollama direct extraction with llama3.2:1b...
+WARNING 2025-12-18 12:13:17,645 ollama_service [WARNING] OCR text is empty or poor. Trying PyPDF2 fallback if PDF...
+WARNING 2025-12-18 12:13:17,645 ollama_service [WARNING] OCR text is empty or poor. Trying PyPDF2 fallback if PDF...
+WARNING 2025-12-18 12:13:17,645 _utils Multiple definitions in dictionary at byte 0x59d74 for key /Info
+WARNING 2025-12-18 12:13:17,645 _utils Multiple definitions in dictionary at byte 0x59d80 for key /Info
+WARNING 2025-12-18 12:13:17,647 _utils Multiple definitions in dictionary at byte 0x59d8c for key /Info
+ERROR 2025-12-18 12:13:17,647 ollama_service [ERROR] Failed to extract meaningful text from document.
+ERROR 2025-12-18 12:13:17,647 ollama_service [ERROR] Failed to extract meaningful text from document.
+INFO 2025-12-18 12:13:17,657 basehttp - Broken pipe from ('127.0.0.1', 62644)
+INFO 2025-12-18 12:13:17,657 basehttp - Broken pipe from ('127.0.0.1', 62644)
+WARNING 2025-12-18 12:13:18,768 ollama_service [WARNING] n8n extraction failed. Falling back...
+WARNING 2025-12-18 12:13:18,768 ollama_service [WARNING] n8n extraction failed. Falling back...
+INFO 2025-12-18 12:13:18,769 ollama_service [PROCESS] AI Extraction returned None. Using Ollama direct extraction with llama3.2:1b...
+INFO 2025-12-18 12:13:18,769 ollama_service [PROCESS] AI Extraction returned None. Using Ollama direct extraction with llama3.2:1b...
+WARNING 2025-12-18 12:13:18,769 ollama_service [WARNING] OCR text is empty or poor. Trying PyPDF2 fallback if PDF...
+WARNING 2025-12-18 12:13:18,769 ollama_service [WARNING] OCR text is empty or poor. Trying PyPDF2 fallback if PDF...
+WARNING 2025-12-18 12:13:18,770 _utils Multiple definitions in dictionary at byte 0x59d74 for key /Info
+WARNING 2025-12-18 12:13:18,770 _utils Multiple definitions in dictionary at byte 0x59d80 for key /Info
+WARNING 2025-12-18 12:13:18,770 _utils Multiple definitions in dictionary at byte 0x59d8c for key /Info
+ERROR 2025-12-18 12:13:18,771 ollama_service [ERROR] Failed to extract meaningful text from document.
+ERROR 2025-12-18 12:13:18,771 ollama_service [ERROR] Failed to extract meaningful text from document.
+INFO 2025-12-18 12:13:18,778 basehttp - Broken pipe from ('127.0.0.1', 63850)
+INFO 2025-12-18 12:13:18,778 basehttp - Broken pipe from ('127.0.0.1', 63850)
+WARNING 2025-12-18 12:13:19,200 ollama_service [WARNING] n8n extraction failed. Falling back...
+WARNING 2025-12-18 12:13:19,200 ollama_service [WARNING] n8n extraction failed. Falling back...
+INFO 2025-12-18 12:13:19,201 ollama_service [PROCESS] AI Extraction returned None. Using Ollama direct extraction with llama3.2:1b...
+INFO 2025-12-18 12:13:19,201 ollama_service [PROCESS] AI Extraction returned None. Using Ollama direct extraction with llama3.2:1b...
+WARNING 2025-12-18 12:13:19,201 ollama_service [WARNING] OCR text is empty or poor. Trying PyPDF2 fallback if PDF...
+WARNING 2025-12-18 12:13:19,201 ollama_service [WARNING] OCR text is empty or poor. Trying PyPDF2 fallback if PDF...
+WARNING 2025-12-18 12:13:19,201 _utils Multiple definitions in dictionary at byte 0x59d74 for key /Info
+WARNING 2025-12-18 12:13:19,201 _utils Multiple definitions in dictionary at byte 0x59d80 for key /Info
+WARNING 2025-12-18 12:13:19,201 _utils Multiple definitions in dictionary at byte 0x59d8c for key /Info
+ERROR 2025-12-18 12:13:19,204 ollama_service [ERROR] Failed to extract meaningful text from document.
+ERROR 2025-12-18 12:13:19,204 ollama_service [ERROR] Failed to extract meaningful text from document.
+INFO 2025-12-18 12:13:19,211 basehttp - Broken pipe from ('127.0.0.1', 63854)
+INFO 2025-12-18 12:13:19,211 basehttp - Broken pipe from ('127.0.0.1', 63854)
+WARNING 2025-12-18 12:13:19,395 ollama_service [WARNING] n8n extraction failed. Falling back...
+WARNING 2025-12-18 12:13:19,395 ollama_service [WARNING] n8n extraction failed. Falling back...
+INFO 2025-12-18 12:13:19,395 ollama_service [PROCESS] AI Extraction returned None. Using Ollama direct extraction with llama3.2:1b...
+INFO 2025-12-18 12:13:19,395 ollama_service [PROCESS] AI Extraction returned None. Using Ollama direct extraction with llama3.2:1b...
+WARNING 2025-12-18 12:13:19,395 ollama_service [WARNING] OCR text is empty or poor. Trying PyPDF2 fallback if PDF...
+WARNING 2025-12-18 12:13:19,395 ollama_service [WARNING] OCR text is empty or poor. Trying PyPDF2 fallback if PDF...
+WARNING 2025-12-18 12:13:19,397 _utils Multiple definitions in dictionary at byte 0x59d74 for key /Info
+WARNING 2025-12-18 12:13:19,397 _utils Multiple definitions in dictionary at byte 0x59d80 for key /Info
+WARNING 2025-12-18 12:13:19,397 _utils Multiple definitions in dictionary at byte 0x59d8c for key /Info
+ERROR 2025-12-18 12:13:19,397 ollama_service [ERROR] Failed to extract meaningful text from document.
+ERROR 2025-12-18 12:13:19,397 ollama_service [ERROR] Failed to extract meaningful text from document.
+INFO 2025-12-18 12:13:19,407 basehttp "GET /finance/extraction/start/37/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:13:19,407 basehttp "GET /finance/extraction/start/37/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:13:19,423 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 45539
+INFO 2025-12-18 12:13:19,423 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 45539
+INFO 2025-12-18 12:13:31,532 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 15862
+INFO 2025-12-18 12:13:31,532 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 15862
+INFO 2025-12-18 12:13:41,304 basehttp "GET /finance/dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:13:41,304 basehttp "GET /finance/dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:15:24,138 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10090
+INFO 2025-12-18 12:15:24,138 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10090
+INFO 2025-12-18 12:15:24,169 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-18 12:15:24,169 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-18 12:15:24,171 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-18 12:15:24,171 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-18 12:15:24,178 basehttp "GET /static/css/components/FinanceDashboard.css HTTP/1.1" 200 14272
+INFO 2025-12-18 12:15:24,178 basehttp "GET /static/css/components/FinanceDashboard.css HTTP/1.1" 200 14272
+WARNING 2025-12-18 12:15:24,423 log Not Found: /favicon.ico
+WARNING 2025-12-18 12:15:24,423 log Not Found: /favicon.ico
+WARNING 2025-12-18 12:15:24,423 basehttp "GET /favicon.ico HTTP/1.1" 404 3710
+WARNING 2025-12-18 12:15:24,423 basehttp "GET /favicon.ico HTTP/1.1" 404 3710
+INFO 2025-12-18 12:15:25,760 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10090
+INFO 2025-12-18 12:15:25,760 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10090
+INFO 2025-12-18 12:15:25,785 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-18 12:15:25,785 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-18 12:15:25,788 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-18 12:15:25,788 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-18 12:15:25,788 basehttp "GET /static/css/components/FinanceDashboard.css HTTP/1.1" 200 14272
+INFO 2025-12-18 12:15:25,788 basehttp "GET /static/css/components/FinanceDashboard.css HTTP/1.1" 200 14272
+WARNING 2025-12-18 12:15:26,101 log Not Found: /favicon.ico
+WARNING 2025-12-18 12:15:26,101 log Not Found: /favicon.ico
+WARNING 2025-12-18 12:15:26,102 basehttp "GET /favicon.ico HTTP/1.1" 404 3710
+WARNING 2025-12-18 12:15:26,102 basehttp "GET /favicon.ico HTTP/1.1" 404 3710
+INFO 2025-12-18 12:15:26,813 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10090
+INFO 2025-12-18 12:15:26,813 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10090
+INFO 2025-12-18 12:15:26,842 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-18 12:15:26,842 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-18 12:15:26,847 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-18 12:15:26,847 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-18 12:15:26,847 basehttp "GET /static/css/components/FinanceDashboard.css HTTP/1.1" 200 14272
+INFO 2025-12-18 12:15:26,847 basehttp "GET /static/css/components/FinanceDashboard.css HTTP/1.1" 200 14272
+WARNING 2025-12-18 12:15:27,147 log Not Found: /favicon.ico
+WARNING 2025-12-18 12:15:27,147 log Not Found: /favicon.ico
+WARNING 2025-12-18 12:15:27,147 basehttp "GET /favicon.ico HTTP/1.1" 404 3710
+WARNING 2025-12-18 12:15:27,147 basehttp "GET /favicon.ico HTTP/1.1" 404 3710
+INFO 2025-12-18 12:17:05,162 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:17:05,162 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:17:05,170 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 12:17:05,170 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 12:31:12,132 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 12:31:12,132 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 12:31:12,159 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 12:31:12,159 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 12:31:12,739 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 12:31:12,739 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 12:31:12,763 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 12:31:12,763 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 12:31:19,226 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 12:31:19,226 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 12:31:19,231 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 12:31:19,231 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 12:31:19,839 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 12:31:19,839 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 12:31:19,839 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 12:31:19,839 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 12:32:18,926 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 12:32:18,926 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 12:34:49,192 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 12:34:49,192 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 12:36:51,538 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:36:51,538 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:36:51,549 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:36:51,549 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:36:51,570 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11475
+INFO 2025-12-18 12:36:51,570 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11475
+INFO 2025-12-18 12:37:10,589 basehttp "POST /vendors/supplier-inward/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:37:10,589 basehttp "POST /vendors/supplier-inward/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:37:10,603 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11758
+INFO 2025-12-18 12:37:10,603 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11758
+INFO 2025-12-18 12:37:12,110 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:37:12,110 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:37:12,121 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 12:37:12,121 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 12:37:15,769 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:37:15,769 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:37:15,780 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:37:15,780 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:37:15,799 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 9666
+INFO 2025-12-18 12:37:15,799 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 9666
+INFO 2025-12-18 12:37:17,096 basehttp "GET /finance/submissions/?type=inward&status=pending HTTP/1.1" 200 8443
+INFO 2025-12-18 12:37:17,096 basehttp "GET /finance/submissions/?type=inward&status=pending HTTP/1.1" 200 8443
+INFO 2025-12-18 12:37:20,725 basehttp "POST /finance/approve/275f9a4e-c198-4711-ad4e-a623460bd917/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:37:20,725 basehttp "POST /finance/approve/275f9a4e-c198-4711-ad4e-a623460bd917/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:37:20,730 ollama_service [FILE] Processing invoice: D:\Desktop\vENDORPORTAL\media\submissions\2025\12\18\Scan_0009-1_fyGnNCT.pdf
+INFO 2025-12-18 12:37:20,730 ollama_service [FILE] Processing invoice: D:\Desktop\vENDORPORTAL\media\submissions\2025\12\18\Scan_0009-1_fyGnNCT.pdf
+INFO 2025-12-18 12:37:20,733 ollama_service [PROCESS] Using n8n workflow for extraction...
+INFO 2025-12-18 12:37:20,733 ollama_service [PROCESS] Using n8n workflow for extraction...
+INFO 2025-12-18 12:37:20,734 ollama_service [PARALLEL] Starting OCR data reading...
+INFO 2025-12-18 12:37:20,734 ollama_service [PROCESS] Waiting for parallel tasks (AI + OCR)...
+INFO 2025-12-18 12:37:20,734 ollama_service [PARALLEL] Starting OCR data reading...
+INFO 2025-12-18 12:37:20,734 ollama_service [PROCESS] Waiting for parallel tasks (AI + OCR)...
+DEBUG 2025-12-18 12:37:20,746 connectionpool Starting new HTTP connection (1): localhost:5678
+INFO 2025-12-18 12:37:20,748 basehttp "GET /finance/submissions/ HTTP/1.1" 200 33347
+INFO 2025-12-18 12:37:20,748 basehttp "GET /finance/submissions/ HTTP/1.1" 200 33347
+WARNING 2025-12-18 12:37:24,826 ollama_service [WARNING] n8n extraction failed. Falling back...
+WARNING 2025-12-18 12:37:24,826 ollama_service [WARNING] n8n extraction failed. Falling back...
+INFO 2025-12-18 12:37:24,826 ollama_service [PROCESS] AI Extraction returned None. Using Ollama direct extraction with llama3.2:1b...
+INFO 2025-12-18 12:37:24,826 ollama_service [PROCESS] AI Extraction returned None. Using Ollama direct extraction with llama3.2:1b...
+WARNING 2025-12-18 12:37:24,826 ollama_service [WARNING] OCR text is empty or poor. Trying PyPDF2 fallback if PDF...
+WARNING 2025-12-18 12:37:24,826 ollama_service [WARNING] OCR text is empty or poor. Trying PyPDF2 fallback if PDF...
+WARNING 2025-12-18 12:37:24,868 _utils Multiple definitions in dictionary at byte 0x59d74 for key /Info
+WARNING 2025-12-18 12:37:24,870 _utils Multiple definitions in dictionary at byte 0x59d80 for key /Info
+WARNING 2025-12-18 12:37:24,870 _utils Multiple definitions in dictionary at byte 0x59d8c for key /Info
+ERROR 2025-12-18 12:37:24,872 ollama_service [ERROR] Failed to extract meaningful text from document.
+ERROR 2025-12-18 12:37:24,872 ollama_service [ERROR] Failed to extract meaningful text from document.
+INFO 2025-12-18 12:38:57,312 basehttp "GET /finance/submissions/ HTTP/1.1" 200 33059
+INFO 2025-12-18 12:38:57,312 basehttp "GET /finance/submissions/ HTTP/1.1" 200 33059
+INFO 2025-12-18 12:38:57,432 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-18 12:38:57,432 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-18 12:38:57,433 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-18 12:38:57,433 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-18 12:38:57,434 basehttp "GET /static/css/components/FinanceDashboard.css HTTP/1.1" 200 14272
+INFO 2025-12-18 12:38:57,434 basehttp "GET /static/css/components/FinanceDashboard.css HTTP/1.1" 200 14272
+WARNING 2025-12-18 12:38:57,730 log Not Found: /favicon.ico
+WARNING 2025-12-18 12:38:57,730 log Not Found: /favicon.ico
+WARNING 2025-12-18 12:38:57,733 basehttp "GET /favicon.ico HTTP/1.1" 404 3710
+WARNING 2025-12-18 12:38:57,733 basehttp "GET /favicon.ico HTTP/1.1" 404 3710
+INFO 2025-12-18 12:39:03,688 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 9666
+INFO 2025-12-18 12:39:03,688 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 9666
+INFO 2025-12-18 12:39:05,889 basehttp "GET /finance/submissions/?type=inward&status=approved HTTP/1.1" 200 33375
+INFO 2025-12-18 12:39:05,889 basehttp "GET /finance/submissions/?type=inward&status=approved HTTP/1.1" 200 33375
+INFO 2025-12-18 12:39:14,775 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 9666
+INFO 2025-12-18 12:39:14,775 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 9666
+INFO 2025-12-18 12:39:15,532 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:39:15,532 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:39:15,537 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 12:39:15,537 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 12:39:19,826 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:39:19,826 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:39:19,836 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:39:19,836 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:39:19,848 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11475
+INFO 2025-12-18 12:39:19,848 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11475
+INFO 2025-12-18 12:39:22,581 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:39:22,581 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:39:22,586 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 12:39:22,586 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 12:39:25,643 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:39:25,643 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:39:25,652 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:39:25,652 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:39:25,665 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10090
+INFO 2025-12-18 12:39:25,665 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10090
+INFO 2025-12-18 12:39:27,176 basehttp "GET /finance/submissions/?type=inward&status=approved HTTP/1.1" 200 33795
+INFO 2025-12-18 12:39:27,176 basehttp "GET /finance/submissions/?type=inward&status=approved HTTP/1.1" 200 33795
+INFO 2025-12-18 12:40:02,259 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 12:40:02,259 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 12:43:23,931 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 12:43:23,931 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 12:43:24,115 autoreload D:\Desktop\vENDORPORTAL\vendor_portal\settings.py changed, reloading.
+INFO 2025-12-18 12:43:24,115 autoreload D:\Desktop\vENDORPORTAL\vendor_portal\settings.py changed, reloading.
+INFO 2025-12-18 12:43:24,521 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 12:43:24,694 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 12:44:25,079 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 12:44:25,217 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 12:44:25,633 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 12:44:25,766 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 12:46:27,972 basehttp "GET /finance/submissions/?type=inward&status=approved HTTP/1.1" 200 33795
+INFO 2025-12-18 12:46:28,101 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-18 12:46:28,103 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-18 12:46:28,105 basehttp "GET /static/css/components/FinanceDashboard.css HTTP/1.1" 200 14272
+WARNING 2025-12-18 12:46:28,400 log Not Found: /favicon.ico
+WARNING 2025-12-18 12:46:28,400 basehttp "GET /favicon.ico HTTP/1.1" 404 3710
+INFO 2025-12-18 12:46:32,073 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:46:32,081 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 12:46:36,739 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:46:36,749 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:46:36,765 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 10090
+INFO 2025-12-18 12:46:38,044 basehttp "GET /finance/submissions/?type=inward&status=approved HTTP/1.1" 200 33795
+INFO 2025-12-18 12:46:40,351 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 51826
+INFO 2025-12-18 12:46:41,600 ollama_service [FILE] Processing invoice: D:\Desktop\vENDORPORTAL\media\submissions\2025\12\18\Scan_0009-1_fyGnNCT.pdf
+INFO 2025-12-18 12:46:41,600 ollama_service [PROCESS] Using n8n workflow for extraction...
+INFO 2025-12-18 12:49:53,623 ollama_service 
+==================================================
+[ EXTRACTED AI DATA ]
+==================================================
+{'CustomerTRN': '',
+ 'Customer_Name': 'ADRAK TRADING & CONT. CO. LLC',
+ 'Customer_RefNo': 'OM1100020467',
+ 'Invoice_Date': '2025-08-21',
+ 'Invoice_No': 'IN10544213',
+ 'Items': [{'Amount': '29.000',
+            'Item_Description': 'EXTERNAL WHT 18L FILLER',
+            'Item_No': '',
+            'Quantity': '5.000 DRM',
+            'Unit': '',
+            'Unit_Price': '5.800'}],
+ 'LPO_reference': '',
+ 'Order_Number': '0433456459',
+ 'PO_Number': '5141752996',
+ 'Subtotal': '29.000',
+ 'Total': '30.450',
+ 'VATIN': '',
+ 'VAT_Percentage': '',
+ 'Vendor_Name': 'ASIAN PAINTS (MIDDLE EAST) SPC'}
+==================================================
+
+INFO 2025-12-18 12:49:53,626 ollama_service 
+==================================================
+[ DETECTED PO NUMBER ]
+==================================================
+''
+==================================================
+
+INFO 2025-12-18 12:49:53,626 ollama_service 
+==================================================
+[ EXTRACTED VAT NUMBERS ]
+==================================================
+['OM1100020467']
+==================================================
+
+INFO 2025-12-18 12:49:53,626 ollama_service [SUCCESS] Extracted VAT/TRN: ['OM1100020467']
+INFO 2025-12-18 12:49:53,687 basehttp "GET /finance/extraction/start/38/ HTTP/1.1" 302 0
+INFO 2025-12-18 12:49:53,724 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 51095
+INFO 2025-12-18 12:51:10,185 basehttp "GET /finance/extraction/compare/38/ HTTP/1.1" 200 9921
+INFO 2025-12-18 12:51:10,835 basehttp "GET /media/submissions/2025/12/18/Scan_0009-1_fyGnNCT.pdf HTTP/1.1" 200 368039
+INFO 2025-12-18 12:51:11,846 basehttp "GET /media/submissions/2025/12/18/Scan_0009-1_fyGnNCT.pdf HTTP/1.1" 200 368039
+INFO 2025-12-18 14:09:38,754 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 14:10:14,199 autoreload D:\Desktop\vENDORPORTAL\vendor_portal\settings.py changed, reloading.
+INFO 2025-12-18 14:10:14,501 autoreload D:\Desktop\vENDORPORTAL\vendor_portal\settings.py changed, reloading.
+INFO 2025-12-18 14:10:14,869 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 14:10:14,869 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 14:10:15,079 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 14:10:15,079 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 14:10:24,472 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 14:10:24,472 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 14:10:24,648 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 14:10:24,648 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 14:10:25,074 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 14:10:25,074 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 14:10:25,248 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 14:10:25,248 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 14:10:43,039 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 14:10:43,039 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 14:10:43,161 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 14:10:43,161 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 14:10:43,597 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 14:10:43,597 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 14:10:43,720 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 14:10:43,720 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 14:11:20,212 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 14:11:20,212 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 14:11:20,322 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 14:11:20,322 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 14:11:20,764 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 14:11:20,764 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 14:11:20,880 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 14:11:20,880 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 14:12:48,296 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 14:12:48,296 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 14:12:48,395 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 14:12:48,395 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 14:12:48,898 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 14:12:48,898 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 14:12:48,991 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 14:12:48,991 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 14:13:51,572 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 14:13:51,572 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 16:18:11,233 basehttp "GET /finance/extraction/compare/38/ HTTP/1.1" 200 9921
+INFO 2025-12-18 16:18:11,233 basehttp "GET /finance/extraction/compare/38/ HTTP/1.1" 200 9921
+INFO 2025-12-18 16:18:11,383 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-18 16:18:11,383 basehttp "GET /static/css/App.css HTTP/1.1" 200 75
+INFO 2025-12-18 16:18:11,388 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-18 16:18:11,388 basehttp "GET /static/css/index.css HTTP/1.1" 200 5352
+INFO 2025-12-18 16:18:11,427 basehttp "GET /media/submissions/2025/12/18/Scan_0009-1_fyGnNCT.pdf HTTP/1.1" 200 368039
+INFO 2025-12-18 16:18:11,427 basehttp "GET /media/submissions/2025/12/18/Scan_0009-1_fyGnNCT.pdf HTTP/1.1" 200 368039
+INFO 2025-12-18 16:18:11,441 basehttp "GET /media/submissions/2025/12/18/Scan_0009-1_fyGnNCT.pdf HTTP/1.1" 200 368039
+INFO 2025-12-18 16:18:11,441 basehttp "GET /media/submissions/2025/12/18/Scan_0009-1_fyGnNCT.pdf HTTP/1.1" 200 368039
+WARNING 2025-12-18 16:18:11,836 log Not Found: /favicon.ico
+WARNING 2025-12-18 16:18:11,836 log Not Found: /favicon.ico
+WARNING 2025-12-18 16:18:11,836 basehttp "GET /favicon.ico HTTP/1.1" 404 3710
+WARNING 2025-12-18 16:18:11,836 basehttp "GET /favicon.ico HTTP/1.1" 404 3710
+INFO 2025-12-18 16:18:16,799 ollama_service [SUCCESS] Data pushed for Invoice IN10544213
+INFO 2025-12-18 16:18:16,799 ollama_service [SUCCESS] Data pushed for Invoice IN10544213
+INFO 2025-12-18 16:18:16,805 basehttp "POST /finance/extraction/push/38/ HTTP/1.1" 200 67
+INFO 2025-12-18 16:18:16,805 basehttp "POST /finance/extraction/push/38/ HTTP/1.1" 200 67
+INFO 2025-12-18 16:18:19,598 ollama_service [FILE] Processing invoice: D:\Desktop\vENDORPORTAL\media\submissions\2025\12\18\Scan_0009-1_VW6UAnt.pdf
+INFO 2025-12-18 16:18:19,598 ollama_service [FILE] Processing invoice: D:\Desktop\vENDORPORTAL\media\submissions\2025\12\18\Scan_0009-1_VW6UAnt.pdf
+INFO 2025-12-18 16:18:19,598 ollama_service [PROCESS] Using n8n workflow for extraction...
+INFO 2025-12-18 16:18:19,598 ollama_service [PARALLEL] Starting OCR data reading...
+INFO 2025-12-18 16:18:19,598 ollama_service [PROCESS] Waiting for parallel tasks (AI + OCR)...
+INFO 2025-12-18 16:18:19,598 ollama_service [PROCESS] Using n8n workflow for extraction...
+INFO 2025-12-18 16:18:19,598 ollama_service [PARALLEL] Starting OCR data reading...
+INFO 2025-12-18 16:18:19,598 ollama_service [PROCESS] Waiting for parallel tasks (AI + OCR)...
+DEBUG 2025-12-18 16:18:19,607 connectionpool Starting new HTTP connection (1): localhost:5678
+DEBUG 2025-12-18 16:18:20,357 pytesseract ['C:\\Users\\ITS38\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe', 'C:\\Users\\ITS38\\AppData\\Local\\Temp\\tess_5clhmmf8_input.PPM', 'C:\\Users\\ITS38\\AppData\\Local\\Temp\\tess_5clhmmf8', '-l', 'eng', 'txt']
+INFO 2025-12-18 16:18:35,322 basehttp "GET /finance/extraction/compare/38/ HTTP/1.1" 200 9921
+INFO 2025-12-18 16:18:35,322 basehttp "GET /finance/extraction/compare/38/ HTTP/1.1" 200 9921
+DEBUG 2025-12-18 16:21:46,250 connectionpool http://localhost:5678 "POST /webhook/invoice_extract HTTP/1.1" 200 820
+INFO 2025-12-18 16:21:46,273 ollama_service 
+==================================================
+[ EXTRACTED AI DATA ]
+==================================================
+{'CustomerTRN': '',
+ 'Customer_Name': 'ADRAK TRADING & CONT. CO. LLC',
+ 'Customer_RefNo': '',
+ 'Invoice_Date': '2025-08-19',
+ 'Invoice_No': 'IN10544213',
+ 'Items': [{'Amount': '29.000',
+            'Amount After Discount': '29.000',
+            'Amount incl VAT': '30.450',
+            'Discount': '0.000',
+            'Item_Description': 'EXTERNAL WHT 18L FILLER',
+            'Item_No': '04B000B18',
+            'Quantity': '5.000 DRM',
+            'Unit': '',
+            'Unit_Price': '5.800',
+            'VAT Amount': '1.450',
+            'VAT%': '5.000'}],
+ 'LPO_reference': '',
+ 'Order_Number': '0433456459',
+ 'PO_Number': '5141752996',
+ 'Subtotal': '29.000',
+ 'Total': '30.450',
+ 'VATIN': '',
+ 'VAT_Percentage': '5.000',
+ 'Vendor_Name': 'ASIAN PAINTS (MIDDLE EAST) SPC'}
+==================================================
+
+INFO 2025-12-18 16:21:46,273 ollama_service 
+==================================================
+[ EXTRACTED AI DATA ]
+==================================================
+{'CustomerTRN': '',
+ 'Customer_Name': 'ADRAK TRADING & CONT. CO. LLC',
+ 'Customer_RefNo': '',
+ 'Invoice_Date': '2025-08-19',
+ 'Invoice_No': 'IN10544213',
+ 'Items': [{'Amount': '29.000',
+            'Amount After Discount': '29.000',
+            'Amount incl VAT': '30.450',
+            'Discount': '0.000',
+            'Item_Description': 'EXTERNAL WHT 18L FILLER',
+            'Item_No': '04B000B18',
+            'Quantity': '5.000 DRM',
+            'Unit': '',
+            'Unit_Price': '5.800',
+            'VAT Amount': '1.450',
+            'VAT%': '5.000'}],
+ 'LPO_reference': '',
+ 'Order_Number': '0433456459',
+ 'PO_Number': '5141752996',
+ 'Subtotal': '29.000',
+ 'Total': '30.450',
+ 'VATIN': '',
+ 'VAT_Percentage': '5.000',
+ 'Vendor_Name': 'ASIAN PAINTS (MIDDLE EAST) SPC'}
+==================================================
+
+INFO 2025-12-18 16:21:46,283 ollama_service 
+==================================================
+[ ERROR ]
+==================================================
+'NO PO FOUND'
+==================================================
+
+INFO 2025-12-18 16:21:46,283 ollama_service 
+==================================================
+[ ERROR ]
+==================================================
+'NO PO FOUND'
+==================================================
+
+INFO 2025-12-18 16:21:46,283 ollama_service 
+==================================================
+[ DETECTED PO NUMBER ]
+==================================================
+''
+==================================================
+
+INFO 2025-12-18 16:21:46,283 ollama_service 
+==================================================
+[ DETECTED PO NUMBER ]
+==================================================
+''
+==================================================
+
+INFO 2025-12-18 16:21:46,317 basehttp - Broken pipe from ('127.0.0.1', 49744)
+INFO 2025-12-18 16:21:46,317 basehttp - Broken pipe from ('127.0.0.1', 49744)
+INFO 2025-12-18 16:34:20,356 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 16:34:20,356 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 16:35:12,644 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 16:35:12,644 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 16:36:31,500 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 50364
+INFO 2025-12-18 16:36:31,500 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 50364
+INFO 2025-12-18 16:36:32,576 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 13157
+INFO 2025-12-18 16:36:32,576 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 13157
+INFO 2025-12-18 16:36:36,954 basehttp "GET /finance/submissions/?type=inward&status=approved HTTP/1.1" 200 34315
+INFO 2025-12-18 16:36:36,954 basehttp "GET /finance/submissions/?type=inward&status=approved HTTP/1.1" 200 34315
+INFO 2025-12-18 16:36:37,887 basehttp "GET /finance/extraction/compare/38/ HTTP/1.1" 200 9921
+INFO 2025-12-18 16:36:37,887 basehttp "GET /finance/extraction/compare/38/ HTTP/1.1" 200 9921
+INFO 2025-12-18 16:36:38,022 basehttp "GET /media/submissions/2025/12/18/Scan_0009-1_fyGnNCT.pdf HTTP/1.1" 200 368039
+INFO 2025-12-18 16:36:38,022 basehttp "GET /media/submissions/2025/12/18/Scan_0009-1_fyGnNCT.pdf HTTP/1.1" 200 368039
+INFO 2025-12-18 16:36:38,034 basehttp "GET /media/submissions/2025/12/18/Scan_0009-1_fyGnNCT.pdf HTTP/1.1" 200 368039
+INFO 2025-12-18 16:36:38,034 basehttp "GET /media/submissions/2025/12/18/Scan_0009-1_fyGnNCT.pdf HTTP/1.1" 200 368039
+INFO 2025-12-18 16:36:42,626 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 16:36:42,626 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 16:36:42,642 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 16:36:42,642 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 16:36:46,754 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 16:36:46,754 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 16:36:46,770 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 16:36:46,770 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 16:36:46,801 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11475
+INFO 2025-12-18 16:36:46,801 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11475
+INFO 2025-12-18 16:37:04,241 basehttp "POST /vendors/supplier-inward/ HTTP/1.1" 302 0
+INFO 2025-12-18 16:37:04,241 basehttp "POST /vendors/supplier-inward/ HTTP/1.1" 302 0
+INFO 2025-12-18 16:37:04,258 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11758
+INFO 2025-12-18 16:37:04,258 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11758
+INFO 2025-12-18 16:37:08,390 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 16:37:08,390 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 16:37:08,396 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 16:37:08,396 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 16:37:13,886 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 16:37:13,886 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 16:37:13,896 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 16:37:13,896 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 16:37:13,910 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 9666
+INFO 2025-12-18 16:37:13,910 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 9666
+INFO 2025-12-18 16:37:15,139 basehttp "GET /finance/submissions/?type=inward&status=pending HTTP/1.1" 200 8443
+INFO 2025-12-18 16:37:15,139 basehttp "GET /finance/submissions/?type=inward&status=pending HTTP/1.1" 200 8443
+INFO 2025-12-18 16:37:17,001 basehttp "POST /finance/approve/4b6ce947-f357-4227-a5e8-e42e359f903a/ HTTP/1.1" 302 0
+INFO 2025-12-18 16:37:17,001 basehttp "POST /finance/approve/4b6ce947-f357-4227-a5e8-e42e359f903a/ HTTP/1.1" 302 0
+INFO 2025-12-18 16:37:17,020 ollama_service [FILE] Processing invoice: D:\Desktop\vENDORPORTAL\media\submissions\2025\12\18\Scan_0009-1_vLAdSyx.pdf
+INFO 2025-12-18 16:37:17,020 ollama_service [FILE] Processing invoice: D:\Desktop\vENDORPORTAL\media\submissions\2025\12\18\Scan_0009-1_vLAdSyx.pdf
+INFO 2025-12-18 16:37:17,022 ollama_service [PROCESS] Using n8n workflow for extraction...
+INFO 2025-12-18 16:37:17,023 ollama_service [PARALLEL] Starting OCR data reading...
+INFO 2025-12-18 16:37:17,022 ollama_service [PROCESS] Using n8n workflow for extraction...
+INFO 2025-12-18 16:37:17,023 ollama_service [PROCESS] Waiting for parallel tasks (AI + OCR)...
+INFO 2025-12-18 16:37:17,023 ollama_service [PARALLEL] Starting OCR data reading...
+INFO 2025-12-18 16:37:17,023 ollama_service [PROCESS] Waiting for parallel tasks (AI + OCR)...
+INFO 2025-12-18 16:37:17,028 basehttp "GET /finance/submissions/ HTTP/1.1" 200 37376
+INFO 2025-12-18 16:37:17,028 basehttp "GET /finance/submissions/ HTTP/1.1" 200 37376
+DEBUG 2025-12-18 16:37:17,028 connectionpool Starting new HTTP connection (1): localhost:5678
+DEBUG 2025-12-18 16:37:17,689 pytesseract ['C:\\Users\\ITS38\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe', 'C:\\Users\\ITS38\\AppData\\Local\\Temp\\tess_7c9vc2wp_input.PPM', 'C:\\Users\\ITS38\\AppData\\Local\\Temp\\tess_7c9vc2wp', '-l', 'eng', 'txt']
+DEBUG 2025-12-18 16:40:39,695 connectionpool http://localhost:5678 "POST /webhook/invoice_extract HTTP/1.1" 200 881
+INFO 2025-12-18 16:40:39,742 ollama_service 
+==================================================
+[ EXTRACTED AI DATA ]
+==================================================
+{'CustomerTRN': '',
+ 'Customer_Name': 'ADRAK TRADING & CONT. CO. LLC',
+ 'Customer_RefNo': 'OM1100020467',
+ 'Invoice_Date': '2025-08-21',
+ 'Invoice_No': 'IN10544213',
+ 'Items': [{'Amount': '29.000',
+            'Amount incl VAT': '30.450',
+            'Amt After Discount': '29.000',
+            'Discount': '0.000',
+            'Item_Description': 'EXTERNAL WHT 18L FILLER',
+            'Item_No': '04B000B18',
+            'Quantity': '5.000 DRM',
+            'Unit': '',
+            'Unit_Price': '5.800',
+            'VAT Amount': '1.450',
+            'VAT%': '5.000'}],
+ 'LPO_reference': '',
+ 'Order_Number': '0433456459',
+ 'PO_Number': '5141752996',
+ 'Subtotal': '29.000',
+ 'Total': '30.450',
+ 'VATIN': 'Omani Riyal and Baisa Four Hundred Fifty Only THIRTY',
+ 'VAT_Percentage': '5.000',
+ 'Vendor_Name': 'ASIAN PAINTS (MIDDLE EAST) SPC'}
+==================================================
+
+INFO 2025-12-18 16:40:39,742 ollama_service 
+==================================================
+[ EXTRACTED AI DATA ]
+==================================================
+{'CustomerTRN': '',
+ 'Customer_Name': 'ADRAK TRADING & CONT. CO. LLC',
+ 'Customer_RefNo': 'OM1100020467',
+ 'Invoice_Date': '2025-08-21',
+ 'Invoice_No': 'IN10544213',
+ 'Items': [{'Amount': '29.000',
+            'Amount incl VAT': '30.450',
+            'Amt After Discount': '29.000',
+            'Discount': '0.000',
+            'Item_Description': 'EXTERNAL WHT 18L FILLER',
+            'Item_No': '04B000B18',
+            'Quantity': '5.000 DRM',
+            'Unit': '',
+            'Unit_Price': '5.800',
+            'VAT Amount': '1.450',
+            'VAT%': '5.000'}],
+ 'LPO_reference': '',
+ 'Order_Number': '0433456459',
+ 'PO_Number': '5141752996',
+ 'Subtotal': '29.000',
+ 'Total': '30.450',
+ 'VATIN': 'Omani Riyal and Baisa Four Hundred Fifty Only THIRTY',
+ 'VAT_Percentage': '5.000',
+ 'Vendor_Name': 'ASIAN PAINTS (MIDDLE EAST) SPC'}
+==================================================
+
+INFO 2025-12-18 16:40:39,879 ollama_service 
+==================================================
+[ ERROR ]
+==================================================
+'NO PO FOUND'
+==================================================
+
+INFO 2025-12-18 16:40:39,879 ollama_service 
+==================================================
+[ ERROR ]
+==================================================
+'NO PO FOUND'
+==================================================
+
+INFO 2025-12-18 16:40:39,880 ollama_service 
+==================================================
+[ DETECTED PO NUMBER ]
+==================================================
+''
+==================================================
+
+INFO 2025-12-18 16:40:39,880 ollama_service 
+==================================================
+[ DETECTED PO NUMBER ]
+==================================================
+''
+==================================================
+
+INFO 2025-12-18 16:40:39,880 ollama_service 
+==================================================
+[ EXTRACTED VAT NUMBERS ]
+==================================================
+['OM1100020467']
+==================================================
+
+INFO 2025-12-18 16:40:39,880 ollama_service 
+==================================================
+[ EXTRACTED VAT NUMBERS ]
+==================================================
+['OM1100020467']
+==================================================
+
+INFO 2025-12-18 16:40:39,880 ollama_service [SUCCESS] Extracted VAT/TRN: ['OM1100020467']
+INFO 2025-12-18 16:40:39,880 ollama_service [SUCCESS] Extracted VAT/TRN: ['OM1100020467']
+INFO 2025-12-18 16:45:04,283 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 16:45:04,283 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 16:45:05,200 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 16:45:05,200 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 16:59:43,051 basehttp "GET /finance/submissions/ HTTP/1.1" 200 37348
+INFO 2025-12-18 16:59:43,051 basehttp "GET /finance/submissions/ HTTP/1.1" 200 37348
+INFO 2025-12-18 16:59:44,828 basehttp "GET /finance/extraction/compare/39/ HTTP/1.1" 200 8391
+INFO 2025-12-18 16:59:44,828 basehttp "GET /finance/extraction/compare/39/ HTTP/1.1" 200 8391
+INFO 2025-12-18 16:59:44,952 basehttp "GET /media/submissions/2025/12/18/Scan_0009-1_vLAdSyx.pdf HTTP/1.1" 200 368039
+INFO 2025-12-18 16:59:44,952 basehttp "GET /media/submissions/2025/12/18/Scan_0009-1_vLAdSyx.pdf HTTP/1.1" 200 368039
+INFO 2025-12-18 16:59:44,958 basehttp "GET /media/submissions/2025/12/18/Scan_0009-1_vLAdSyx.pdf HTTP/1.1" 200 368039
+INFO 2025-12-18 16:59:44,958 basehttp "GET /media/submissions/2025/12/18/Scan_0009-1_vLAdSyx.pdf HTTP/1.1" 200 368039
+INFO 2025-12-18 17:02:21,115 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 17:02:21,115 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 17:02:21,674 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 17:02:21,674 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 17:03:20,040 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 55920
+INFO 2025-12-18 17:03:20,040 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 55920
+INFO 2025-12-18 17:03:20,958 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 9666
+INFO 2025-12-18 17:03:20,958 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 9666
+INFO 2025-12-18 17:03:21,756 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 17:03:21,756 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 17:03:21,761 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 17:03:21,761 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 17:03:25,708 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 17:03:25,708 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 17:03:25,717 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 17:03:25,717 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 17:03:25,733 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11475
+INFO 2025-12-18 17:03:25,733 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11475
+INFO 2025-12-18 17:07:34,565 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 17:07:34,565 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 17:07:34,575 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 17:07:34,575 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 17:07:37,652 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 17:07:37,652 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 17:07:37,662 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 17:07:37,662 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 17:07:37,675 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 9666
+INFO 2025-12-18 17:07:37,675 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 9666
+INFO 2025-12-18 17:07:39,151 basehttp "GET /finance/submissions/?type=inward&status=approved HTTP/1.1" 200 37664
+INFO 2025-12-18 17:07:39,151 basehttp "GET /finance/submissions/?type=inward&status=approved HTTP/1.1" 200 37664
+INFO 2025-12-18 17:07:41,535 basehttp "GET /finance/extraction/compare/39/ HTTP/1.1" 200 8391
+INFO 2025-12-18 17:07:41,535 basehttp "GET /finance/extraction/compare/39/ HTTP/1.1" 200 8391
+INFO 2025-12-18 17:07:41,640 basehttp "GET /media/submissions/2025/12/18/Scan_0009-1_vLAdSyx.pdf HTTP/1.1" 200 368039
+INFO 2025-12-18 17:07:41,640 basehttp "GET /media/submissions/2025/12/18/Scan_0009-1_vLAdSyx.pdf HTTP/1.1" 200 368039
+INFO 2025-12-18 17:07:41,650 basehttp "GET /media/submissions/2025/12/18/Scan_0009-1_vLAdSyx.pdf HTTP/1.1" 200 368039
+INFO 2025-12-18 17:07:41,650 basehttp "GET /media/submissions/2025/12/18/Scan_0009-1_vLAdSyx.pdf HTTP/1.1" 200 368039
+INFO 2025-12-18 17:07:46,425 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 55920
+INFO 2025-12-18 17:07:46,425 basehttp "GET /finance/extraction/queue/ HTTP/1.1" 200 55920
+INFO 2025-12-18 17:07:47,790 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 9666
+INFO 2025-12-18 17:07:47,790 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 9666
+INFO 2025-12-18 17:07:48,856 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 17:07:48,856 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 17:07:48,860 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 17:07:48,860 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 17:07:52,031 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 17:07:52,031 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 17:07:52,042 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 17:07:52,042 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 17:07:52,057 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11475
+INFO 2025-12-18 17:07:52,057 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11475
+INFO 2025-12-18 17:08:38,585 basehttp "POST /vendors/supplier-inward/ HTTP/1.1" 302 0
+INFO 2025-12-18 17:08:38,585 basehttp "POST /vendors/supplier-inward/ HTTP/1.1" 302 0
+INFO 2025-12-18 17:08:38,600 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11758
+INFO 2025-12-18 17:08:38,600 basehttp "GET /vendors/dashboard/ HTTP/1.1" 200 11758
+INFO 2025-12-18 17:08:39,925 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 17:08:39,925 basehttp "POST /logout/ HTTP/1.1" 302 0
+INFO 2025-12-18 17:08:39,934 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 17:08:39,934 basehttp "GET /login/ HTTP/1.1" 200 3131
+INFO 2025-12-18 17:08:42,910 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 17:08:42,910 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-18 17:08:42,919 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 17:08:42,919 basehttp "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-18 17:08:42,934 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 9667
+INFO 2025-12-18 17:08:42,934 basehttp "GET /finance/dashboard/ HTTP/1.1" 200 9667
+INFO 2025-12-18 17:08:44,473 basehttp "GET /finance/submissions/?type=inward&status=pending HTTP/1.1" 200 8443
+INFO 2025-12-18 17:08:44,473 basehttp "GET /finance/submissions/?type=inward&status=pending HTTP/1.1" 200 8443
+INFO 2025-12-18 17:08:45,702 basehttp "POST /finance/approve/ee4d325d-2348-474d-8296-f06d28974fb0/ HTTP/1.1" 302 0
+INFO 2025-12-18 17:08:45,702 basehttp "POST /finance/approve/ee4d325d-2348-474d-8296-f06d28974fb0/ HTTP/1.1" 302 0
+INFO 2025-12-18 17:08:45,724 basehttp "GET /finance/submissions/ HTTP/1.1" 200 41145
+INFO 2025-12-18 17:08:45,724 basehttp "GET /finance/submissions/ HTTP/1.1" 200 41145
+INFO 2025-12-18 17:08:45,733 ollama_service [FILE] Processing invoice: D:\Desktop\vENDORPORTAL\media\submissions\2025\12\18\Scan_0009-1_XepleHE.pdf
+INFO 2025-12-18 17:08:45,733 ollama_service [FILE] Processing invoice: D:\Desktop\vENDORPORTAL\media\submissions\2025\12\18\Scan_0009-1_XepleHE.pdf
+INFO 2025-12-18 17:08:45,734 ollama_service [PROCESS] Using n8n workflow for extraction...
+INFO 2025-12-18 17:08:45,734 ollama_service [PROCESS] Using n8n workflow for extraction...
+INFO 2025-12-18 17:08:45,734 ollama_service [PARALLEL] Starting OCR data reading...
+INFO 2025-12-18 17:08:45,734 ollama_service [PROCESS] Waiting for parallel tasks (AI + OCR)...
+INFO 2025-12-18 17:08:45,734 ollama_service [PARALLEL] Starting OCR data reading...
+INFO 2025-12-18 17:08:45,734 ollama_service [PROCESS] Waiting for parallel tasks (AI + OCR)...
+DEBUG 2025-12-18 17:08:45,735 connectionpool Starting new HTTP connection (1): localhost:5678
+DEBUG 2025-12-18 17:08:46,394 pytesseract ['C:\\Users\\ITS38\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe', 'C:\\Users\\ITS38\\AppData\\Local\\Temp\\tess_1eubxrdp_input.PPM', 'C:\\Users\\ITS38\\AppData\\Local\\Temp\\tess_1eubxrdp', '-l', 'eng', 'txt']
+INFO 2025-12-18 17:10:34,429 basehttp "GET /finance/submissions/ HTTP/1.1" 200 40853
+INFO 2025-12-18 17:10:34,429 basehttp "GET /finance/submissions/ HTTP/1.1" 200 40853
+INFO 2025-12-18 17:11:14,281 basehttp "GET /finance/submissions/ HTTP/1.1" 200 40853
+INFO 2025-12-18 17:11:14,281 basehttp "GET /finance/submissions/ HTTP/1.1" 200 40853
+DEBUG 2025-12-18 17:12:03,137 connectionpool http://localhost:5678 "POST /webhook/invoice_extract HTTP/1.1" 200 795
+INFO 2025-12-18 17:12:03,140 ollama_service 
+==================================================
+[ EXTRACTED AI DATA ]
+==================================================
+{'CustomerTRN': 'OMANI RIYAL and BAISA FOUR HUNDRED FIFTY Only THIRTEY',
+ 'Customer_Name': 'ADRAK TRADING & CONT. CO. LLC',
+ 'Customer_RefNo': 'OM1100020467',
+ 'Invoice_Date': '2025-08-21',
+ 'Invoice_No': 'IN10544213',
+ 'Items': [{'Amount': '29.000',
+            'Item_Description': 'EXTERNAL WHT 18L FILLER',
+            'Item_No': '',
+            'Quantity': '5.000 DRM',
+            'Unit': 'DRM',
+            'Unit_Price': '5.800'}],
+ 'LPO_reference': '',
+ 'Order_Number': '0433456459',
+ 'PO_Number': '5141752996',
+ 'Subtotal': '29.000',
+ 'Total': '30.450',
+ 'VATIN': '',
+ 'VAT_Percentage': '5.000',
+ 'Vendor_Name': 'ASIAN PAINTS (MIDDLE EAST) SPC'}
+==================================================
+
+INFO 2025-12-18 17:12:03,140 ollama_service 
+==================================================
+[ EXTRACTED AI DATA ]
+==================================================
+{'CustomerTRN': 'OMANI RIYAL and BAISA FOUR HUNDRED FIFTY Only THIRTEY',
+ 'Customer_Name': 'ADRAK TRADING & CONT. CO. LLC',
+ 'Customer_RefNo': 'OM1100020467',
+ 'Invoice_Date': '2025-08-21',
+ 'Invoice_No': 'IN10544213',
+ 'Items': [{'Amount': '29.000',
+            'Item_Description': 'EXTERNAL WHT 18L FILLER',
+            'Item_No': '',
+            'Quantity': '5.000 DRM',
+            'Unit': 'DRM',
+            'Unit_Price': '5.800'}],
+ 'LPO_reference': '',
+ 'Order_Number': '0433456459',
+ 'PO_Number': '5141752996',
+ 'Subtotal': '29.000',
+ 'Total': '30.450',
+ 'VATIN': '',
+ 'VAT_Percentage': '5.000',
+ 'Vendor_Name': 'ASIAN PAINTS (MIDDLE EAST) SPC'}
+==================================================
+
+INFO 2025-12-18 17:12:03,146 ollama_service 
+==================================================
+[ FINAL PO (OCR WITH PREFIX) ]
+==================================================
+'ATCP025080576'
+==================================================
+
+INFO 2025-12-18 17:12:03,146 ollama_service 
+==================================================
+[ FINAL PO (OCR WITH PREFIX) ]
+==================================================
+'ATCP025080576'
+==================================================
+
+INFO 2025-12-18 17:12:03,148 ollama_service 
+==================================================
+[ DETECTED PO NUMBER ]
+==================================================
+'ATCP025080576'
+==================================================
+
+INFO 2025-12-18 17:12:03,148 ollama_service 
+==================================================
+[ DETECTED PO NUMBER ]
+==================================================
+'ATCP025080576'
+==================================================
+
+INFO 2025-12-18 17:12:03,149 ollama_service [SUCCESS] Enhanced PO Number: ATCP025080576
+INFO 2025-12-18 17:12:03,149 ollama_service [SUCCESS] Enhanced PO Number: ATCP025080576
+INFO 2025-12-18 17:12:03,149 ollama_service 
+==================================================
+[ EXTRACTED VAT NUMBERS ]
+==================================================
+['OM1100020467']
+==================================================
+
+INFO 2025-12-18 17:12:03,149 ollama_service 
+==================================================
+[ EXTRACTED VAT NUMBERS ]
+==================================================
+['OM1100020467']
+==================================================
+
+INFO 2025-12-18 17:12:03,149 ollama_service [SUCCESS] Extracted VAT/TRN: ['OM1100020467']
+INFO 2025-12-18 17:12:03,149 ollama_service [SUCCESS] Extracted VAT/TRN: ['OM1100020467']
+INFO 2025-12-18 17:12:03,149 ollama_service [SEARCH] Fetching Axpert data for PO: ATCP025080576
+INFO 2025-12-18 17:12:03,149 ollama_service [SEARCH] Fetching Axpert data for PO: ATCP025080576
+INFO 2025-12-18 17:12:03,149 ollama_service [CONNECT] Connecting to Oracle DB for PO: ATCP025080576
+INFO 2025-12-18 17:12:03,149 ollama_service [CONNECT] Connecting to Oracle DB for PO: ATCP025080576
+WARNING 2025-12-18 17:12:03,306 ollama_service [WARNING] No vendor found for PO ATCP025080576
+WARNING 2025-12-18 17:12:03,306 ollama_service [WARNING] No vendor found for PO ATCP025080576
+INFO 2025-12-18 17:12:14,016 basehttp "GET /finance/submissions/ HTTP/1.1" 200 41117
+INFO 2025-12-18 17:12:14,016 basehttp "GET /finance/submissions/ HTTP/1.1" 200 41117
+INFO 2025-12-18 17:12:15,179 basehttp "GET /finance/extraction/compare/40/ HTTP/1.1" 200 8388
+INFO 2025-12-18 17:12:15,179 basehttp "GET /finance/extraction/compare/40/ HTTP/1.1" 200 8388
+INFO 2025-12-18 17:12:15,240 basehttp "GET /media/submissions/2025/12/18/Scan_0009-1_XepleHE.pdf HTTP/1.1" 200 368039
+INFO 2025-12-18 17:12:15,240 basehttp "GET /media/submissions/2025/12/18/Scan_0009-1_XepleHE.pdf HTTP/1.1" 200 368039
+INFO 2025-12-18 17:12:15,296 basehttp "GET /media/submissions/2025/12/18/Scan_0009-1_XepleHE.pdf HTTP/1.1" 200 368039
+INFO 2025-12-18 17:12:15,296 basehttp "GET /media/submissions/2025/12/18/Scan_0009-1_XepleHE.pdf HTTP/1.1" 200 368039
+INFO 2025-12-18 17:15:37,527 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 17:15:37,527 autoreload D:\Desktop\vENDORPORTAL\finance\services\ollama_service.py changed, reloading.
+INFO 2025-12-18 17:15:38,409 autoreload Watching for file changes with StatReloader
+INFO 2025-12-18 17:15:38,409 autoreload Watching for file changes with StatReloader
